@@ -3,7 +3,7 @@
 @section('title', 'Начало |')
 
 @section('body')
-    @include('includes.banners')
+    @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
     <div id="_featured_products" class="max-w-[800px] mx-auto my-8 w-full">
         <div id="_featured_products_heading" class="my-10">
             <h1 class="text-main-green-dark font-bold">
@@ -33,19 +33,18 @@
     </div>
 
     <div class="bg-main-green-dark p-4 text-center">
-        <h2 class="text-xl text-[#fff]">Заявка за лазерно надписване на дубликати >> Доставка от 1 до 3 дни</h2>
+        <a href="https://old.solomonsofia.com/bg/formlazer">
+            <h2 class="text-xl text-[#fff]">Заявка за лазерно надписване на дубликати >> Доставка от 1 до 3 дни</h2>
+        </a>
     </div>
 
     <div class="grid grid-cols-5 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
-{{--        @include('includes.product')--}}
+        @forelse($products as $product)
+            @include('includes.product', ['product' => $product])
+        @empty
+            <h1 class="text-center text-2xl">
+                Няма довабени продукти!
+            </h1>
+        @endforelse
     </div>
 @endsection

@@ -2,9 +2,11 @@
     <div class="container mx-auto px-16">
         <div class="_top_bar_navigation absolute right-3 top-1">
             <div class="flex items-center justify-end w-100">
-                <i class="text-facebook mx-3 bi bi-facebook"></i>
-                <i class="text-instagram mx-3 bi bi-instagram"></i>
-                <i class="text-youtube mx-3 bi bi-youtube"></i>
+                <a href="https://www.facebook.com/solomonsofia.ltd" target="_blank">
+                    <i class="text-facebook mx-3 text-xl bi bi-facebook"></i>
+                </a>
+                {{--                <i class="text-instagram mx-3 bi bi-instagram"></i>--}}
+                {{--                <i class="text-youtube mx-3 bi bi-youtube"></i>--}}
             </div>
         </div>
         <div class="flex justify-between items-center">
@@ -19,19 +21,20 @@
                         <a class="hover:text-main-green-dark" href="{{route('app_index')}}">Продукти</a>
                     </li>
                     <li class="uppercase mx-3 font-semibold">
-                        <a class="hover:text-main-green-dark" href="">Качество</a>
+                        <a class="hover:text-main-green-dark" href="{{route('app_quality')}}">Качество</a>
                     </li>
                     <li class="uppercase mx-3 font-semibold">
-                        <a class="hover:text-main-green-dark" href="">За нас</a>
+                        <a class="hover:text-main-green-dark" href="{{route('app_about')}}">За нас</a>
                     </li>
                     <li class="uppercase mx-3 font-semibold">
-                        <a class="hover:text-main-green-dark" href="">Партньори</a>
+                        <a class="hover:text-main-green-dark" href="{{route('app_partners')}}">Партньори</a>
                     </li>
                     <li class="uppercase mx-3 font-semibold">
-                        <a class="hover:text-main-green-dark" href="">Контакти</a>
+                        <a class="hover:text-main-green-dark" href="{{route('app_contacts')}}">Контакти</a>
                     </li>
                     <li class="uppercase mx-3 font-semibold">
-                        <a class="text-main-orange hover:underline" href="">Почивки</a>
+                        <a class="text-main-orange hover:underline" href="https://www.ssky.bg/"
+                           target="_blank">Почивки</a>
                     </li>
                 </ul>
             </nav>

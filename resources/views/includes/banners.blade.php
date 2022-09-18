@@ -8,7 +8,7 @@
             </div>
         </div>
         <img class="absolute -top-[85px] left-2/4 -translate-x-[20%]" width="800"
-             src="https://solomonsofia.com/cow.png"
+             src="{{$banner}}"
              alt="Solomon Main Banner Cow"
         />
     </div>

@@ -13,7 +13,8 @@
             <h1 class="text-2xl font-bold text-main-green-dark ">{{$product->name}}</h1>
             <h2 class="text-md my-3">{{$product->desc}}</h2>
             <h2 class="text-2xl font-semibold">{{$product->price}} без ДДС</h2>
-            <a href="/" class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-10">ПОРЪЧАЙ</a>
+            <a href="{{$product->features === 1 ? 'https://old.solomonsofia.com/bg/formlazer' : '/'}}" class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-10">ПОРЪЧАЙ</a>
+
         </div>
         {{--  </div>--}}
     </div>
