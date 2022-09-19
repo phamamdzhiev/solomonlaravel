@@ -1,11 +1,11 @@
 <footer>
     <div class="inner bg-main-green p-8">
-        <div class="flex items-center justify-between max-w-[900px] mx-auto">
-            <div class="_logo_wrapper">
+        <div class="flex items-center flex-col md:flex-row text-center md:text-left justify-between max-w-[900px] mx-auto">
+            <div class="_logo_wrapper mb-4">
                 <img width="200" class="brightness-0 invert	" src="{{asset('/storage/images/logo.png')}}"
                      alt="Logo Solomon">
             </div>
-            <div class="text-[#fff] text-lg">
+            <div class="text-[#fff] text-lg mb-4">
                 Соломон-София ЕООД
             </div>
             <div>

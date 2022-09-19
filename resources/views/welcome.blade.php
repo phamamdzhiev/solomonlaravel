@@ -50,6 +50,7 @@
         }
     </style>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
 <body class="font-body font-sans bg-[#F1F2F2]">
 @include('includes.header')

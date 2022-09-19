@@ -4,11 +4,11 @@
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/kleshti.png'])
     <div class="container">
         <h1 class="text-4xl font-semibold my-10 text-main-green-dark">Ушни марки</h1>
-        <div class="flex mb-6">
-            <div class="mr-8">
+        <div class="flex mb-6 flex-col md:flex-row">
+            <div class="mr-8 mb-6">
                 <img width="200" class="shadow-md" src="https://solomonsofia.com/BOSS_2.jpg" alt="image">
             </div>
-            <div class="flex-[0_0_900px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_900px]">
                 <h2 class="font-bold text-main-green-dark text-lg mb-2">Q-Flex ушни марки за говеда Q-Flex BOSS 2</h2>
                 <p>
                     Произведени от гъвкава полиуретанова (TPU) пластмаса с надеждна, дълготрайна издръжливост. Мъжките и
@@ -20,11 +20,11 @@
                 </p>
             </div>
         </div>
-        <div class="flex mb-6">
-            <div class="mr-8">
+        <div class="flex mb-6 flex-col md:flex-row">
+            <div class="mr-8 mb-6">
                 <img width="200" class="shadow-md" src="https://solomonsofia.com/marka_ovce.jpg" alt="image">
             </div>
-            <div class="flex-[0_0_900px]">
+            <div class="flex-[0_0_100%] md:flex-[0_0_900px]">
                 <h2 class="font-bold text-main-green-dark text-lg mb-2">Q-Flex ушни марки за овце и кози Q-Flex
                     CREW</h2>
                 <p>- 28 mm х 28 mm - тегло 3,2 гр - твърд накрайник - висококачествен полиуретан</p>
@@ -36,7 +36,7 @@
     </div>
     <div class="container">
         <h1 class="text-3xl font-semibold my-10 text-main-green-dark">Q-flex</h1>
-      <div class="flex justify-between mb-10">
+      <div class="flex justify-between mb-10 md:flex-row flex-col">
           <ul class="list-disc flex-[0_0_49%] font-semibold">
               <li>Твърда пластмаса</li>
               <li>Пробивен връх</li>

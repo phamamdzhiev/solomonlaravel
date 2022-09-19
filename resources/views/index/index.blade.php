@@ -5,13 +5,13 @@
 @section('body')
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
     <div id="_featured_products" class="max-w-[800px] mx-auto my-8 w-full">
-        <div id="_featured_products_heading" class="my-10">
-            <h1 class="text-main-green-dark font-bold">
+        <div id="_featured_products_heading" class="my-10 px-3">
+            <h1 class="text-main-green-dark font-bold md:text-left text-center">
                 <span class="text-[26px] block">100% Немско качество</span>
                 <span class="text-[26px] block">Ушни марки GEPE поставете и за проблеми забравете</span>
             </h1>
         </div>
-        <div class="grid grid-cols-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
+        <div class="grid md:grid-cols-3 grid-cols-2 px-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
             @forelse($featuredProducts as $product)
                 @include('includes.product', ['product' => $product])
             @empty
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="max-w-[500px] mx-auto text-center font-bold my-10 text-xl">
+    <div class="max-w-[500px] mx-auto text-center font-bold my-10 text-xl px-3">
         <span class="block">Всички ушни марки са регистрирани в БАБХ</span>
         <span class="block">Отстъпка за количество за нови ушни марки за ЕПЖ и ел.ДПЖ:</span>
         <span class="block">50бр. - 5%</span>
@@ -38,7 +38,7 @@
         </a>
     </div>
 
-    <div class="grid grid-cols-5 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
+    <div class="grid px-3 md:grid-cols-5 grid-cols-2 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
         @forelse($products as $product)
             @include('includes.product', ['product' => $product])
         @empty

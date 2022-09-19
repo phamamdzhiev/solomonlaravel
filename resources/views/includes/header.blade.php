@@ -1,7 +1,7 @@
 <header class="py-3 relative">
     <div class="container mx-auto px-16">
         <div class="_top_bar_navigation absolute right-3 top-1">
-            <div class="flex items-center justify-end w-100">
+            <div class="hidden items-center justify-end w-100 lg:flex">
                 <a href="https://www.facebook.com/solomonsofia.ltd" target="_blank">
                     <i class="text-facebook mx-3 text-xl bi bi-facebook"></i>
                 </a>
@@ -15,7 +15,12 @@
                     <img width="225" src="{{asset('/storage/images/logo.png')}}" alt="Logo Solomon">
                 </a>
             </div>
-            <nav>
+            <div class="lg:hidden block">
+                <button id="js-toggle-hamburger">
+                    <i class="bi bi-list text-4xl"></i>
+                </button>
+            </div>
+            <nav id="js-navigation-list" class="hidden lg:block">
                 <ul class="flex">
                     <li class="uppercase mx-3 font-semibold">
                         <a class="hover:text-main-green-dark" href="{{route('app_index')}}">Продукти</a>
@@ -41,3 +46,4 @@
         </div>
     </div>
 </header>
+
