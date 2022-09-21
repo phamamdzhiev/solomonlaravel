@@ -19,7 +19,9 @@ Route::get('/partners', function () {
 Route::get('/contacts', function () {
     return view('pages.contacts');
 })->name('app_contacts');
-
+Route::get('/policy', function () {
+    return view('pages.policy');
+})->name('app_policy');
 
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin'], function () {

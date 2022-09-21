@@ -80,8 +80,9 @@
                                                 {{ method_field('DELETE') }}
 
                                                 <div class="form-group">
-                                                    <button id="js-delete-button" type="button"
-                                                            class="font-semibold text-[#FD380E]"
+                                                    <button type="button"
+                                                            id="{{$product->name}}"
+                                                            class="js-delete-button font-semibold text-[#FD380E]"
                                                     >Изтрий
                                                     </button>
                                                 </div>
@@ -156,12 +157,13 @@
         </div>
     </div>
     <script>
-        const deleteForm = document.getElementById('js-delete-form');
-        const deleteButtonHandler = document.getElementById('js-delete-button');
-        deleteButtonHandler.addEventListener('click', function () {
-            if (confirm('Сигурни ли сте, че искате да изтриете този продукт?')) {
-                deleteForm.submit();
-            }
+        const deleteButtonHandler = document.querySelectorAll('.js-delete-button')
+        deleteButtonHandler.forEach(el => {
+            el.addEventListener('click', (e) => {
+                if (confirm(`Сигурни ли сте, че искате да изтриете продукт: ${e.target.id} ?`)) {
+                    e.target.closest('#js-delete-form').submit();
+                }
+            })
         })
     </script>
 @endsection

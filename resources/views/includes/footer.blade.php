@@ -11,7 +11,7 @@
             <div>
                 <span class="block text-[#fff]"><i class="bi bi-phone"></i> 089 981 17 58</span>
                 <span class="block text-[#fff]"><i class="bi bi-envelope"></i> solomonsofia@abv.bg </span>
-                <a href="/">
+                <a href="{{route('app_policy')}}">
                     <span class="block text-[#000] hover:text-[#fff]">УСЛОВИЯ ЗА ЗАЩИТА НА ЛИЧНИТЕ ДАННИ</span>
                 </a>
             </div>
