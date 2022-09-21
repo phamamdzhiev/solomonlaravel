@@ -11,9 +11,9 @@
         <p class="leading-4 mb-5">
             {{$product->desc}}
         </p>
-        <p class="leading-4 mb-5 font-semibold text-xl">
+        <p class="leading-4 mb-2 font-semibold text-xl">
             {{$product->price}} без ДДС
         </p>
-        <a href="{{$product->features === 1 ? 'https://old.solomonsofia.com/bg/formlazer' : '/'}}" class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-2">ПОРЪЧАЙ</a>
+        @include('includes.order-button', ['isFeatured' => $product->features])
     </div>
 </div>
