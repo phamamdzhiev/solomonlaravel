@@ -1,4 +1,4 @@
-<div class="border rounded-md border-[#94A3B8]">
+<div class="border rounded-md border-[#94A3B8] hover:shadow-md">
     <div class="p-3 text-center">
         <a href="{{route('app_product', $product->id)}}">
             <img class="mx-auto" src="{{asset('storage/products/' . $product->image_path)}}" alt="Product"/>
