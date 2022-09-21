@@ -1,4 +1,5 @@
 // import './bootstrap';
+import './admin';
 
 window.addEventListener('load', function () {
     const toggleMenuButton = document.getElementById('js-toggle-hamburger');
