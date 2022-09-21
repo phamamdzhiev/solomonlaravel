@@ -25,9 +25,17 @@
             @endif
 
             <a href="#_add_product_form"
-               class="inline-block my-6 bg-main-green hover:bg-blue-700 font-semibold py-2 px-4 rounded-full">
+               class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
                 Довави продукт
             </a>
+            <form action="{{route('logout')}}" method="post" class="inline-block">
+                @csrf
+                <button type="submit"
+                        class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+                    Изход
+                </button>
+            </form>
+
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
