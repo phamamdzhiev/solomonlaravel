@@ -3,8 +3,8 @@
 @section('body')
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
 
-    <div class="container">
-        <h1 class="text-4xl font-semibold my-10 text-main-green-dark">За нас</h1>
+    <div class="container my-10 max-w-[1200px] w-full">
+        <h1 class="text-4xl font-semibold mb-10 text-main-green-dark">За нас</h1>
         <div class="flex justify-between md:flex-row flex-col">
             <div class="flex-[0_0_100%] md:flex-[0_0_49%]">
                 <div>
