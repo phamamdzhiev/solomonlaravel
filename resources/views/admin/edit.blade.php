@@ -2,8 +2,8 @@
 
 @section('body')
     <div class="_edit container">
-       <div class="flex">
-           <div class="w-full max-w-xs">
+       <div class="flex flex-col md:flex-row">
+           <div class="w-full max-w-xs md:order-1 order-2">
                <form id="_edit_product_form" class="px-2 pt-6 pb-8 mb-4" method="post"
                      action="{{route('app_admin_edit_save', $product->id)}} ">
                    <h1 class="mb-6 text-xl font-bold">Редактирай продукт <i class="font-light">({{$product->name}})</i></h1>
@@ -61,8 +61,8 @@
                </form>
 
            </div>
-           <div class="_product_image ml-16 mt-16">
-               <img width="200" src="{{asset('storage/products/' . $product->image_path)}}" alt="Product image">
+           <div class="_product_image md:ml-16 ml-0 mt-16 md:order-2 order-1">
+               <img class="md:w-[200px] w-full" src="{{asset('storage/products/' . $product->image_path)}}" alt="Product image">
            </div>
        </div>
     </div>

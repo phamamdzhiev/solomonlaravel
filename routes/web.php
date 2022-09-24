@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('app_index');
 Route::get('/product/{id}', [\App\Http\Controllers\IndexController::class, 'showProduct'])->name('app_product');
+Route::post('/messages', [\App\Http\Controllers\IndexController::class, 'storeMessage'])->name('app_message_post');
 
 //NO CONTROLLER ROUTES
 Route::get('/quality', function () {

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Messages;
 use App\Models\Product;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -29,5 +32,31 @@ class IndexController extends Controller
     {
         $product = Product::findOrFail($id);
         return view('product.product', compact('product'));
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function storeMessage(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $request->validate([
+            'name' => 'required',
+            'mobile' => 'required|numeric',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+
+        try {
+            Messages::create([
+                'name' => $request->input('name'),
+                'mobile' => $request->input('mobile'),
+                'email' => $request->input('email'),
+                'message' => $request->input('message')
+            ]);
+
+            return redirect()->back()->with('status', 'Успешно изпратихте Вашето запитване');
+        } catch (\Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }

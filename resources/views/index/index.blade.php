@@ -11,7 +11,7 @@
                 <span class="text-[26px] block">Ушни марки GEPE поставете и за проблеми забравете</span>
             </h1>
         </div>
-        <div class="grid md:grid-cols-3 grid-cols-2 px-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
+        <div class="grid md:grid-cols-3 grid-cols-1 px-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
             @forelse($featuredProducts as $product)
                 @include('includes.product', ['product' => $product])
             @empty
@@ -38,7 +38,7 @@
         </a>
     </div>
 
-    <div class="grid px-3 md:grid-cols-5 grid-cols-2 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
+    <div class="grid px-3 md:grid-cols-5 grid-cols-1 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
         @forelse($products as $product)
             @include('includes.product', ['product' => $product])
         @empty

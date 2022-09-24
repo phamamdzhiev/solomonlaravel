@@ -1,26 +1,24 @@
 @extends('welcome')
 
 @section('body')
-    @if ($errors->any())
-        <div>
-            <div class="font-medium text-red-600">
-                {{ __('Whoops! Something went wrong.') }}
+    @include('includes.flash-message')
+
+    <div class="p-6 text-center min-h-[50vh] max-w-xl mx-auto">
+        <form action="{{route('app_login_post')}}" method="post">
+            @csrf
+            <div class="mb-4">
+                <label class="block font-bold text-left" for="email">Имейл:</label>
+                <input type="text" class="w-full px-3 py-2 rounded border" name="email" id="email">
             </div>
-
-            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form action="{{route('app_login_post')}}" method="post">
-        @csrf
-        <label for="">Email</label>
-        <input type="text" name="email">
-        <label for="">Pass</label>
-        <input type="password" name="password">
-        <button type="submit">Login!</button>
-    </form>
+            <div class="mb-6">
+                <label class="block font-bold text-left" for="password">Парола:</label>
+                <input type="password" class="w-full px-3 py-2 rounded border" name="password" id="password">
+            </div>
+            <div>
+                <button type="submit"
+                        class="bg-main-green-dark px-8 uppercase text-[#fff] font-bold py-2 block w-full rounded">Вход
+                </button>
+            </div>
+        </form>
+    </div>
 @endsection
