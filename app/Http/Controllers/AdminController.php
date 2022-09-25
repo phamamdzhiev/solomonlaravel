@@ -29,15 +29,11 @@ class AdminController extends Controller
      */
     public function editProductSave(Request $request, $id): RedirectResponse
     {
-        $request->validate([
-            'price' => 'numeric'
-        ]);
-
         try {
             Product::where('id', $id)->update([
                 'name' => $request->input('name'),
-                'desc' => $request->input('desc'),
-                'price' => $request->input('price'),
+                'desc' => $request->input('desc') ?? '---',
+                'price' => $request->input('price') ?? 'Цена при запитване',
                 'position' => $request->input('position'),
                 'features' => $request->input('features') === 'on' ? 1 : 0,
             ]);
@@ -54,7 +50,6 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'numeric',
             'file' => 'required|mimes:jpg,png,jpeg',
             'position' => 'numeric'
         ]);
@@ -69,8 +64,8 @@ class AdminController extends Controller
 
             Product::create([
                 'name' => $request->input('name'),
-                'price' => $request->input('price') ?? 'Няма',
-                'desc' => $request->input('desc') ?? 'Няма',
+                'price' => $request->input('price') ?? 'Цена при запитване',
+                'desc' => $request->input('desc') ?? '---',
                 'position' => $request->input('position') ?? 1,
                 'features' => $request->input('features') === 'on' ? 1 : 0,
                 'image_path' => $image->getClientOriginalName()

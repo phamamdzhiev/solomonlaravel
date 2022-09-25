@@ -19,6 +19,24 @@
                     Няма довабени продукти!
                 </h1>
             @endforelse
+            {{-- Static Products --}}
+            <div class="border rounded-md border-[#94A3B8] hover:shadow-md">
+                <div class="p-3 text-center flex flex-col justify-between h-full">
+                    <a target="_blank" href="https://vkasis.com/partner-products?vendor=18&param=15">
+                        <img class="mx-auto" src="{{asset('storage/products/animals.jpg')}}" alt="Static Product"/>
+                    </a>
+                    <h2 class="uppercase underline text-main-green-dark font-bold my-3 text-[1.175rem]">
+                        <a href="/">
+                            Инструменти
+                        </a>
+                    </h2>
+                    <a target="_blank" href="https://vkasis.com/partner-products?vendor=18&param=15"
+                       class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
+                        РАЗГЛЕДАЙ
+                    </a>
+                </div>
+            </div>
+            {{-- END Static Products --}}
         </div>
     </div>
 
@@ -38,7 +56,8 @@
         </a>
     </div>
 
-    <div class="grid px-3 md:grid-cols-5 grid-cols-1 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
+    <div
+        class="grid px-3 md:grid-cols-5 grid-cols-1 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
         @forelse($products as $product)
             @include('includes.product', ['product' => $product])
         @empty
