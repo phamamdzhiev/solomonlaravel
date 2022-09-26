@@ -85,6 +85,10 @@
                                     <textarea name="message" id="message" class="w-full px-3 py-2 border rounded"
                                               rows="4"></textarea>
                                 </div>
+                                <div>
+                                    <input type="checkbox" id="policy" checked/>
+                                    <label for="policy" class="font-bold">Съгласявам се с <a href="{{route('app_policy')}}" class="text-main-green-dark uppercase" target="_blank">общите условия</a></label>
+                                </div>
                             </div>
                         </div>
                         <button type="submit"
