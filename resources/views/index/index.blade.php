@@ -12,13 +12,8 @@
             </h1>
         </div>
         <div class="grid md:grid-cols-3 grid-cols-1 px-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
-            @forelse($featuredProducts as $product)
-                @include('includes.product', ['product' => $product])
-            @empty
-                <h1 class="text-center text-2xl">
-                    Няма довабени продукти!
-                </h1>
-            @endforelse
+            @each('includes.product', $featuredProducts, 'product')
+
             {{-- Static Products --}}
             <div class="border rounded-md border-[#94A3B8] hover:shadow-md">
                 <div class="p-3 text-center flex flex-col justify-between h-full">
@@ -58,12 +53,6 @@
 
     <div
         class="grid px-3 md:grid-cols-5 grid-cols-1 auto-cols-fr gap-x-3 gap-y-8 justify-center max-w-[1200px] mx-auto my-10">
-        @forelse($products as $product)
-            @include('includes.product', ['product' => $product])
-        @empty
-            <h1 class="text-center text-2xl">
-                Няма довабени продукти!
-            </h1>
-        @endforelse
+        @each('includes.product', $products, 'product', 'Няма добавени продукти')
     </div>
 @endsection

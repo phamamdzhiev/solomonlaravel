@@ -17,12 +17,14 @@ module.exports = {
             'instagram': '#C13584',
             'youtube': '#FF0000',
             'orange-100' : '#ffece3',
-            'orange-500': '#c05621'
+            'orange-500': '#c05621',
         },
         fontFamily: {
             'body': ['"Raleway"']
         },
-        extend: {},
+        extend: {
+
+        },
     },
     plugins: [],
 }

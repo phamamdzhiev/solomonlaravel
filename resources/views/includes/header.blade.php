@@ -1,5 +1,5 @@
 <header class="py-3">
-    <div class="container mx-auto px-16">
+    <div class="container mx-auto">
         <div class="_top_bar_navigation absolute right-3 top-1">
             <div class="hidden items-center justify-end w-100 lg:flex">
                 <a href="https://www.facebook.com/solomonsofia.ltd" target="_blank">

@@ -24,17 +24,7 @@
                 </div>
             @endif
 
-            <a href="#_add_product_form"
-               class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
-                Довави продукт
-            </a>
-            <form action="{{route('logout')}}" method="post" class="inline-block">
-                @csrf
-                <button type="submit"
-                        class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
-                    Изход
-                </button>
-            </form>
+           @include('admin.includes.admin-header')
 
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -53,10 +43,7 @@
                                         Продукт
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Описание
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        Цена
+                                        Цена (лв.)
                                     </th>
                                     <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                         Горе?
@@ -75,7 +62,6 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$loop->iteration}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->id}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->name}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->desc}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->price ?? 'Няма'}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->features ? 'ДА' : 'НЕ'}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->position}}</td>

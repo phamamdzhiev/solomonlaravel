@@ -90,4 +90,15 @@ class AdminController extends Controller
             throw new \Exception($e->getMessage());
         }
     }
+
+    public function orders(): Factory|View|Application
+    {
+
+        $orders = DB::table('orders as o')
+            ->join('products as p', 'o.product_id', '=', 'p.id')
+            ->select('o.*', 'p.name as pName')
+            ->get();
+
+        return \view('admin.orders', compact('orders'));
+    }
 }

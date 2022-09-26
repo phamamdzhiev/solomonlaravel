@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('app_index');
 Route::get('/product/{id}', [\App\Http\Controllers\IndexController::class, 'showProduct'])->name('app_product');
 Route::post('/messages', [\App\Http\Controllers\IndexController::class, 'storeMessage'])->name('app_message_post');
+Route::post('/order/send', [\App\Http\Controllers\IndexController::class, 'storeOrder'])->name('app_order_post');
 
 //NO CONTROLLER ROUTES
 Route::get('/quality', function () {
@@ -38,6 +39,7 @@ Route::get('/policy', function () {
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/products', [\App\Http\Controllers\AdminController::class, 'index'])->name('app_admin');
+    Route::get('/orders', [\App\Http\Controllers\AdminController::class, 'orders'])->name('app_orders');
     Route::get('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProduct'])->name('app_admin_edit');
     Route::post('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProductSave'])->name('app_admin_edit_save');
     Route::post('/products', [\App\Http\Controllers\AdminController::class, 'storeProduct'])->name('app_admin_post');
