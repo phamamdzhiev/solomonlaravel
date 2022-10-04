@@ -23,51 +23,51 @@
               </div>
                 <div class=" justify-between align-center mb-2 mt-4" style="width: 300px; margin-left: auto">
                     <label class="font-semibold" for="odbh">ОДБХ*</label>
-                    <input type="text" class="border rounded px-2" id="odbh" name="odbh" required>
+                    <input type="text" class="border rounded px-2 py-1" id="odbh" name="odbh" required>
                 </div>
                 <div class=" justify-between align-center" style="width: 300px; margin-left: auto">
                     <label class="font-semibold" for="obshtina">Община*</label>
-                    <input type="text" class="border rounded px-2" id="obshtina" name="obshtina" required>
+                    <input type="text" class="border rounded px-2 py-1" id="obshtina" name="obshtina" required>
                 </div>
             </div>
             <h1 class="text-center text-2xl font-bold uppercase my-6">ЗАЯВКА ЗА ЛАЗЕРНО НАДПИСВАНЕ НА МАРКИ</h1>
             <div class=" align-center">
                 <div>
                     <label class="font-semibold" for="vet">Име и фамилия на ветеринарния лекар*</label>
-                    <input type="text" class="border rounded px-2" id="vet" name="vet" required>
+                    <input type="text" class="border rounded px-2 py-1" id="vet" name="vet" required>
                 </div>
                 <div>
                     <label class="font-semibold" for="vet-tel">Тел*</label>
-                    <input type="text" class="border rounded px-2" name="vet-tel" required id="vet-tel">
+                    <input type="text" class="border rounded px-2 py-1" name="vet-tel" required id="vet-tel">
                 </div>
             </div>
             <hr class="my-6">
             <div class=" mb-6">
                 <label class="font-semibold" for="no">№ на животновъдния обект*</label>
-                <input type="text" class="border rounded px-2" name="no" required id="no">
+                <input type="text" class="border rounded px-2 py-1" name="no" required id="no">
                 <label class="font-semibold" for="city">Населено място*</label>
-                <input type="text" class="border rounded px-2" name="city" required id="city">
+                <input type="text" class="border rounded px-2 py-1" name="city" required id="city">
             </div>
             <div class=" mb-6">
                 <label class="font-semibold" for="names">Три имена на собственика*</label>
-                <input type="text" class="border rounded px-2" name="names" required id="names">
+                <input type="text" class="border rounded px-2 py-1" name="names" required id="names">
                 <label class="font-semibold" for="egn">ЕГН*</label>
-                <input type="text" class="border rounded px-2" name="egn" required id="egn">
+                <input type="text" class="border rounded px-2 py-1" name="egn" required id="egn">
             </div>
             <div class=" mb-6">
                 <label class="font-semibold" for="ekont">Oфис на Еконт или адрес за доставка*</label>
-                <textarea name="ekont" class="border rounded px-2 w-full" id="ekont" cols="30" rows="2"
+                <textarea name="ekont" class="border rounded px-2 py-1 w-full" id="ekont" cols="30" rows="2"
                           required></textarea>
             </div>
             <div class=" mb-6">
                 <label class="font-semibold" for="mail">Имейл*</label>
-                <input type="email" class="border rounded px-2" name="mail" id="mail">
+                <input type="email" class="border rounded px-2 py-1" name="mail" id="mail">
                 <label class="font-semibold" for="client_mobile">Телефон*</label>
-                <input type="text" class="border rounded px-2" name="client_mobile" required id="client_mobile">
+                <input type="text" class="border rounded px-2 py-1" name="client_mobile" required id="client_mobile">
             </div>
             <div class=" mb-6">
                 <label class="font-semibold" for="invoice">Данни за фактура*</label>
-                <textarea name="invoice" class="border rounded px-2 w-full" id="invoice" required cols="30"
+                <textarea name="invoice" class="border rounded px-2 py-1 w-full" id="invoice" required cols="30"
                           rows="2"></textarea>
             </div>
             <div>
