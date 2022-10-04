@@ -108,7 +108,7 @@
 
             </div>
             <div class="mt-10 flex">
-                <input type="checkbox" id="deklariram" class="mr-4g" name="confirm_policy" checkedg>
+                <input type="checkbox" id="deklariram" class="mr-4g" name="confirm_policy" checked>
                 <label for="deklariram" class="font-bold"> Декларирам,че заявката е съгласувана с участъковия ветеринарен лекар и отдел
                     Идентификация в ОДБХ.</label>
             </div>
