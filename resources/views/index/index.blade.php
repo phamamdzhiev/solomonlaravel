@@ -46,7 +46,7 @@
     </div>
 
     <div class="bg-main-green-dark p-4 text-center">
-        <a href="https://old.solomonsofia.com/bg/formlazer">
+        <a href="{{route('app_formlazer')}}">
             <h2 class="text-xl text-[#fff]">Заявка за лазерно надписване на дубликати >> Доставка от 1 до 3 дни</h2>
         </a>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formlazer;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -100,5 +101,11 @@ class AdminController extends Controller
             ->get();
 
         return \view('admin.orders', compact('orders'));
+    }
+
+    public function formlazers(): Factory|View|Application
+    {
+        $formlazers = Formlazer::all();
+        return view('admin.formlazers', compact('formlazers'));
     }
 }

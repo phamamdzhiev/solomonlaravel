@@ -33,7 +33,7 @@ class NewOrder extends Mailable
      */
     public function build(): static
     {
-        return $this->view('new-order', [
+        return $this->view('mailables.new-order', [
             'name' => $this->name,
             'mobile' => $this->mobile,
             'prodID' => $this->prodID
