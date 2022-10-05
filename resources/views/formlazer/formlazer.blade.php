@@ -61,7 +61,7 @@
             </div>
             <div class=" mb-6">
                 <label class="font-semibold" for="mail">Имейл*</label>
-                <input type="email" class="border rounded px-2 py-1 mb-4" name="mail" id="mail">
+                <input type="email" class="border rounded px-2 py-1 mb-4" name="mail" id="mail" required>
                 <label class="font-semibold" for="client_mobile">Телефон*</label>
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="client_mobile" required id="client_mobile">
             </div>
