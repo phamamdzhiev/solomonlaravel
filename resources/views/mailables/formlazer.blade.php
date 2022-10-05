@@ -26,22 +26,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="border">
-            @foreach($data['field1'] as $f1)
-                <td class="border">{{$f1}}</td>
-            @endforeach
-        </tr>
-        <tr class="border">
-            @foreach($data['field2'] as $f2)
-                <td class="border">{{$f2}}</td>
-            @endforeach
-        </tr>
-        <tr class="border">
-
-            @foreach($data['field3'] as $f3)
-                <td class="border">{{$f3}}</td>
-            @endforeach
-        </tr>
+        @foreach($data['field1'] as $key => $f1)
+            @if (is_null($f1))
+                @continue
+            @endif
+            <tr class="border">
+                <td class="border">{{$data['field1'][$key]}}</td>
+                <td class="border">{{$data['field2'][$key]}}</td>
+                <td class="border">{{$data['field3'][$key]}}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 </ul>

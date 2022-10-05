@@ -70,17 +70,17 @@
                                             <td>{{$item->ekont }}</td>
                                             <td>
                                                 @foreach(json_decode($item->field1,true) as $f1)
-                                                    {{$f1}} |
+                                                    {{$f1}} ;
                                                 @endforeach
                                             </td>
                                             <td>
                                                 @foreach(json_decode($item->field2,true) as $f2)
-                                                    {{$f2}} |
+                                                    {{$f2}} ;
                                                 @endforeach
                                             </td>
                                             <td>
                                                 @foreach(json_decode($item->field3,true) as $f3)
-                                                    {{$f3}} |
+                                                    {{$f3}} ;
                                                 @endforeach
                                             </td>
                                             <td>{{\Illuminate\Support\Carbon::parse($item->created_at)->format('H:i d.m.Y') }}</td>
