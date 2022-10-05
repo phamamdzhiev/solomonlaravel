@@ -66,3 +66,8 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('app_login_post');
 });
+
+
+Route::get('/mails', function() {
+    return view('mailables.formlazer');
+});

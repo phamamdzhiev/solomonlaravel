@@ -66,8 +66,8 @@
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="client_mobile" required id="client_mobile">
             </div>
             <div class=" mb-6">
-                <label class="font-semibold" for="invoice">Данни за фактура*</label>
-                <textarea name="invoice" class="border rounded px-2 py-1 mb-4 w-full" id="invoice" required cols="30"
+                <label class="font-semibold" for="invoice">Данни за фактура</label>
+                <textarea name="invoice" class="border rounded px-2 py-1 mb-4 w-full" id="invoice" cols="30"
                           rows="2"></textarea>
             </div>
             <div>

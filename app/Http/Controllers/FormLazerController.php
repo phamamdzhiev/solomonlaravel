@@ -31,7 +31,7 @@ class FormLazerController extends Controller
     public function create(Request $request): View|Factory|Application
     {
         try {
-            Formlazer::create([
+            $formlazer = Formlazer::create([
                 'odbh' => $request->input('odbh'),
                 'obshtina' => $request->input('obshtina'),
                 'no' => $request->input('no'),
@@ -43,13 +43,15 @@ class FormLazerController extends Controller
                 'egn' => $request->input('egn'),
                 'ekont' => $request->input('ekont'),
                 'client_mobile' => $request->input('client_mobile'),
-                'invoice' => $request->input('invoice'),
+                'invoice' => $request->input('invoice') ?? 'N/a',
                 'field1' => json_encode($request->input('field1')),
                 'field2' => json_encode($request->input('field2')),
                 'field3' => json_encode($request->input('field3')),
             ]);
 
-            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new FormLazerMail());
+            foreach ([env('MAIL_FROM_ADDRESS'), $request->input('mail')] as $mail) {
+                Mail::to($mail)->send(new FormLazerMail($request->all()));
+            }
 
             return view('formlazer.formlazer-generated')->with('data', $request->all());
         } catch (\Exception $e) {
