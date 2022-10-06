@@ -50,10 +50,10 @@ class FormLazerController extends Controller
             ]);
 
             foreach ([env('MAIL_FROM_ADDRESS'), $request->input('mail')] as $mail) {
-                Mail::to($mail)->send(new FormLazerMail($request->all()));
+                Mail::to($mail)->send(new FormLazerMail($formlazer));
             }
 
-            return view('formlazer.formlazer-generated')->with('data', $request->all());
+            return view('formlazer.formlazer-generated')->with('data',$formlazer);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }

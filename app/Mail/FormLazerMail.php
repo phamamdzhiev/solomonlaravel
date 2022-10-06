@@ -29,6 +29,6 @@ class FormLazerMail extends Mailable
      */
     public function build(): static
     {
-        return $this->subject('НОВА ЗАЯВКА ЗА ЛАЗЕРНО ГРАВИРАНЕ')->view('mailables.formlazer')->with('data', $this->data);
+        return $this->subject($this->data->vet)->view('mailables.formlazer')->with('data', $this->data);
     }
 }

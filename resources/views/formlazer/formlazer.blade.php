@@ -17,7 +17,7 @@
                   </p>
                   <p> ул. Княз Борис I 196, магазин 1
                   </p>
-                  <p> тел.: 089 981 17 58 , E-mail: office@solomonsofia.com
+                  <p> тел.: 089 981 17 58 , E-mail: solomonsofia@abv.bg
                   </p>
                   <p>www.solomonsofia.com</p>
               </div>
@@ -39,6 +39,8 @@
                 <div>
                     <label class="font-semibold" for="vet-tel">Тел*</label>
                     <input type="text" class="border rounded px-2 py-1 mb-4" name="vet-tel" required id="vet-tel">
+                    <label class="font-semibold" for="mail">Имейл*</label>
+                    <input type="email" class="border rounded px-2 py-1 mb-4" name="mail" id="mail" required>
                 </div>
             </div>
             <hr class="my-6">
@@ -51,7 +53,7 @@
             <div class=" mb-6">
                 <label class="font-semibold" for="names">Три имена на собственика*</label>
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="names" required id="names">
-                <label class="font-semibold" for="egn">ЕГН*</label>
+                <label class="font-semibold" for="egn">ЕГН или Булстат*</label>
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="egn" required id="egn">
             </div>
             <div class=" mb-6">
@@ -60,9 +62,7 @@
                           required></textarea>
             </div>
             <div class=" mb-6">
-                <label class="font-semibold" for="mail">Имейл*</label>
-                <input type="email" class="border rounded px-2 py-1 mb-4" name="mail" id="mail" required>
-                <label class="font-semibold" for="client_mobile">Телефон*</label>
+                <label class="font-semibold" for="client_mobile">Телефон за контакт*</label>
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="client_mobile" required id="client_mobile">
             </div>
             <div class=" mb-6">
@@ -113,7 +113,7 @@
                     Идентификация в ОДБХ.</label>
             </div>
             <div class="text-center">
-                <p class="font-bold"><span class="font-light">Дата:</span> {{date('H:i d.m.Y')}}</p>
+                <p class="font-bold"><span class="font-light">Дата:</span> {{ date("Y-m-d H:i:s", strtotime('+3 hours')) }}</p>
             </div>
             <div class="my-6 text-center">
                 <button
