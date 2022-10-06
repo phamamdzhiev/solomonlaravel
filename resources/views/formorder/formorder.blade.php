@@ -38,7 +38,7 @@
                 </p>
                 <p> ул. Княз Борис I 196, магазин 1
                 </p>
-                <p> тел.: 089 981 17 58 , E-mail: office@solomonsofia.com
+                <p> тел.: 089 981 17 58 , E-mail: solomonsofia@abv.bg
                 </p>
                 <p>www.solomonsofia.com</p>
             </div>
