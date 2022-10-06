@@ -85,7 +85,7 @@
             </div>
             <div>
                 <label for="no">*№ на животновъдния обект:</label>
-                <input type="number" min="1" id="no" name="no" required>
+                <input type="text" min="1" id="no" name="no" required>
             </div>
             <div>
                 <label for="names">*Трите имена на собственика:</label>
