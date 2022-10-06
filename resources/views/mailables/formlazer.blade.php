@@ -42,7 +42,7 @@
         </tbody>
     </table>
     <br/>
-    <p class="my-2">Дата на запознаване и съгласие с Условията за защита на личните данни <strong>{{date('Y.m.d H:i:s')}}</strong></p>
-    <p class="my-2">Дата: <strong>{{date('Y.m.d H:i:s')}}</strong></p>
+    <p class="my-2">Дата на запознаване и съгласие с Условията за защита на личните данни <strong>{{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</strong></p>
+    <p class="my-2">Дата: <strong>{{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</strong></p>
     <p class="my-2">Декларирам,че заявката е съгласувана с участъковия ветеринарен лекар и отдел Идентификация в ОДБХ.</p>
 </ul>

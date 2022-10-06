@@ -136,8 +136,8 @@
                     </tbody>
                 </table>
                 <p class="my-1">Дата на запознаване и съгласие с Условията за защита на личните данни
-                    <strong>{{date('Y.m.d H:i:s')}}</strong></p>
-                <p class="my-1">Дата: <strong>{{date('Y.m.d H:i:s')}}</strong></p>
+                    <strong>{{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</strong></p>
+                <p class="my-1">Дата: <strong>{{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</strong></p>
                 <p class="my-1">Декларирам,че заявката е съгласувана с участъковия ветеринарен лекар и отдел
                     Идентификация в ОДБХ.</p>
             </div>

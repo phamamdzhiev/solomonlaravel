@@ -113,7 +113,7 @@
                     Идентификация в ОДБХ.</label>
             </div>
             <div class="text-center">
-                <p class="font-bold"><span class="font-light">Дата:</span> {{date('H:i d.m.Y')}}</p>
+                <p class="font-bold"><span class="font-light">Дата:</span> {{ date("Y-m-d H:i:s", strtotime('+3 hours')) }}</p>
             </div>
             <div class="my-6 text-center">
                 <button
