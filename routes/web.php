@@ -42,6 +42,11 @@ Route::group(['prefix' => 'formlazer'], function () {
     Route::post('/', [\App\Http\Controllers\FormLazerController::class, 'create'])->name('app_formlazer_post');
 });
 
+Route::group(['prefix' => 'formorder'], function () {
+    Route::get('/', [\App\Http\Controllers\FormOrderController::class, 'index'])->name('app_order');
+    Route::post('/', [\App\Http\Controllers\FormOrderController::class, 'create'])->name('app_formorder');
+});
+
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/products', [\App\Http\Controllers\AdminController::class, 'index'])->name('app_admin');
