@@ -125,7 +125,7 @@
             </div>
             <div>
                 <label for="no1">№ на животновъдния обект:</label>
-                <input type="number" min="1" id="no1" name="no1">
+                <input type="text" id="no1" name="no1">
             </div>
             <div>
                 <label for="names1">Трите имена на собственика:</label>
@@ -165,7 +165,7 @@
             </div>
             <div>
                 <label for="no2">№ на животновъдния обект:</label>
-                <input type="number" min="1" id="no2" name="no2">
+                <input type="text" id="no2" name="no2">
             </div>
             <div>
                 <label for="names2">Трите имена на собственика:</label>
