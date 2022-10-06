@@ -6,7 +6,11 @@
         font-weight: bold!important;
     }
 </style>
-<h1>ЗАЯВКА ЗА ЛАЗЕРНО НАДПИСВАНЕ</h1>
+<h1 class="text-center text-xl font-bold uppercase my-3">ЗАЯВКА ЗА ЛАЗЕРНО НАДПИСВАНЕ НА МАРКИ</h1>
+<h3 class="text-center text-md font-bold uppercase my-3">
+    до Соломон-София ЕООД, София 1202, България, ул. Княз Борис | 196, магазин 1, тел.: 089 981 17 58,
+    Email: solomonsofia@abv.bg, www.solomonsofia.com
+</h3>
 <ul>
     <li>ОДБХ: <strong>{{$data['odbh']}}</strong></li>
     <li>Община: <strong>{{$data['obshtina']}}</strong></li>
