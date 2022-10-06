@@ -115,7 +115,7 @@
             </div>
             <div>
                 <label for="animal1">Вид животни</label>
-                <select id="animal1" name="animal1">
+                <select id="animal1" name="animal1" required>
                     <option selected>Избери</option>
                     <option value="ЕПЖ">ЕПЖ</option>
                     <option value="ДПЖ">ДПЖ</option>
