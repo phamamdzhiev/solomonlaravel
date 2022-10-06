@@ -20,8 +20,7 @@ class FormOrderController extends Controller
     {
         try {
 //            FormOrder::create([]);
-//env('MAIL_FROM_ADDRESS'), $request->input('email')
-            foreach (['hamamdzhiev@hotmail.com'] as $mail) {
+            foreach ([env('MAIL_FROM_ADDRESS'), $request->input('email')] as $mail) {
                 Mail::to($mail)->send(new FormOrderMail($request->all())); // TODO: request all to be changed
             }
 
