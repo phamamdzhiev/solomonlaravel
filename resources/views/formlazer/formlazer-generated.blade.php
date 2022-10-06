@@ -8,9 +8,7 @@
             font-weight: bold !important;
         }
 
-        header, footer {
-            display: none;
-        }
+
 
         input, textarea {
             background: transparent;
@@ -35,6 +33,9 @@
 
         @media print {
             #print-btn {
+                display: none;
+            }
+            header, footer {
                 display: none;
             }
         }

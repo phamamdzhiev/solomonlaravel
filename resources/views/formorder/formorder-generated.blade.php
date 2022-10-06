@@ -4,153 +4,205 @@
 
 @section('body')
     <style>
-        label {
-            display: block;
+        * {
+            font-weight: bold;
+        }
+        strong {
+            text-decoration: underline;
+            padding: 0 10px;
+        }
+        p {
+            margin-bottom: 8px;
         }
         input,select,textarea {
-            border: 2px solid black;
+            border: none;
+            background: transparent;
             border-radius: 6px;
+            width: 100%;
+            pointer-events: none;
+            margin: 5px 0;
+        }
+        @media print {
+            #print-btn {
+                display: none;
+            }
+            header, footer {
+                display: none;
+            }
         }
     </style>
     <div class="container" style="max-width: 1000px; margin: 2rem auto">
+        <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark">Вашата
+            поръчка е изпратена успешно!</h1>
+        <h1 class="text-center text-xl font-bold uppercase my-3">ЗАЯВКА ЗА СРЕДСТВА ЗА ПЪРВОНАЧАЛНА ИДЕНТИФИКАЦИЯ</h1>
+        <h3 class="text-center text-md font-bold uppercase my-3">
+            до Соломон-София ЕООД, София 1202, България, ул. Княз Борис | 196, магазин 1, тел.: 089 981 17 58,
+            Email: solomonsofia@abv.bg, www.solomonsofia.com
+        </h3>
         <form action="/" method="post">
             <div>
-                <label for="vet">*Име, фамилия на ветеринарния лекар</label>
-                <input type="text" id="vet" name="vet" required>
+                <p>*Име, фамилия на ветеринарния лекар
+                    <strong>{{$data['vet']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="odbh">*ОДБХ</label>
-                <input type="text" id="odbh" name="odbh" required>
+                <p>*ОДБХ:
+                    <strong>{{$data['odbh']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="obshtina">*Община</label>
-                <input type="text" id="obshtina" name="obshtina" required>
+                <p>*Община:
+                    <strong>{{$data['obshtina']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="tel">*Тел.</label>
-                <input type="text" id="tel" name="tel" required>
+                <p>*Тел:
+                    <strong>{{$data['tel']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="email">*E-mail</label>
-                <input type="email" id="email" name="email" required>
+                <p>*E-mail:
+                    <strong>{{$data['email']}}</strong>
+                </p>
             </div>
             {{--        1--}}
             <div>
-                <label for="number_br">*Брой комплекти</label>
-                <input type="number" min="1" id="number_br" name="number_br" required>
+                <p>*Брой комплекти:
+                    <strong>{{$data['number_br']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="animal">*Вид животни</label>
-                <select id="animal" name="animal">
-                    <option selected>Избери</option>
-                    <option value="ЕПЖ">ЕПЖ</option>
-                    <option value="ДПЖ">ДПЖ</option>
-                    <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ зелени">СВ зелени</option>
-                </select>
+                <p>Вид животни:<strong>
+                        {{$data['animal']}}
+                    </strong></p>
             </div>
             <div>
-                <label for="no">*№ на животновъдния обект:</label>
-                <input type="number" min="1" id="no" name="no" required>
+                <p>*№ на животновъдния обект:
+                    <strong>{{$data['no']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="names">*Трите имена на собственика:</label>
-                <input type="text" id="names" name="names" required>
+                <p>*Трите имена на собственика:
+                    <strong>{{$data['names']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="egn">*ЕГН на собственика:</label>
-                <input type="text" id="egn" name="egn" required>
+                <p>*ЕГН на собственика:
+                    <strong>{{$data['egn']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="mobile">*Телефон за връзка:</label>
-                <input type="text" id="mobile" name="mobile" required>
+                <p>*Телефон за връзка:
+                    <strong>{{$data['mobile']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="ekont">*Офис на Еконт или адрес за доставка</label>
-                <textarea name="ekont" id="ekont" cols="30" rows="3" required></textarea>
+                <p>*Офис на Еконт или адрес за доставка:
+                    <strong>{{$data['ekont']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="invoice">Данни за фактура</label>
-                <textarea name="invoice" id="invoice" cols="30" rows="3"></textarea>
+                <p>*Данни за фактура:
+                    <strong>{{$data['invoice']}}</strong>
+                </p>
             </div>
             {{--        2--}}
             <div>
-                <label for="number_br1">*Брой комплекти</label>
-                <input type="number" min="1" id="number_br1" name="number_br1" required>
+                <p>*Брой комплекти:
+                    <strong>{{$data['number_br1']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="animal1">*Вид животни</label>
-                <select id="animal1" name="animal1">
-                    <option selected>Избери</option>
-                    <option value="ЕПЖ">ЕПЖ</option>
-                    <option value="ДПЖ">ДПЖ</option>
-                    <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ зелени">СВ зелени</option>
-                </select>
+                <p>Вид животни:<strong>
+                        {{$data['animal1']}}
+                    </strong></p>
             </div>
             <div>
-                <label for="no1">*№ на животновъдния обект:</label>
-                <input type="number" min="1" id="no1" name="no1" required>
+                <p>*№ на животновъдния обект:
+                    <strong>{{$data['no1']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="names1">*Трите имена на собственика:</label>
-                <input type="text" id="names1" name="names1" required>
+                <p>*Трите имена на собственика:
+                    <strong>{{$data['names1']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="egn1">*ЕГН на собственика:</label>
-                <input type="text" id="egn1" name="egn1" required>
+                <p>*ЕГН на собственика:
+                    <strong>{{$data['egn1']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="mobile1">*Телефон за връзка:</label>
-                <input type="text" id="mobile1" name="mobile1" required>
+                <p>*Телефон за връзка:
+                    <strong>{{$data['mobile1']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="ekont1">*Офис на Еконт или адрес за доставка</label>
-                <textarea name="ekont1" id="ekont1" cols="30" rows="3" required></textarea>
+                <p>*Офис на Еконт или адрес за доставка:
+                    <strong>{{$data['ekont1']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="invoice1">Данни за фактура</label>
-                <textarea name="invoice1" id="invoice1" cols="30" rows="3"></textarea>
+                <p>*Данни за фактура:
+                    <strong>{{$data['invoice1']}}</strong>
+                </p>
             </div>
             {{--        3--}}
             <div>
-                <label for="number_br2">*Брой комплекти</label>
-                <input type="number" min="1" id="number_br2" name="number_br2" required>
+                <p>*Брой комплекти:
+                    <strong>{{$data['number_br2']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="animal2">*Вид животни</label>
-                <select id="animal2" name="animal2">
-                    <option selected>Избери</option>
-                    <option value="ЕПЖ">ЕПЖ</option>
-                    <option value="ДПЖ">ДПЖ</option>
-                    <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ зелени">СВ зелени</option>
-                </select>
+                <p>Вид животни:<strong>
+                        {{$data['animal2']}}
+                    </strong></p>
             </div>
             <div>
-                <label for="no2">*№ на животновъдния обект:</label>
-                <input type="number" min="1" id="no2" name="no2" required>
+                <p>*№ на животновъдния обект:
+                    <strong>{{$data['no2']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="names2">*Трите имена на собственика:</label>
-                <input type="text" id="names2" name="names2" required>
+                <p>*Трите имена на собственика:
+                    <strong>{{$data['names2']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="egn2">*ЕГН на собственика:</label>
-                <input type="text" id="egn2" name="egn2" required>
+                <p>*ЕГН на собственика:
+                    <strong>{{$data['egn2']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="mobile2">*Телефон за връзка:</label>
-                <input type="text" id="mobile2" name="mobile2" required>
+                <p>*Телефон за връзка:
+                    <strong>{{$data['mobile2']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="ekont2">*Офис на Еконт или адрес за доставка</label>
-                <textarea name="ekont2" id="ekont2" cols="30" rows="3" required></textarea>
+                <p>*Офис на Еконт или адрес за доставка:
+                    <strong>{{$data['ekont2']}}</strong>
+                </p>
             </div>
             <div>
-                <label for="invoice2">Данни за фактура</label>
-                <textarea name="invoice2" id="invoice2" cols="30" rows="3"></textarea>
+                <p>*Данни за фактура:
+                    <strong>{{$data['invoice2']}}</strong>
+                </p>
+            </div>
+            <div class="my-3 text-center">
+                <button
+                    id="print-btn"
+                    type="button"
+                    onclick="window.print()"
+                    class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 text-xl py-1 my-4">
+                    ПРИНТИРАЙ
+                </button>
             </div>
         </form>
+        <p>*Вид животни: ЕПЖ = едри преживни животни, ДПЖ = дребни преживни животни, СВ = свине. </p>
+        <p>**Един комплект ушни марки = ушни марки за 1 животно.</p>
+        <br>
+        <p class="my-1">Дата на запознаване и съгласие с Условията за защита на личните данни
+            <strong>{{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</strong></p>
+        <p class="my-1">Дата: <strong>{{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</strong></p>
     </div>
 @endsection

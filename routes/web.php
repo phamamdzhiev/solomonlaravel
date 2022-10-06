@@ -43,7 +43,7 @@ Route::group(['prefix' => 'formlazer'], function () {
 });
 
 Route::group(['prefix' => 'formorder'], function () {
-    Route::get('/', [\App\Http\Controllers\FormOrderController::class, 'index'])->name('app_order');
+    Route::get('/', [\App\Http\Controllers\FormOrderController::class, 'index'])->name('app_formorder');
     Route::post('/', [\App\Http\Controllers\FormOrderController::class, 'create'])->name('app_formorder');
 });
 
@@ -73,6 +73,10 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::get('/mails', function() {
-    return view('mailables.formlazer');
-});
+//Route::get('/mails', function() {
+//    return view('mailables.formlazer');
+//});
+//
+//Route::get('/mails2', function() {
+//    return view('mailables.formorder');
+//});
