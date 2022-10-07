@@ -5,7 +5,7 @@
        <div class="flex flex-col md:flex-row">
            <div class="w-full max-w-xs md:order-1 order-2">
                <form id="_edit_product_form" class="px-2 pt-6 pb-8 mb-4" method="post"
-                     action="{{route('app_admin_edit_save', $product->id)}} ">
+                     action="{{route('app_admin_edit_save', $product->id)}}" enctype="multipart/form-data">
                    <h1 class="mb-6 text-xl font-bold">Редактирай продукт <i class="font-light">({{$product->name}})</i></h1>
                    <div class="mb-4">
                        <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
@@ -23,6 +23,15 @@
                            class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                            id="price" value="{{$product->price}}" name="price" type="text">
                    </div>
+                   <div class="mb-4">
+                       <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+                           Редактирай снимка
+                       </label>
+                       <input
+                           class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                           id="image" value="{{$product->image_path}}" name="image_path" type="file">
+                   </div>
+                   <input type="hidden" value="{{$product->image_path}}" name="image_path" >
                    <div class="mb-4">
                        <label class="block text-gray-700 text-sm font-bold mb-2" for="desc">
                            Редактирай описание

@@ -33,11 +33,16 @@ class AdminController extends Controller
         try {
             Product::where('id', $id)->update([
                 'name' => $request->input('name'),
-                'desc' => $request->input('desc') ?? '---',
-                'price' => $request->input('price') ?? 'Цена при запитване',
+                'desc' => $request->input('desc'),
+                'price' => $request->input('price'),
+                'image_path' => $request->hasFile('image_path') ? $request->file('image_path')->getClientOriginalName() : $request->input('image_path'),
                 'position' => $request->input('position'),
                 'features' => $request->input('features') === 'on' ? 1 : 0,
             ]);
+            if ($request->hasFile('image_path')) {
+                $image = $request->file('image_path');
+                $image->storeAs('/public/products', $image->getClientOriginalName());
+            }
             return redirect()->route('app_admin');
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
