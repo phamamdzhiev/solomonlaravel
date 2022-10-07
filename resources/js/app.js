@@ -3,12 +3,15 @@ import './admin';
 
 //hamburder
 
-const hamburgerToggleHandler = document.getElementById('js-toggle-hamburger');
-const hamburgerMenu = document.getElementById('js-navigation-list');
+window.addEventListener('load', function () {
+    const hamburgerToggleHandler = document.getElementById('js-toggle-hamburger');
+    const hamburgerMenu = document.getElementById('js-navigation-list');
 
-hamburgerToggleHandler.addEventListener('click', function () {
-    hamburgerMenu.classList.toggle('hidden')
-});
+    hamburgerToggleHandler.addEventListener('click', function () {
+        console.log('click');
+        hamburgerMenu.classList.toggle('hidden')
+    });
+})
 
 // import Alpine from 'alpinejs';
 //

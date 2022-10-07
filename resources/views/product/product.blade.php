@@ -53,6 +53,7 @@
                     <form action="{{route('app_order_post')}}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <input type="hidden" name="product_name" value="{{$product->name}}">
                         <div class="flex justify-between md:flex-row flex-col">
                             <div class="pr-0 md:pr-3 w-full mb-4 md:mb-0 ">
                                 <div class="mb-4">
