@@ -10,22 +10,24 @@ class NewOrder extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $name;
-    protected $mobile;
-    protected $prodID;
-    protected $qnt;
+    private $name;
+    private $mobile;
+    private $prodID;
+    private $qnt;
+    private $address;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $qnt, $mobile, $prodID)
+    public function __construct($name, $qnt, $mobile, $prodID, $address)
     {
         $this->name = $name;
         $this->mobile = $mobile;
         $this->prodID = $prodID;
         $this->qnt = $qnt;
+        $this->address = $address;
     }
 
     /**
@@ -35,11 +37,12 @@ class NewOrder extends Mailable
      */
     public function build(): static
     {
-        return $this->view('mailables.new-order', [
+        return $this->subject('Нова поръчка ' . $this->name)->view('mailables.new-order', [
             'name' => $this->name,
             'mobile' => $this->mobile,
             'prodID' => $this->prodID,
-            'qnt' => $this->qnt
+            'qnt' => $this->qnt,
+            'address' => $this->address
         ]);
     }
 }
