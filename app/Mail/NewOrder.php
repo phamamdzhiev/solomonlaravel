@@ -13,17 +13,19 @@ class NewOrder extends Mailable
     protected $name;
     protected $mobile;
     protected $prodID;
+    protected $qnt;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $mobile, $prodID)
+    public function __construct($name, $qnt, $mobile, $prodID)
     {
         $this->name = $name;
         $this->mobile = $mobile;
         $this->prodID = $prodID;
+        $this->qnt = $qnt;
     }
 
     /**
@@ -36,7 +38,8 @@ class NewOrder extends Mailable
         return $this->view('mailables.new-order', [
             'name' => $this->name,
             'mobile' => $this->mobile,
-            'prodID' => $this->prodID
+            'prodID' => $this->prodID,
+            'qnt' => $this->qnt
         ]);
     }
 }

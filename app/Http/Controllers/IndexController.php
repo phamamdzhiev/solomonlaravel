@@ -89,7 +89,7 @@ class IndexController extends Controller
                 'message' => $request->input('message'),
             ]);
 
-            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new NewOrder($request->input('name'), $request->input('mobile'), $request->input('product_name')));
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new NewOrder($request->input('name'), $request->input('quantity'),$request->input('mobile'), $request->input('product_name')));
 
             return redirect()->back()->with('status', 'Успешно направена поръчка!');
         } catch (\Exception $e) {
