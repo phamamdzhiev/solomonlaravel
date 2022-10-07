@@ -7,7 +7,7 @@
         <li>Мобилен: {{$mobile}}</li>
         <li>Количество: {{$qnt}}</li>
         <li>Продукт: {{$prodID}}</li>
-        <li>Адрес: {{$prodaddressID}}</li>
+        <li>Адрес: {{$address}}</li>
         <li>Дата: {{date("Y-m-d H:i:s", strtotime('+3 hours'))}}</li>
     </ul>
 </div>
