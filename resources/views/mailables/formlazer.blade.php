@@ -12,8 +12,7 @@
     Email: solomonsofia@abv.bg, www.solomonsofia.com
 </h3>
 <ul>
-    <li>ОДБХ: <strong>{{$data['odbh']}}</strong></li>
-    <li>Община: <strong>{{$data['obshtina']}}</strong></li>
+    <li>Област: <strong>{{$data['odbh']}}</strong></li>
     <li>Име и фамилия на ветеринарния лекар: <strong>{{$data['vet']}}</strong></li>
     <li>Тел. на ветеринарния лекар: <strong>{{$data['vet_tel']}}</strong></li>
     <li>№ на животновъдния обект: <strong>{{$data['no']}}</strong></li>

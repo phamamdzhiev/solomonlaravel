@@ -30,35 +30,35 @@
             </p>
         </div>
         <div>
-            <p>*ОДБХ
+            <p>*Област
                 <strong>{{$data['odbh']}}</strong>
             </p>
         </div>
-        <div>
-            <p>*Община
-                <strong>{{$data['obshtina']}}</strong>
-            </p>
-        </div>
+{{--        <div>--}}
+{{--            <p>*Община--}}
+{{--                <strong>{{$data['obshtina']}}</strong>--}}
+{{--            </p>--}}
+{{--        </div>--}}
         <div>
             <p>*Тел
                 <strong>{{$data['tel']}}</strong>
             </p>
         </div>
         <div>
-            <p>*E-mail
+            <p>*Имейл на вет.лекар или фермера
                 <strong>{{$data['email']}}</strong>
             </p>
         </div>
         {{--        1--}}
         <div>
-            <p>*Брой комплекти
-                <strong>{{$data['number_br']}}</strong>
-            </p>
-        </div>
-        <div>
             <p>Вид животни<strong>
                     {{$data['animal']}}
                 </strong></p>
+        </div>
+        <div>
+            <p>*Брой комплекти
+                <strong>{{$data['number_br']}}</strong>
+            </p>
         </div>
         <div>
             <p>*№ на животновъдния обект
@@ -66,12 +66,17 @@
             </p>
         </div>
         <div>
-            <p>*Трите имена на собственика
+            <p>*Населено място на жив.обект
+                <strong>{{$data['no_city']}}</strong>
+            </p>
+        </div>
+        <div>
+            <p>*Име на собственика или фирма
                 <strong>{{$data['names']}}</strong>
             </p>
         </div>
         <div>
-            <p>*ЕГН на собственика
+            <p>*ЕГН или Булстат
                 <strong>{{$data['egn']}}</strong>
             </p>
         </div>
@@ -92,14 +97,14 @@
         </div>
         {{--        2--}}
         <div>
-            <p>*Брой комплекти
-                <strong>{{$data['number_br1']}}</strong>
-            </p>
-        </div>
-        <div>
             <p>Вид животни<strong>
                     {{$data['animal1']}}
                 </strong></p>
+        </div>
+        <div>
+            <p>*Брой комплекти
+                <strong>{{$data['number_br1']}}</strong>
+            </p>
         </div>
         <div>
             <p>*№ на животновъдния обект
@@ -107,12 +112,17 @@
             </p>
         </div>
         <div>
-            <p>*Трите имена на собственика
+            <p>*Населено място на жив.обект
+                <strong>{{$data['no_city1']}}</strong>
+            </p>
+        </div>
+        <div>
+            <p>*Име на собственика или фирма
                 <strong>{{$data['names1']}}</strong>
             </p>
         </div>
         <div>
-            <p>*ЕГН на собственика
+            <p>*ЕГН или Булстат
                 <strong>{{$data['egn1']}}</strong>
             </p>
         </div>
@@ -133,14 +143,14 @@
         </div>
         {{--        3--}}
         <div>
-            <p>*Брой комплекти
-                <strong>{{$data['number_br2']}}</strong>
-            </p>
-        </div>
-        <div>
             <p>Вид животни<strong>
                     {{$data['animal2']}}
                 </strong></p>
+        </div>
+        <div>
+            <p>*Брой комплекти
+                <strong>{{$data['number_br2']}}</strong>
+            </p>
         </div>
         <div>
             <p>*№ на животновъдния обект
@@ -148,12 +158,17 @@
             </p>
         </div>
         <div>
-            <p>*Трите имена на собственика
+            <p>*Населено място на жив.обект
+                <strong>{{$data['no_city2']}}</strong>
+            </p>
+        </div>
+        <div>
+            <p>*Име на собственика или фирма
                 <strong>{{$data['names2']}}</strong>
             </p>
         </div>
         <div>
-            <p>*ЕГН на собственика
+            <p>*ЕГН или Булстат
                 <strong>{{$data['egn2']}}</strong>
             </p>
         </div>
@@ -173,7 +188,7 @@
             </p>
         </div>
     </form>
-    <p>*Вид животни: ЕПЖ = едри преживни животни, ДПЖ = дребни преживни животни, СВ = свине. </p>
+    <p>*Вид животни: ЕПЖ = едри преживни животни, ДПЖ = дребни преживни животни, СВ = свине, ПЧ = пчели </p>
     <p>**Един комплект ушни марки = ушни марки за 1 животно.</p>
     <br>
     <p class="my-1">Дата на запознаване и съгласие с Условията за защита на личните данни

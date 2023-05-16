@@ -6,7 +6,7 @@
     <div class="container mt-10 max-w-[1200px]">
         @if (session('status'))
             <div class="text-center bg-main-green-dark p-3 mb-6 rounded">
-                <h1 class="text-[#fff] text-xl">{{session('status')}}</h1>
+                <h1 class="text-[#fff] font-semibold text-2xl">{{session('status')}}</h1>
             </div>
         @endif
         {{--  <div class="flex items-center my-10">--}}

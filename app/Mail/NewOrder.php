@@ -37,7 +37,7 @@ class NewOrder extends Mailable
      */
     public function build(): static
     {
-        return $this->subject('Нова поръчка ' . $this->name)->view('mailables.new-order', [
+        return $this->from(env('MAIL_FROM_ADDRESS'), "$this->prodID - $this->name")->subject("$this->name - $this->prodID")->view('mailables.new-order', [
             'name' => $this->name,
             'mobile' => $this->mobile,
             'prodID' => $this->prodID,

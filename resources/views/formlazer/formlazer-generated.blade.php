@@ -8,8 +8,6 @@
             font-weight: bold !important;
         }
 
-
-
         input, textarea {
             background: transparent;
             pointer-events: none;
@@ -32,9 +30,11 @@
         }
 
         @media print {
-            #print-btn {
+            #print-btn,
+            #message-success {
                 display: none;
             }
+
             header, footer {
                 display: none;
             }
@@ -45,17 +45,12 @@
             @csrf
             <div>
                 <div class=" mb-2 mt-4" style="width: 300px; margin-left: auto">
-                    <label for="odbh">ОДБХ*</label>
+                    <label for="odbh">Област*</label>
                     <input type="text" class="rounded pointer-events-none px-2" id="odbh" value="{{$data->odbh}}"
                            name="odbh" readonly>
                 </div>
-                <div class="" style="width: 300px; margin-left: auto">
-                    <label for="obshtina">Община*</label>
-                    <input type="text" class=" rounded px-2" id="obshtina" value="{{$data->obshtina}}" name="obshtina"
-                           readonly>
-                </div>
             </div>
-            <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark">Вашата
+            <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark" id="message-success">Вашата
                 поръчка е изпратена успешно!</h1>
             <h1 class="text-center text-xl font-bold uppercase my-3">ЗАЯВКА ЗА ЛАЗЕРНО НАДПИСВАНЕ НА МАРКИ</h1>
             <h3 class="text-center text-md font-bold uppercase my-3">
@@ -82,7 +77,7 @@
                     <input type="text" class=" rounded px-2" name="city" value="{{$data->city}}" readonly id="city">
                 </div>
                 <div>
-                    <label for="names">Три имена на собственика*</label>
+                    <label for="names">Име на собственика или фирма*</label>
                     <input type="text" class=" rounded px-2" name="names" value="{{$data->names}}" readonly id="names">
                     <label for="egn">ЕГН*</label>
                     <input type="text" class=" rounded px-2" name="egn" value="{{$data->egn}}" readonly id="egn">
@@ -93,7 +88,7 @@
                               rows="2" readonly>{{$data->client_mobile}}</textarea>
                 </div>
                 <div class="">
-                    <label for="mail">Имейл*</label>
+                    <label for="mail">Имейл на вет.лекар или фермера*</label>
                     <input type="email" class=" rounded px-2" value="{{$data->mail}}" id="mail">
                     <label for="client_mobile">Телефон*</label>
                     <input type="text" class=" rounded px-2" value="{{$data->client_mobile}}" name="client_mobile"
@@ -107,7 +102,7 @@
 
             </div>
             <div>
-                <p>Попълнете като примера: BG18 786545 I-за едното ухо, BG18 786545 II-за второто ухо;</p>
+                <p>Попълнете като примера: BG18 233455 I-за едното ухо, BG18 233455 II-за второто ухо;</p>
                 <hr class="my-4">
 
                 <table class="-spacing-0.5 text-center w-full" id="formlazer">

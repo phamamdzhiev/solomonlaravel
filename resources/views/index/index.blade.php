@@ -6,7 +6,7 @@
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
     @if (session('status'))
         <div class="text-center bg-main-green-dark p-3 mb-6 rounded">
-            <h1 class="text-[#fff] text-xl">{{session('status')}}</h1>
+            <h1 class="text-[#fff] font-semibold text-2xl">{{session('status')}}</h1>
         </div>
     @endif
     <div id="_featured_products" class="max-w-[800px] mx-auto my-8 w-full">
@@ -98,7 +98,7 @@
                                                    name="name"/>
                                         </div>
                                         <div class="mb-4">
-                                            <label class="mb-1 text-sm block font-bold" for="mobile">Мобилен:</label>
+                                            <label class="mb-1 text-sm block font-bold" for="mobile">Тел:</label>
                                             <input required type="text" class="w-full px-3 py-2 border rounded"
                                                    id="mobile"
                                                    name="mobile"/>

@@ -79,6 +79,7 @@
                     <option value="СВ групови/зелени/">СВ групови/зелени/</option>
                     <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
                     <option value="Табелки ПЧ">Табелки ПЧ</option>
+                    <option value="Big Boss">Big Boss</option>
                 </select>
             </div>
             <div>
@@ -125,6 +126,7 @@
                     <option value="СВ групови/зелени/">СВ групови/зелени/</option>
                     <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
                     <option value="Табелки ПЧ">Табелки ПЧ</option>
+                    <option value="Big Boss">Big Boss</option>
                 </select>
             </div>
             <div>
@@ -137,7 +139,7 @@
             </div>
             <div>
                 <label for="no">*Населено място на жив.обект:</label>
-                <input type="text" min="1" id="no" name="no_city1" required>
+                <input type="text" min="1" id="no" name="no_city1">
             </div>
             <div>
                 <label for="names1">Име на собственика или фирма:</label>
@@ -171,6 +173,7 @@
                     <option value="СВ групови/зелени/">СВ групови/зелени/</option>
                     <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
                     <option value="Табелки ПЧ">Табелки ПЧ</option>
+                    <option value="Big Boss">Big Boss</option>
                 </select>
             </div>
             <div>
@@ -183,7 +186,7 @@
             </div>
             <div>
                 <label for="no">*Населено място на жив.обект:</label>
-                <input type="text" min="1" id="no" name="no_city2" required>
+                <input type="text" min="1" id="no" name="no_city2">
             </div>
             <div>
                 <label for="names2">Име на собственика или фирма:</label>

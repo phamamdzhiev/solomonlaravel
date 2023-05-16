@@ -19,7 +19,6 @@ class FormOrderController extends Controller
     public function create(Request $request): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         try {
-//            FormOrder::create([]);
             foreach ([env('MAIL_FROM_ADDRESS'), $request->input('email')] as $mail) {
                 Mail::to($mail)->send(new FormOrderMail($request->all())); // TODO: request all to be changed
             }

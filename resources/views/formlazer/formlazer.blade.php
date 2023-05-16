@@ -22,12 +22,8 @@
                   <p>www.solomonsofia.com</p>
               </div>
                 <div class=" justify-between align-center mb-2 mt-4" style="width: 300px; margin-left: auto">
-                    <label class="font-semibold" for="odbh">ОДБХ*</label>
+                    <label class="font-semibold" for="odbh">Област*</label>
                     <input type="text" class="border rounded px-2 py-1 mb-4" id="odbh" name="odbh" required>
-                </div>
-                <div class=" justify-between align-center" style="width: 300px; margin-left: auto">
-                    <label class="font-semibold" for="obshtina">Община*</label>
-                    <input type="text" class="border rounded px-2 py-1 mb-4" id="obshtina" name="obshtina" required>
                 </div>
             </div>
             <h1 class="text-center text-2xl font-bold uppercase my-6">ЗАЯВКА ЗА ЛАЗЕРНО НАДПИСВАНЕ НА МАРКИ</h1>
@@ -39,7 +35,7 @@
                 <div>
                     <label class="font-semibold" for="vet-tel">Тел*</label>
                     <input type="text" class="border rounded px-2 py-1 mb-4" name="vet-tel" required id="vet-tel">
-                    <label class="font-semibold" for="mail">Имейл*</label>
+                    <label class="font-semibold" for="mail">Имейл на вет.лекар или фермера*</label>
                     <input type="email" class="border rounded px-2 py-1 mb-4" name="mail" id="mail" required>
                 </div>
             </div>
@@ -51,7 +47,7 @@
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="city" required id="city">
             </div>
             <div class=" mb-6">
-                <label class="font-semibold" for="names">Три имена на собственика*</label>
+                <label class="font-semibold" for="names">Име на собственика или фирма*</label>
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="names" required id="names">
                 <label class="font-semibold" for="egn">ЕГН или Булстат*</label>
                 <input type="text" class="border rounded px-2 py-1 mb-4" name="egn" required id="egn">
@@ -72,7 +68,7 @@
             </div>
             <div>
                 <hr class="my-4">
-                <p>Попълнете като примера: BG18 786545 I-за едното ухо, BG18 786545 II-за второто ухо;</p>
+                <p>Попълнете като примера: BG18 233455 I -за едното ухо, BG18 233455 II-за второто ухо;</p>
                 <button type="button"
                         id="js-add-new-row-button"
                         class="inline-block uppercase rounded bg-main-green font-bold text-[#fff] px-6 text-sm py-1 my-4">
