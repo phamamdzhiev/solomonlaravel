@@ -26,9 +26,9 @@ Route::get('/quality', function () {
 Route::get('/about', function () {
     return view('pages.about');
 })->name('app_about');
-Route::get('/partners', function () {
-    return view('pages.partners');
-})->name('app_partners');
+//Route::get('/partners', function () {
+//    return view('pages.partners');
+//})->name('app_partners');
 Route::get('/contacts', function () {
     return view('pages.contacts');
 })->name('app_contacts');

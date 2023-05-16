@@ -31,9 +31,9 @@
                     <li class="uppercase my-4 md:my-0 mx-3 font-semibold">
                         <a class="hover:text-main-green-dark" href="{{route('app_about')}}">За нас</a>
                     </li>
-                    <li class="uppercase my-4 md:my-0 mx-3 font-semibold">
-                        <a class="hover:text-main-green-dark" href="{{route('app_partners')}}">Партньори</a>
-                    </li>
+{{--                    <li class="uppercase my-4 md:my-0 mx-3 font-semibold">--}}
+{{--                        <a class="hover:text-main-green-dark" href="{{route('app_partners')}}">Партньори</a>--}}
+{{--                    </li>--}}
                     <li class="uppercase my-4 md:my-0 mx-3 font-semibold">
                         <a class="hover:text-main-green-dark" href="{{route('app_contacts')}}">Контакти</a>
                     </li>
