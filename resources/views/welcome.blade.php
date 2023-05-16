@@ -50,12 +50,12 @@
         }
     </style>
     @vite('resources/css/app.css')
-    @vite('resources/js/app.js')
 </head>
 <body class="font-body font-sans bg-[#F1F2F2] relative">
 @include('includes.header')
 @yield('body')
 @include('includes.footer')
 @stack('modal')
+@vite('resources/js/app.js')
 </body>
 </html>
