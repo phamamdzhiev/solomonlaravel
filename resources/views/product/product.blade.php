@@ -26,17 +26,29 @@
                     Цена: {{$product->price}} <small>без ДДС</small>
                 @endif
             </h2>
+            @php
+                $isOrderButtonActive = $product->price === 'Цена при запитване';
+            @endphp
             @if($product->features === 1)
-                <a href="{{route('app_formorder')}}"
-                   class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
+                <a href="{{$isOrderButtonActive ? '#' : route('app_formorder')}}"
+                   class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{$isOrderButtonActive ? 'pointer-events-none opacity-70' : ''}}">
                     ПОРЪЧАЙ
                 </a>
             @else
-                <button type="button"
-                        id="js-open-modal"
-                        class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
-                    ПОРЪЧАЙ
-                </button>
+                @if ($product->name === 'Паднали марки за ЕПЖ')
+                    <a href="{{route('app_formlazer')}}"
+                       class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
+                        ПОРЪЧАЙ
+                    </a>
+                @else
+                    <button type="button"
+                            id="js-open-modal"
+                            class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{$isOrderButtonActive ? 'pointer-events-none opacity-70' : ''}}"
+                        @disabled($isOrderButtonActive)
+                    >
+                        ПОРЪЧАЙ
+                    </button>
+                @endif
             @endif
         </div>
         {{--  </div>--}}
@@ -88,7 +100,9 @@
                                 </div>
                                 <div>
                                     <input type="checkbox" id="policy" checked/>
-                                    <label for="policy" class="font-bold">Съгласявам се с <a href="{{route('app_policy')}}" class="text-main-green-dark uppercase" target="_blank">общите условия</a></label>
+                                    <label for="policy" class="font-bold">Съгласявам се с <a
+                                            href="{{route('app_policy')}}" class="text-main-green-dark uppercase"
+                                            target="_blank">общите условия</a></label>
                                 </div>
                             </div>
                         </div>

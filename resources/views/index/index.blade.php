@@ -18,25 +18,6 @@
         </div>
         <div class="grid md:grid-cols-3 grid-cols-1 px-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
             @each('includes.product', $featuredProducts, 'product')
-
-            {{-- Static Products --}}
-            <div class="border rounded-md border-[#94A3B8] hover:shadow-md">
-                <div class="p-3 text-center flex flex-col justify-between h-full">
-                    <a target="_blank" href="https://vkasis.com/partner-products?vendor=18&param=15">
-                        <img class="mx-auto" src="{{asset('storage/products/animals.jpg')}}" alt="Static Product"/>
-                    </a>
-                    <h2 class="uppercase underline text-main-green-dark font-bold my-3 text-[1.175rem]">
-                        <a href="/">
-                            Инструменти
-                        </a>
-                    </h2>
-                    <a target="_blank" href="https://vkasis.com/partner-products?vendor=18&param=15"
-                       class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
-                        РАЗГЛЕДАЙ
-                    </a>
-                </div>
-            </div>
-            {{-- END Static Products --}}
         </div>
     </div>
 
@@ -82,11 +63,19 @@
                             Цена: {{$product->price}} <small>без ДДС</small>
                         @endif
                     </p>
-                    <button type="button"
-                            data-trigger-modal-id="{{$product->id}}"
-                            class="js-open-modal inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
-                        ПОРЪЧАЙ
-                    </button>
+                    @if ($product->name === 'Паднали марки за ЕПЖ')
+                        <a href="{{route('app_formlazer')}}"
+                           class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4"
+                        >
+                            ПОРЪЧАЙ
+                        </a>
+                    @else
+                        <button type="button"
+                                data-trigger-modal-id="{{$product->id}}"
+                                class="js-open-modal inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{$product->price === 'Цена при запитване' ? 'pointer-events-none opacity-70' : ''}}">
+                            ПОРЪЧАЙ
+                        </button>
+                    @endif
                 </div>
                 <div data-modal-id="{{$product->id}}" class="hidden order-modal-overlay">
                     <div id="order-modal"

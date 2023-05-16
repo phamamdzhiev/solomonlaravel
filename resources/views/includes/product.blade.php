@@ -20,6 +20,6 @@
                 Цена: {{$product->price}} <small>без ДДС</small>
             @endif
         </p>
-        @include('includes.order-button')
+        @include('includes.order-button', ['product' => $product])
     </div>
 </div>

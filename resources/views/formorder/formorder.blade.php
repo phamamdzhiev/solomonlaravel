@@ -49,19 +49,19 @@
                 <input type="text" id="vet" name="vet" required>
             </div>
             <div>
-                <label for="odbh">*ОДБХ</label>
+                <label for="odbh">*Област</label>
                 <input type="text" id="odbh" name="odbh" required>
             </div>
-            <div>
-                <label for="obshtina">*Община</label>
-                <input type="text" id="obshtina" name="obshtina" required>
-            </div>
+{{--            <div>--}}
+{{--                <label for="obshtina">*Община</label>--}}
+{{--                <input type="text" id="obshtina" name="obshtina" required>--}}
+{{--            </div>--}}
             <div>
                 <label for="tel">*Тел.</label>
                 <input type="text" id="tel" name="tel" required>
             </div>
             <div>
-                <label for="email">*E-mail</label>
+                <label for="email">*Имейл на вет.лекар или фермера</label>
                 <input type="email" id="email" name="email" required>
             </div>
             <h1 class="text-center text-2xl font-bold uppercase my-6">
@@ -70,29 +70,35 @@
 
             {{--        1--}}
             <div>
-                <label for="number_br">*Брой комплекти</label>
-                <input type="number" min="1" id="number_br" name="number_br" required>
-            </div>
-            <div>
                 <label for="animal">*Вид животни</label>
                 <select id="animal" name="animal">
                     <option selected>Избери</option>
                     <option value="ЕПЖ">ЕПЖ</option>
                     <option value="ДПЖ">ДПЖ</option>
                     <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ зелени">СВ зелени</option>
+                    <option value="СВ групови/зелени/">СВ групови/зелени/</option>
+                    <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
+                    <option value="Табелки ПЧ">Табелки ПЧ</option>
                 </select>
+            </div>
+            <div>
+                <label for="number_br">*Брой комплекти</label>
+                <input type="number" min="1" id="number_br" name="number_br" required>
             </div>
             <div>
                 <label for="no">*№ на животновъдния обект:</label>
                 <input type="text" min="1" id="no" name="no" required>
             </div>
             <div>
-                <label for="names">*Трите имена на собственика:</label>
+                <label for="no">*Населено място на жив.обект:</label>
+                <input type="text" min="1" id="no" name="no_city" required>
+            </div>
+            <div>
+                <label for="names">*Име на собственика или фирма:</label>
                 <input type="text" id="names" name="names" required>
             </div>
             <div>
-                <label for="egn">*ЕГН на собственика:</label>
+                <label for="egn">*ЕГН или Булстат:</label>
                 <input type="text" id="egn" name="egn" required>
             </div>
             <div>
@@ -110,29 +116,35 @@
             <hr>
             {{--        2--}}
             <div>
-                <label for="number_br1">Брой комплекти</label>
-                <input type="number" min="1" id="number_br1" name="number_br1">
-            </div>
-            <div>
                 <label for="animal1">Вид животни</label>
                 <select id="animal1" name="animal1" required>
                     <option selected>Избери</option>
                     <option value="ЕПЖ">ЕПЖ</option>
                     <option value="ДПЖ">ДПЖ</option>
                     <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ зелени">СВ зелени</option>
+                    <option value="СВ групови/зелени/">СВ групови/зелени/</option>
+                    <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
+                    <option value="Табелки ПЧ">Табелки ПЧ</option>
                 </select>
+            </div>
+            <div>
+                <label for="number_br1">Брой комплекти</label>
+                <input type="number" min="1" id="number_br1" name="number_br1">
             </div>
             <div>
                 <label for="no1">№ на животновъдния обект:</label>
                 <input type="text" id="no1" name="no1">
             </div>
             <div>
-                <label for="names1">Трите имена на собственика:</label>
+                <label for="no">*Населено място на жив.обект:</label>
+                <input type="text" min="1" id="no" name="no_city1" required>
+            </div>
+            <div>
+                <label for="names1">Име на собственика или фирма:</label>
                 <input type="text" id="names1" name="names1">
             </div>
             <div>
-                <label for="egn1">ЕГН на собственика:</label>
+                <label for="egn1">ЕГН или Булстат:</label>
                 <input type="text" id="egn1" name="egn1">
             </div>
             <div>
@@ -150,29 +162,35 @@
             {{--        3--}}
             <hr>
             <div>
-                <label for="number_br2">Брой комплекти</label>
-                <input type="number" min="1" id="number_br2" name="number_br2">
-            </div>
-            <div>
                 <label for="animal2">Вид животни</label>
                 <select id="animal2" name="animal2">
                     <option selected>Избери</option>
                     <option value="ЕПЖ">ЕПЖ</option>
                     <option value="ДПЖ">ДПЖ</option>
                     <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ зелени">СВ зелени</option>
+                    <option value="СВ групови/зелени/">СВ групови/зелени/</option>
+                    <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
+                    <option value="Табелки ПЧ">Табелки ПЧ</option>
                 </select>
+            </div>
+            <div>
+                <label for="number_br2">Брой комплекти</label>
+                <input type="number" min="1" id="number_br2" name="number_br2">
             </div>
             <div>
                 <label for="no2">№ на животновъдния обект:</label>
                 <input type="text" id="no2" name="no2">
             </div>
             <div>
-                <label for="names2">Трите имена на собственика:</label>
+                <label for="no">*Населено място на жив.обект:</label>
+                <input type="text" min="1" id="no" name="no_city2" required>
+            </div>
+            <div>
+                <label for="names2">Име на собственика или фирма:</label>
                 <input type="text" id="names2" name="names2">
             </div>
             <div>
-                <label for="egn2">ЕГН на собственика:</label>
+                <label for="egn2">ЕГН или Булстат:</label>
                 <input type="text" id="egn2" name="egn2">
             </div>
             <div>
@@ -203,7 +221,7 @@
             </div>
             <div>
                 <p>
-                    *Вид животни: ЕПЖ = едри преживни животни, ДПЖ = дребни преживни животни, СВ = свине.
+                    *Вид животни: ЕПЖ = едри преживни животни, ДПЖ = дребни преживни животни, СВ = свине, ПЧ-пчели.
                 </p>
                 <p>
                     **Един комплект ушни марки = ушни марки за 1 животно.
