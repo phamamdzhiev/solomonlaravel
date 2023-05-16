@@ -20,17 +20,9 @@
             @each('includes.product', $featuredProducts, 'product')
         </div>
     </div>
-
-    <div class="max-w-[500px] mx-auto text-center font-bold my-10 text-xl px-3">
-        <span class="block">Всички ушни марки са регистрирани в БАБХ</span>
-        <span class="block">Отстъпка за количество за нови ушни марки за ЕПЖ и ел.ДПЖ:</span>
-        <span class="block">50бр. - 5%</span>
-        <span class="block">100бр. - 10%</span>
-        <span class="block">300бр. - 15%</span>
-        <span class="block">за вет.лекари -10%т.о.</span>
-        <span class="block">Тел.номер с Viber 0899 811 358</span>
+    <div class="text-center text-xl max-w-[500px] mx-auto my-10 px-3">
+        {!! \App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::HOME)->first()?->content !!}
     </div>
-
     <div class="bg-main-green-dark p-4 text-center">
         <a href="{{route('app_formlazer')}}">
             <h2 class="text-xl text-[#fff]">Заявка за лазерно надписване на дубликати >> Доставка от 1 до 3 дни</h2>

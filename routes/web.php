@@ -57,6 +57,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/products', [\App\Http\Controllers\AdminController::class, 'storeProduct'])->name('app_admin_post');
     Route::delete('/products/delete/{id}', [\App\Http\Controllers\AdminController::class, 'deleteProduct'])->name('app_admin_delete');
 
+    //pages
+    Route::get('/pages', [\App\Http\Controllers\PageController::class, 'index'])->name('app_admin_pages');
+    Route::get('/page/edit/{id}', [\App\Http\Controllers\PageController::class, 'edit'])->name('app_admin_page_edit');
+    Route::post('/page/update/{id}', [\App\Http\Controllers\PageController::class, 'update'])->name('app_admin_page_update');
+
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
