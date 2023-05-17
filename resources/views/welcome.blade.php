@@ -9,7 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-    <link href="{{asset('/css/app.css')}}" rel="stylesheet" />
+    @if (app()->environment('production'))
+        <link href="{{asset('/css/app.css')}}" rel="stylesheet"/>
+    @else
+        @vite('resources/css/app.css')
+    @endif
     <!-- Styles -->
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -50,14 +54,18 @@
             height: auto
         }
     </style>
-{{--    @vite('resources/css/app.css')--}}
+    {{--    @vite('resources/css/app.css')--}}
 </head>
 <body class="font-body font-sans bg-[#F1F2F2] relative">
 @include('includes.header')
 @yield('body')
 @include('includes.footer')
 @stack('modal')
-{{--@vite('resources/js/app.js')--}}
-<script src="{{asset('/js/app.js')}}" defer></script>
+
+@if (app()->environment('production'))
+    <script src="{{asset('/js/app.js')}}" defer></script>
+@else
+    @vite('resources/js/app.js')
+@endif
 </body>
 </html>

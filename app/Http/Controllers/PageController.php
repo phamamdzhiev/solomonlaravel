@@ -10,6 +10,8 @@ class PageController extends Controller
 
     const HOME = 1;
     const ABOUT_US = 2;
+    const INTRO = 3;
+    const QUALITY = 4;
 
     /**
      * Display a listing of the resource.

@@ -10,11 +10,8 @@
         </div>
     @endif
     <div id="_featured_products" class="max-w-[800px] mx-auto my-8 w-full">
-        <div id="_featured_products_heading" class="my-10 px-3">
-            <h1 class="text-main-green-dark font-bold md:text-left text-center">
-                <span class="text-[26px] block">100% Немско качество</span>
-                <span class="text-[26px] block">Ушни марки GEPE поставете и за проблеми забравете</span>
-            </h1>
+        <div id="_featured_products_heading" class="my-10 px-3 text-main-green-dark font-bold md:text-left text-center text-[26px]">
+            {!! \App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::INTRO)->first()?->content !!}
         </div>
         <div class="grid md:grid-cols-3 grid-cols-1 px-3 auto-cols-fr gap-x-3 gap-y-8 justify-center">
             @each('includes.product', $featuredProducts, 'product')
