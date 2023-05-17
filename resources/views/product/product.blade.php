@@ -23,7 +23,7 @@
                 @if($product->price === 'Цена при запитване')
                     {{$product->price}}
                 @else
-                    Цена: {{$product->price}} <small>без ДДС</small>
+                    Цена: {{$product->price}}
                 @endif
             </h2>
             @php

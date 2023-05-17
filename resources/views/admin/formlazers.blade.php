@@ -33,6 +33,7 @@
                                 <table class="min-w-full">
                                     <thead>
                                     <tr>
+{{--                                        TODO fix ODBH--}}
                                         <th>#</th>
                                         <th>ОДБХ</th>
                                         <th>ОБЩИНА</th>

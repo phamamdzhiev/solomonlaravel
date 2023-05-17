@@ -49,7 +49,7 @@
                         @if($product->price === 'Цена при запитване')
                             {{$product->price}}
                         @else
-                            Цена: {{$product->price}} <small>без ДДС</small>
+                            Цена: {{$product->price}}
                         @endif
                     </p>
                     @if ($product->name === 'Паднали марки за ЕПЖ')

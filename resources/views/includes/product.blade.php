@@ -17,7 +17,7 @@
             @if($product->price === 'Цена при запитване')
                 {{$product->price}}
             @else
-                Цена: {{$product->price}} <small>без ДДС</small>
+                Цена: {{$product->price}}
             @endif
         </p>
         @include('includes.order-button', ['product' => $product])

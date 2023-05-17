@@ -3,7 +3,6 @@
 @section('title', 'Админ Панел | Редакция на страници')
 
 @section('body')
-
     <div class="container">
         <div class="min-h-[100vh]">
             <a href="{{route('app_admin')}}"

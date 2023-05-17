@@ -51,16 +51,32 @@ Route::group(['prefix' => 'formorder'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/products', [\App\Http\Controllers\AdminController::class, 'index'])->name('app_admin');
     Route::get('/orders', [\App\Http\Controllers\AdminController::class, 'orders'])->name('app_orders');
-    Route::get('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProduct'])->name('app_admin_edit');
-    Route::get('/formlazers', [\App\Http\Controllers\AdminController::class, 'formlazers'])->name('app_admin_formlazers');
-    Route::post('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProductSave'])->name('app_admin_edit_save');
+    Route::get('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProduct'])->name(
+        'app_admin_edit'
+    );
+    Route::get('/formlazers', [\App\Http\Controllers\AdminController::class, 'formlazers'])->name(
+        'app_admin_formlazers'
+    );
+    Route::post('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProductSave'])->name(
+        'app_admin_edit_save'
+    );
     Route::post('/products', [\App\Http\Controllers\AdminController::class, 'storeProduct'])->name('app_admin_post');
-    Route::delete('/products/delete/{id}', [\App\Http\Controllers\AdminController::class, 'deleteProduct'])->name('app_admin_delete');
+    Route::delete('/products/delete/{id}', [\App\Http\Controllers\AdminController::class, 'deleteProduct'])->name(
+        'app_admin_delete'
+    );
 
     //pages
     Route::get('/pages', [\App\Http\Controllers\PageController::class, 'index'])->name('app_admin_pages');
     Route::get('/page/edit/{id}', [\App\Http\Controllers\PageController::class, 'edit'])->name('app_admin_page_edit');
-    Route::post('/page/update/{id}', [\App\Http\Controllers\PageController::class, 'update'])->name('app_admin_page_update');
+    Route::post('/page/update/{id}', [\App\Http\Controllers\PageController::class, 'update'])->name(
+        'app_admin_page_update'
+    );
+
+    //animals
+    Route::get('/animals', [\App\Http\Controllers\AnimalController::class, 'index'])->name('app_admin_animals');
+    Route::get('/animal/edit/{id}', [\App\Http\Controllers\AnimalController::class, 'edit'])->name('app_admin_animal_edit');
+    Route::post('/animal/update/{id}', [\App\Http\Controllers\AnimalController::class, 'update'])->name('app_admin_animal_update');
+    Route::post('/animal/delete/{id}', [\App\Http\Controllers\AnimalController::class, 'destroy'])->name('app_admin_delete_update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

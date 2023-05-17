@@ -14,6 +14,10 @@
    class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
     Страници
 </a>
+<a href="{{route('app_admin_animals')}}"
+   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+    Животни
+</a>
 <form action="{{route('logout')}}" method="post" class="inline-block">
     @csrf
     <button type="submit"
