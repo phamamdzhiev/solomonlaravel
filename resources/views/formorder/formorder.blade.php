@@ -52,10 +52,10 @@
                 <label for="odbh">*Област</label>
                 <input type="text" id="odbh" name="odbh" required>
             </div>
-{{--            <div>--}}
-{{--                <label for="obshtina">*Община</label>--}}
-{{--                <input type="text" id="obshtina" name="obshtina" required>--}}
-{{--            </div>--}}
+            {{--            <div>--}}
+            {{--                <label for="obshtina">*Община</label>--}}
+            {{--                <input type="text" id="obshtina" name="obshtina" required>--}}
+            {{--            </div>--}}
             <div>
                 <label for="tel">*Тел.</label>
                 <input type="text" id="tel" name="tel" required>
@@ -73,13 +73,9 @@
                 <label for="animal">*Вид животни</label>
                 <select id="animal" name="animal">
                     <option selected>Избери</option>
-                    <option value="ЕПЖ">ЕПЖ</option>
-                    <option value="ДПЖ">ДПЖ</option>
-                    <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ групови/зелени/">СВ групови/зелени/</option>
-                    <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
-                    <option value="Табелки ПЧ">Табелки ПЧ</option>
-                    <option value="Big Boss">Big Boss</option>
+                    @foreach(\App\Models\Animal::all() as $animal)
+                        <option value="{{$animal->animal}}">{{$animal->animal}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
@@ -120,13 +116,9 @@
                 <label for="animal1">Вид животни</label>
                 <select id="animal1" name="animal1" required>
                     <option selected>Избери</option>
-                    <option value="ЕПЖ">ЕПЖ</option>
-                    <option value="ДПЖ">ДПЖ</option>
-                    <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ групови/зелени/">СВ групови/зелени/</option>
-                    <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
-                    <option value="Табелки ПЧ">Табелки ПЧ</option>
-                    <option value="Big Boss">Big Boss</option>
+                    @foreach(\App\Models\Animal::all() as $animal)
+                        <option value="{{$animal->animal}}">{{$animal->animal}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
@@ -167,13 +159,9 @@
                 <label for="animal2">Вид животни</label>
                 <select id="animal2" name="animal2">
                     <option selected>Избери</option>
-                    <option value="ЕПЖ">ЕПЖ</option>
-                    <option value="ДПЖ">ДПЖ</option>
-                    <option value="ДПЖ (за клане)">ДПЖ (за клане)</option>
-                    <option value="СВ групови/зелени/">СВ групови/зелени/</option>
-                    <option value="СВ индивидуални/жълти/">СВ индивидуални/жълти/</option>
-                    <option value="Табелки ПЧ">Табелки ПЧ</option>
-                    <option value="Big Boss">Big Boss</option>
+                    @foreach(\App\Models\Animal::all() as $animal)
+                        <option value="{{$animal->animal}}">{{$animal->animal}}</option>
+                    @endforeach
                 </select>
             </div>
             <div>
@@ -210,7 +198,7 @@
             </div>
 
             <div class="flex">
-                <input type="checkbox"  id="deklariram" name="confirm_policy" checked>
+                <input type="checkbox" id="deklariram" name="confirm_policy" checked>
                 <label for="deklariram" style="margin-left: 1rem;" class="font-bold">
                     Декларирам,че заявката е съгласувана с участъковия ветеринарен лекар и отдел
                     Идентификация в ОДБХ.</label>

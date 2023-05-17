@@ -4,11 +4,11 @@
 
 @section('body')
     <div class="container">
-        <div class="min-h-[100vh]">
-            <a href="{{route('app_admin')}}"
-               class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
-                Назад
-            </a>
+        <a href="{{route('app_admin')}}"
+           class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+            Назад
+        </a>
+        <div class="mb-6">
             <h1 class="font-bold text-2xl mb-4">Видове Животни</h1>
             <table class="min-w-full text-center">
                 <thead>
@@ -46,9 +46,17 @@
                 @endforeach
                 </tbody>
             </table>
-            <h1 class="font-bold text-2xl mb-4">Видове Животни</h1>
-            <form action="">
+        </div>
+        <div class="mb-3">
+            <h1 class="font-bold text-2xl mb-4">Добавяне на животно</h1>
+            <form action="{{route('app_admin_animal_store')}}" method="post">
+                @csrf
+                <label class="mb-1 font-semibold inline-block" for="animal">Вид на животното</label>
+                <input class="border border-black w-full rounded p-3" type="text" name="animal" id="animal" required/>
 
+                <button class="bg-main-green font-semibold py-2 px-4 rounded-full mt-3" type="submit">
+                    Добави
+                </button>
             </form>
         </div>
     </div>

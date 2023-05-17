@@ -49,9 +49,14 @@ class FormLazerController extends Controller
                 'field3' => json_encode($request->input('field3')),
             ]);
 
-            foreach ([env('MAIL_FROM_ADDRESS'), $request->input('mail')] as $mail) {
-                Mail::to($mail)->send(new FormLazerMail($formlazer));
+            if (app()->environment('production')) {
+                foreach ([env('MAIL_FROM_ADDRESS'), $request->input('mail')] as $mail) {
+                    Mail::to($mail)->send(new FormLazerMail($formlazer));
+                }
+            }  else {
+                Mail::to(env('TEST_FROM_ADDRESS'))->send(new FormLazerMail($formlazer));
             }
+
 
             return view('formlazer.formlazer-generated')->with('data',$formlazer);
         } catch (\Exception $e) {

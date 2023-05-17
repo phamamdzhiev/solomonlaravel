@@ -16,7 +16,7 @@
             <label for="animal" class="mb-1 font-semibold inline-block">Вид на животното</label>
             <input type="text" class="border border-black w-full rounded p-3" id="animal" name="animal" value="{{$animal->animal}}" required/>
 
-            <button class="bg-main-green hover:bg-blue-700 font-semibold py-2 px-4 rounded-full mt-3" type="submit">
+            <button class="bg-main-green font-semibold py-2 px-4 rounded-full mt-3" type="submit">
                 Запис
             </button>
         </form>

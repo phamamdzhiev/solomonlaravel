@@ -32,11 +32,15 @@ class AnimalController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        Animal::create([
+           'animal'=> $request->input('animal')
+        ]);
+
+        return to_route('app_admin_animals');
     }
 
     /**

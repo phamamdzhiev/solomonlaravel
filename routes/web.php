@@ -75,6 +75,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //animals
     Route::get('/animals', [\App\Http\Controllers\AnimalController::class, 'index'])->name('app_admin_animals');
     Route::get('/animal/edit/{id}', [\App\Http\Controllers\AnimalController::class, 'edit'])->name('app_admin_animal_edit');
+    Route::post('/animal/store', [\App\Http\Controllers\AnimalController::class, 'store'])->name('app_admin_animal_store');
     Route::post('/animal/update/{id}', [\App\Http\Controllers\AnimalController::class, 'update'])->name('app_admin_animal_update');
     Route::post('/animal/delete/{id}', [\App\Http\Controllers\AnimalController::class, 'destroy'])->name('app_admin_delete_update');
 

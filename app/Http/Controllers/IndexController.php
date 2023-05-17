@@ -89,8 +89,20 @@ class IndexController extends Controller
                 'message' => $request->input('message'),
             ]);
 
-            foreach ([env('MAIL_FROM_ADDRESS'), $request->input('email')] as $mail) {
-                Mail::to($mail)->send(
+            if (app()->environment('production')) {
+                foreach ([env('MAIL_FROM_ADDRESS'), $request->input('email')] as $mail) {
+                    Mail::to($mail)->send(
+                        new NewOrder(
+                            $request->input('name'),
+                            $request->input('quantity'),
+                            $request->input('mobile'),
+                            $request->input('product_name'),
+                            $request->input('message')
+                        )
+                    );
+                }
+            } else {
+                Mail::to(env('TEST_FROM_ADDRESS'))->send(
                     new NewOrder(
                         $request->input('name'),
                         $request->input('quantity'),
