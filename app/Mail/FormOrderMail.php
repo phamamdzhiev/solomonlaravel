@@ -28,8 +28,8 @@ class FormOrderMail extends Mailable
      */
     public function build(): static
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), "Заявка за нови марки - " . $this->data['names'])
-            ->subject("Нови марки - " . $this->data['names'])
+        return $this->from(env('MAIL_FROM_ADDRESS'), "Заявка за нови марки")
+            ->subject($this->data['names'])
             ->view('mailables.formorder')->with('data', $this->data);
     }
 }

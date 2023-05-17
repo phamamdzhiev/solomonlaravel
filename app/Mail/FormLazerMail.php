@@ -29,6 +29,6 @@ class FormLazerMail extends Mailable
      */
     public function build(): static
     {
-        return $this->from(env('MAIL_FROM_ADDRESS'), "Заявка за паднали марки - " . $this->data['names'])->subject($this->data->vet)->view('mailables.formlazer')->with('data', $this->data);
+        return $this->from(env('MAIL_FROM_ADDRESS'), "Заявка за паднали марки")->subject( $this->data['names'])->view('mailables.formlazer')->with('data', $this->data);
     }
 }
