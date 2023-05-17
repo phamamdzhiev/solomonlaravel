@@ -16,4 +16,8 @@
         z-index: 8999;
         background-color: white;
     }
+
+    .border {
+        @apply border-black;
+    }
 }

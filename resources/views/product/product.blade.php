@@ -27,7 +27,7 @@
                 @endif
             </h2>
             @php
-                $isOrderButtonActive = $product->price === 'Цена при запитване';
+                $isOrderButtonActive = $product->can_order == 0;
             @endphp
             @if($product->features === 1)
                 <a href="{{$isOrderButtonActive ? '#' : route('app_formorder')}}"

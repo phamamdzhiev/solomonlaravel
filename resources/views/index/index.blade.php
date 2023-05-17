@@ -61,7 +61,7 @@
                     @else
                         <button type="button"
                                 data-trigger-modal-id="{{$product->id}}"
-                                class="js-open-modal inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{$product->price === 'Цена при запитване' ? 'pointer-events-none opacity-70' : ''}}">
+                                class="js-open-modal inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{$product->can_order == 0 ? 'pointer-events-none opacity-70' : ''}}">
                             ПОРЪЧАЙ
                         </button>
                     @endif

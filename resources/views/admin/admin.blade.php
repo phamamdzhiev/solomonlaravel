@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-           @include('admin.includes.admin-header')
+            @include('admin.includes.admin-header')
 
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -61,7 +61,12 @@
                                     <tr class="border-b">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$loop->iteration}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->id}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->name}}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            {{$product->name}}
+                                            @if($product->can_order)
+                                                <span class="text-green-500 text-xl">*</span>
+                                            @endif
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->price ?? 'Няма'}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->features ? 'ДА' : 'НЕ'}}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$product->position}}</td>
@@ -108,7 +113,7 @@
                                 Цена
                             </label>
                             <input
-                                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="price" name="price" type="text">
                         </div>
                         <div class="mb-4">
@@ -116,7 +121,7 @@
                                 Описание
                             </label>
                             <textarea
-                                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="desc" name="desc"></textarea>
                         </div>
                         <div class="mb-4">
@@ -124,7 +129,7 @@
                                 Снимка
                             </label>
                             <input
-                                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="file" name="file" type="file">
                         </div>
                         <div class="mb-4">
@@ -132,8 +137,19 @@
                                 Позиция
                             </label>
                             <input
-                                class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 id="position" name="position" min="0" type="number"/>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="can_order">
+                                Активен бутон "Поръчай"?
+                            </label>
+                            <select
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                name="can_order" id="can_order">
+                                <option value="1" selected>ДА</option>
+                                <option value="0">НЕ</option>
+                            </select>
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="features">

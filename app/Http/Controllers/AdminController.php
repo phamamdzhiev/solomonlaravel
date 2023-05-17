@@ -38,6 +38,7 @@ class AdminController extends Controller
                 'image_path' => $request->hasFile('image_path') ? $request->file('image_path')->getClientOriginalName() : $request->input('image_path'),
                 'position' => $request->input('position'),
                 'features' => $request->input('features') === 'on' ? 1 : 0,
+                'can_order' => $request->input('can_order'),
             ]);
             if ($request->hasFile('image_path')) {
                 $image = $request->file('image_path');
@@ -74,7 +75,8 @@ class AdminController extends Controller
                 'desc' => $request->input('desc') ?? '---',
                 'position' => $request->input('position') ?? 1,
                 'features' => $request->input('features') === 'on' ? 1 : 0,
-                'image_path' => $image->getClientOriginalName()
+                'image_path' => $image->getClientOriginalName(),
+                'can_order' => $request->input('can_order') ?? 1,
             ]);
 
             return redirect()->back()->with('message', 'Успешно добавихте продкукт!');
