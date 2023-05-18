@@ -45,7 +45,7 @@
                             {{$product->desc}}
                         </p>
                     @endif
-                    <p class="leading-4 mb-2 font-semibold text-xl">
+                    <p class="mb-2 font-semibold text-xl">
                         @if($product->price === 'Цена при запитване')
                             {{$product->price}}
                         @else
