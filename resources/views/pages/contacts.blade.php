@@ -16,15 +16,18 @@
                     <div class="mr-0 md:mr-4 flex-[0_1_auto] md:flex-[0_1_350px]">
                         @csrf
                         <div class="mb-3">
-                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('name')}}" type="text" name="name" id="name"
+                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('name')}}" type="text"
+                                   name="name" id="name"
                                    placeholder="Име:" required/>
                         </div>
                         <div class="mb-3">
-                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('mobile')}}" type="text" name="mobile" id="mobile"
+                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('mobile')}}" type="text"
+                                   name="mobile" id="mobile"
                                    placeholder="Тел:" required/>
                         </div>
                         <div class="mb-3">
-                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('email')}}" type="email" name="email" id="email"
+                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('email')}}" type="email"
+                                   name="email" id="email"
                                    placeholder="Имейл:"/>
                         </div>
                     </div>
@@ -36,7 +39,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <button type="submit" class="rounded w-full md:w-auto mt-2 md:mt-4 bg-main-green-dark px-8 uppercase text-[#fff] font-bold py-3">
+                    <button type="submit"
+                            class="rounded w-full md:w-auto mt-2 md:mt-4 bg-main-green-dark px-8 uppercase text-[#fff] font-bold py-3">
                         Изпрати
                     </button>
                 </div>
@@ -57,13 +61,19 @@
             </li>
         </ul>
         <div class="flex flex-col items-center md:flex-row">
-            <img class="md:mr-6 mr-0  md:mb-0 mb-4" src="{{asset('/storage/office.png')}}" alt="Office image" />
+            <img class="md:mr-6 mr-0  md:mb-0 mb-4" src="{{asset('/storage/office.png')}}" alt="Office image"/>
             <div class="md:w-[463px] w-[100%] h-[303px]">
+                {{--                <iframe--}}
+                {{--                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5863.774604416783!2d23.322277!3d42.706107!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8560ba68d3ad%3A0x62fb335718d2b610!2sul.%20%22Knyaz%20Boris%20I%22%20196%2C%201202%20Sofia%20Center%2C%20Sofia!5e0!3m2!1sen!2sbg!4v1597786265937!5m2!1sen!2sbg"--}}
+                {{--                    width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true"--}}
+                {{--                    aria-hidden="false"--}}
+                {{--                    tabindex="0"--}}
+                {{--                >--}}
+                {{--                </iframe>--}}
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5863.774604416783!2d23.322277!3d42.706107!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa8560ba68d3ad%3A0x62fb335718d2b610!2sul.%20%22Knyaz%20Boris%20I%22%20196%2C%201202%20Sofia%20Center%2C%20Sofia!5e0!3m2!1sen!2sbg!4v1597786265937!5m2!1sen!2sbg"
-                    width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="true" aria-hidden="false"
-                    tabindex="0"
-                >
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.888945175284!2d23.319585112123605!3d42.706072213050284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa856b3e58f377%3A0x8b3c7a6790df858e!2z0KPRiNC90Lgg0LzQsNGA0LrQuCAtINCh0L7Qu9C-0LzQvtC9INCh0L7RhNC40Y8!5e0!3m2!1sbg!2sbg!4v1684410046942!5m2!1sbg!2sbg"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
         </div>
