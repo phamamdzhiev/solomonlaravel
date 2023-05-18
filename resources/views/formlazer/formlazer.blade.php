@@ -77,7 +77,7 @@
                 <table class="border-spacing-0.5 text-center w-full" id="formlazer">
                     <thead>
                     <tr>
-                        <th>BG код</th>
+                        <th>Код</th>
                         <th>Номер на марка</th>
                         <th>Римска цифра - пор.№ на заместваща марка</th>
                     </tr>
@@ -116,7 +116,6 @@
                     class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 text-xl py-1 my-4">
                     Изпрати
                 </button>
-                <p>Срок за доставка до 3 работни дни. Цена за 1ухо - 2.88лв.с ДДС</p>
             </div>
         </form>
     </div>

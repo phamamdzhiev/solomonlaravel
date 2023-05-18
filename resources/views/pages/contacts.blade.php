@@ -4,7 +4,7 @@
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
     @include('includes.flash-message');
     @if(session('status'))
-        <div class="text-xl text-[#fff] font-bold max-w-[400px] py-3 my-6 text-center rounded bg-main-green-dark">
+        <div class="text-2xl text-[#fff] font-bold mx-auto py-3 my-6 text-center rounded bg-main-green-dark">
             {!! session('status') !!}
         </div>
     @endif
@@ -16,22 +16,22 @@
                     <div class="mr-0 md:mr-4 flex-[0_1_auto] md:flex-[0_1_350px]">
                         @csrf
                         <div class="mb-3">
-                            <input class="py-3 px-4 border rounded-md w-full" type="text" name="name" id="name"
-                                   placeholder="Име" required/>
+                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('name')}}" type="text" name="name" id="name"
+                                   placeholder="Име:" required/>
                         </div>
                         <div class="mb-3">
-                            <input class="py-3 px-4 border rounded-md w-full" type="text" name="mobile" id="mobile"
-                                   placeholder="Мобилен" required/>
+                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('mobile')}}" type="text" name="mobile" id="mobile"
+                                   placeholder="Тел:" required/>
                         </div>
                         <div class="mb-3">
-                            <input class="py-3 px-4 border rounded-md w-full" type="email" name="email" id="email"
-                                   placeholder="Имейл"/>
+                            <input class="py-3 px-4 border rounded-md w-full" value="{{old('email')}}" type="email" name="email" id="email"
+                                   placeholder="Имейл:"/>
                         </div>
                     </div>
                     <div>
                         <textarea class="py-3 px-4 border rounded-md w-full" name="message" id="message" cols="50"
                                   rows="6"
-                                  placeholder="Съобщение" required></textarea>
+                                  placeholder="Съобщение..." required>{{old('message')}}</textarea>
                     </div>
                 </div>
 

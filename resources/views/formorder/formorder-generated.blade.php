@@ -7,14 +7,17 @@
         * {
             font-weight: bold;
         }
+
         strong {
             text-decoration: underline;
             padding: 0 10px;
         }
+
         p {
             margin-bottom: 8px;
         }
-        input,select,textarea {
+
+        input, select, textarea {
             border: none;
             background: transparent;
             border-radius: 6px;
@@ -22,24 +25,34 @@
             pointer-events: none;
             margin: 5px 0;
         }
+
         @media print {
+            * {
+                font-size: 12px;
+                font-family: Arial, sans-serif;
+            }
+
+            strong {
+                text-decoration: none;
+            }
+
             #print-btn,
             #message-success {
                 display: none;
             }
+
             header, footer {
                 display: none;
             }
+
             p {
                 margin-bottom: 5px;
-            }
-            * {
-                font-size: 12px;
             }
         }
     </style>
     <div class="container" style="max-width: 1000px; margin: 2rem auto">
-        <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark" id="message-success">Вашата
+        <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark"
+            id="message-success">Вашата
             поръчка е изпратена успешно!</h1>
         <h1 class="text-center text-xl font-bold uppercase my-3">ЗАЯВКА ЗА СРЕДСТВА ЗА ПЪРВОНАЧАЛНА ИДЕНТИФИКАЦИЯ</h1>
         <h3 class="text-center text-md font-bold uppercase my-3">
@@ -51,6 +64,7 @@
                 <p>*Име, фамилия на ветеринарния лекар
                     <strong>{{$data['vet']}}</strong>
                 </p>
+
             </div>
             <div>
                 <p>*Област:

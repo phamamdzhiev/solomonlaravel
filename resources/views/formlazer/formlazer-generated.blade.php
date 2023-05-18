@@ -30,6 +30,15 @@
         }
 
         @media print {
+            * {
+                font-weight: bold !important;
+                font-size: 12px;
+            }
+
+            strong {
+                text-decoration: none;
+            }
+
             #print-btn,
             #message-success {
                 display: none;
@@ -50,7 +59,8 @@
                            name="odbh" readonly>
                 </div>
             </div>
-            <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark" id="message-success">Вашата
+            <h1 class="text-center text-2xl font-bold uppercase my-3 text-[#fff] rounded bg-main-green-dark"
+                id="message-success">Вашата
                 поръчка е изпратена успешно!</h1>
             <h1 class="text-center text-xl font-bold uppercase my-3">ЗАЯВКА ЗА ЛАЗЕРНО НАДПИСВАНЕ НА МАРКИ</h1>
             <h3 class="text-center text-md font-bold uppercase my-3">
@@ -108,7 +118,7 @@
                 <table class="-spacing-0.5 text-center w-full" id="formlazer">
                     <thead>
                     <tr>
-                        <th>BG код</th>
+                        <th>Код</th>
                         <th>Номер на марка</th>
                         <th>Римска цифра - пор.№ на заместваща марка</th>
                     </tr>

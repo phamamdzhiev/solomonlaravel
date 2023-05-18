@@ -26,7 +26,7 @@
     <table style="text-align: center">
         <thead>
         <tr>
-            <th>BG код</th>
+            <th>Код</th>
             <th>Номер на марка</th>
             <th>Римска цифра - пор.№ на заместваща марка</th>
         </tr>

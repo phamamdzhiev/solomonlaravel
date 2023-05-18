@@ -45,18 +45,52 @@ class IndexController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'mobile' => 'required|numeric',
+            'mobile' => 'required',
             'email' => 'required|email',
-            'message' => 'required',
+            'message' => 'required|max:500',
+        ], [
+            'name.required' => 'Името е задължително!',
+            'mobile.required' => 'Телефонът е задължителен!',
+            'email.required' => 'Имейлът е задължителен!',
+            'email.email' => 'Имейлът не е валиден!',
+            'message.max' => 'Съобщението не трябва да бъде по-дълго от :max символа!',
+            'message.required' => 'Съобщението е задължително!'
         ]);
 
         try {
-            Messages::create([
+            $m = Messages::create([
                 'name' => $request->input('name'),
                 'mobile' => $request->input('mobile'),
                 'email' => $request->input('email'),
                 'message' => $request->input('message')
             ]);
+
+            $message = sprintf(
+                'Ново запитване от %s. Съобщение: %s. ДАННИ ЗА ОБРАТНА ВРЪЗКА: тел - %s, имейл - %s',
+                $m->name,
+                $m->message,
+                $m->mobile,
+                $m->email,
+            );
+
+            try {
+                if (app()->environment('production')) {
+                    Mail::raw($message, function ($email) use ($m) {
+                        $email->to(env('MAIL_FROM_ADDRESS'))
+                            ->from(env('MAIL_FROM_ADDRESS'), 'Ново запитване')
+                            ->subject($m->name);
+                    });
+                } else {
+                    Mail::raw($message, function ($email) use ($m) {
+                        $email->to(env('TEST_FROM_ADDRESS'))
+                            ->from(env('TEST_FROM_ADDRESS'), 'Ново запитване')
+                            ->subject($m->name);
+                    });
+                }
+            } catch (\Exception $e) {
+                return redirect()->back()->with('status', 'ПРОБЛЕМ ОПИТАЙТЕ ОТНОВО!');
+            }
+
 
             return redirect()->back()->with('status', 'Успешно изпратихте Вашето запитване');
         } catch (\Exception $e) {
