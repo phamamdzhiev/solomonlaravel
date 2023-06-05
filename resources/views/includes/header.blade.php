@@ -39,7 +39,7 @@
                     </li>
                     <li class="uppercase my-4 md:my-0 mx-3 font-semibold">
                         <a class="text-main-orange hover:underline" href="https://www.ssky.bg/"
-                           target="_blank">Почивки</a>
+                           target="_blank">Туризъм</a>
                     </li>
                 </ul>
             </nav>
