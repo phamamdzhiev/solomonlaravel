@@ -79,6 +79,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/animal/update/{id}', [\App\Http\Controllers\AnimalController::class, 'update'])->name('app_admin_animal_update');
     Route::post('/animal/delete/{id}', [\App\Http\Controllers\AnimalController::class, 'destroy'])->name('app_admin_delete_update');
 
+    //statistics
+    Route::get('/statistics', [\App\Http\Controllers\StatisticsController::class, 'index'])->name('admin.statistics.index');
+    Route::get('/statistics/week', [\App\Http\Controllers\StatisticsController::class, 'week'])->name('admin.statistics.week');
+    Route::get('/statistics/month', [\App\Http\Controllers\StatisticsController::class, 'month'])->name('admin.statistics.month');
+
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
