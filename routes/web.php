@@ -104,7 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 });
 
 //Quality
-Route::resource('admin-quality', \App\Http\Controllers\QualityController::class);
+Route::resource('admin-quality', \App\Http\Controllers\QualityController::class)->middleware('auth');
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])

@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label class="mb-1 font-semibold inline-block" for="image">Снимка</label>
-                <input class="border border-black w-full rounded p-3" type="file" accept="image/*" name="image" id="image" required />
+                <input class="border border-black w-full rounded p-3" type="file" accept="image/*" name="image" id="image" />
             </div>
             <button class="bg-main-green hover:bg-blue-700 font-semibold py-2 px-4 rounded-full mt-3" type="submit">
                 Запис

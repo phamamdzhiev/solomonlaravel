@@ -35,8 +35,12 @@
                 @foreach($qualities as $quality)
                     <tr class="hover:bg-gray-200">
                         <td class="border-b border-gray-800 py-1">
-                            <img width="100" class="mx-auto" src="{{asset('storage/qualities/' . $quality->image)}}"
-                                 alt="{{$quality->title}}">
+                            @isset($quality->image)
+                                <img width="100" class="mx-auto" src="{{asset('storage/qualities/' . $quality->image)}}"
+                                     alt="{{$quality->title}}">
+                            @else
+                                <p>Няма снимка</p>
+                            @endisset
                         </td>
                         <td class="border-b border-gray-800 py-1">
                             {{$quality->title}}
