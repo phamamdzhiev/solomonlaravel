@@ -12,6 +12,10 @@ class PageController extends Controller
     const ABOUT_US = 2;
     const INTRO = 3;
     const QUALITY = 4;
+    const EMAIL = 5;
+    const MOBILE = 6;
+    const ADDRESS = 7;
+    const COMPANY = 8;
 
     /**
      * Display a listing of the resource.
@@ -84,7 +88,7 @@ class PageController extends Controller
                 $pageContent->content = $request->input('page_content');
                 try {
                     $pageContent->save();
-                }catch (\Exception $e) {
+                } catch (\Exception $e) {
                     dd($e->getMessage());
                 }
             }

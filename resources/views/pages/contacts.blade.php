@@ -1,7 +1,7 @@
 @extends('welcome')
 
 @section('body')
-    @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
+    @include('includes.banners', ['banner' => 'https://solomonsofia.com/kleshti.png'])
     @include('includes.flash-message');
     @if(session('status'))
         <div class="text-2xl text-[#fff] font-bold mx-auto py-3 my-6 text-center rounded bg-main-green-dark">
@@ -48,16 +48,21 @@
         </div>
         <ul class="flex flex-col md:flex-row w-full justify-between my-10">
             <li class="font-semibold my-4 md:my-0">
-                <span class="block">Соломон-София ЕООД</span>
-                <span class="block">София 1202 България</span>
+                <span
+                    class="block">{!! \App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::COMPANY)->first()->content !!}</span>
+                {{--                <span class="block">Соломон-София ЕООД</span>--}}
+                {{--                <span class="block">София 1202 България</span>--}}
             </li>
             <li class="font-semibold my-4 md:my-0">
-                <span class="block">ул. Княз Борис I 196, магазин 1</span>
-                <span class="block">тел.: 0899 811 758</span>
+                <span
+                    class="block"> {!! strip_tags(App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::ADDRESS)->first()->content) !!}</span>
+                <span
+                    class="block">тел.:  {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()->content) !!}</span>
             </li>
             <li class="font-semibold my-4 md:my-0">
-                <span class="block">E-mail:</span>
-                <span class="block">solomonsofia@abv.bg</span>
+                <span class="block">Имейл:</span>
+                <span
+                    class="block"> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()->content) !!}</span>
             </li>
         </ul>
         <div class="flex flex-col items-center md:flex-row">
@@ -70,11 +75,11 @@
                     tabindex="0"
                 >
                 </iframe>
-{{--                <iframe--}}
-{{--                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.888945175284!2d23.319585112123605!3d42.706072213050284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa856b3e58f377%3A0x8b3c7a6790df858e!2z0KPRiNC90Lgg0LzQsNGA0LrQuCAtINCh0L7Qu9C-0LzQvtC9INCh0L7RhNC40Y8!5e0!3m2!1sbg!2sbg!4v1684410046942!5m2!1sbg!2sbg"--}}
-{{--                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"--}}
-{{--                    referrerpolicy="no-referrer-when-downgrade">--}}
-{{--                </iframe>--}}
+                {{--                <iframe--}}
+                {{--                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2931.888945175284!2d23.319585112123605!3d42.706072213050284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa856b3e58f377%3A0x8b3c7a6790df858e!2z0KPRiNC90Lgg0LzQsNGA0LrQuCAtINCh0L7Qu9C-0LzQvtC9INCh0L7RhNC40Y8!5e0!3m2!1sbg!2sbg!4v1684410046942!5m2!1sbg!2sbg"--}}
+                {{--                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"--}}
+                {{--                    referrerpolicy="no-referrer-when-downgrade">--}}
+                {{--                </iframe>--}}
             </div>
         </div>
     </div>
