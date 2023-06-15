@@ -44,8 +44,10 @@
         <div>
             @foreach($qualities as $quality)
                 <div class="mb-6">
-                    <img width="180" class="mb-3" src="{{asset('storage/qualities/' . $quality->image)}}"
-                         alt="{{$quality->title}}"/>
+                    @isset($quality->image)
+                        <img width="180" class="mb-3" src="{{asset('storage/qualities/' . $quality->image)}}"
+                             alt="{{$quality->title}}"/>
+                    @endisset
                     <h2 class="text-main-green-dark font-semibold text-xl mb-3">{{$quality->title}}</h2>
                     {!! $quality->description !!}
                 </div>
