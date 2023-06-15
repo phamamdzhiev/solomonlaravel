@@ -5,7 +5,7 @@
 @section('body')
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     <div class="container min-h-[100vh]">
-        <a href="{{route('app_admin_pages')}}"
+        <a href="{{route('app_admin')}}"
            class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
             Назад
         </a>
@@ -21,7 +21,7 @@
             <div class="mb-3">
                 <label class="mb-1 font-semibold inline-block" for="description">Описание (макс: 5000 символа)</label>
                 <textarea class="border border-black w-full rounded p-3" name="description" id="description" rows="5"
-                          required>{{$quality->description}}</textarea>
+                          required>{!! $quality->description !!}</textarea>
             </div>
             <div class="mb-3">
                 <label class="mb-1 font-semibold inline-block" for="position">Позиция</label>
@@ -43,6 +43,6 @@
         </form>
     </div>
     <script>
-        CKEDITOR.replace('page_content');
+        CKEDITOR.replace('description');
     </script>
 @endsection

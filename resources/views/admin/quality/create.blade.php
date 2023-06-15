@@ -5,7 +5,7 @@
 @section('body')
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
     <div class="container min-h-[100vh]">
-        <a href="{{route('app_admin_pages')}}"
+        <a href="{{route('app_admin')}}"
            class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
             Назад
         </a>
@@ -34,6 +34,6 @@
         </form>
     </div>
     <script>
-        CKEDITOR.replace('page_content');
+        CKEDITOR.replace('description');
     </script>
 @endsection

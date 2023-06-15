@@ -47,7 +47,7 @@
                     <img width="180" class="mb-3" src="{{asset('storage/qualities/' . $quality->image)}}"
                          alt="{{$quality->title}}"/>
                     <h2 class="text-main-green-dark font-semibold text-xl mb-3">{{$quality->title}}</h2>
-                    <p>{{$quality->description}}</p>
+                    {!! $quality->description !!}
                 </div>
             @endforeach
         </div>
