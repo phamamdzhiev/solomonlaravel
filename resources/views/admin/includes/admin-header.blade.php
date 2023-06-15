@@ -22,6 +22,10 @@
    class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
     Статистика
 </a>
+<a href="{{route('admin-quality.index')}}"
+   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+    стр. "Качество"
+</a>
 <form action="{{route('logout')}}" method="post" class="inline-block">
     @csrf
     <button type="submit"

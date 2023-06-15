@@ -41,6 +41,16 @@
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/kleshti.png'])
     <div class="container my-10 max-w-[900px] w-full">
         <h1 class="text-4xl font-semibold mb-10 text-main-green-dark">Ушни марки</h1>
+        <div>
+            @foreach($qualities as $quality)
+                <div class="mb-6">
+                    <img width="180" class="mb-3" src="{{asset('storage/qualities/' . $quality->image)}}"
+                         alt="{{$quality->title}}"/>
+                    <h2 class="text-main-green-dark font-semibold text-xl mb-3">{{$quality->title}}</h2>
+                    <p>{{$quality->description}}</p>
+                </div>
+            @endforeach
+        </div>
         <div id="css-quality-content">
             {!! \App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::QUALITY)->first()?->content !!}
         </div>

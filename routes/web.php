@@ -21,7 +21,8 @@ Route::post('/order/send', [\App\Http\Controllers\IndexController::class, 'store
 
 //NO CONTROLLER ROUTES
 Route::get('/quality', function () {
-    return view('pages.quality');
+    $qualities = \App\Models\Quality::all()->sortBy('position');
+    return view('pages.quality', compact('qualities'));
 })->name('app_quality');
 Route::get('/about', function () {
     return view('pages.about');
@@ -74,36 +75,40 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     //animals
     Route::get('/animals', [\App\Http\Controllers\AnimalController::class, 'index'])->name('app_admin_animals');
-    Route::get('/animal/edit/{id}', [\App\Http\Controllers\AnimalController::class, 'edit'])->name('app_admin_animal_edit');
-    Route::post('/animal/store', [\App\Http\Controllers\AnimalController::class, 'store'])->name('app_admin_animal_store');
-    Route::post('/animal/update/{id}', [\App\Http\Controllers\AnimalController::class, 'update'])->name('app_admin_animal_update');
-    Route::post('/animal/delete/{id}', [\App\Http\Controllers\AnimalController::class, 'destroy'])->name('app_admin_delete_update');
+    Route::get('/animal/edit/{id}', [\App\Http\Controllers\AnimalController::class, 'edit'])->name(
+        'app_admin_animal_edit'
+    );
+    Route::post('/animal/store', [\App\Http\Controllers\AnimalController::class, 'store'])->name(
+        'app_admin_animal_store'
+    );
+    Route::post('/animal/update/{id}', [\App\Http\Controllers\AnimalController::class, 'update'])->name(
+        'app_admin_animal_update'
+    );
+    Route::post('/animal/delete/{id}', [\App\Http\Controllers\AnimalController::class, 'destroy'])->name(
+        'app_admin_delete_update'
+    );
 
     //statistics
-    Route::get('/statistics', [\App\Http\Controllers\StatisticsController::class, 'index'])->name('admin.statistics.index');
-    Route::get('/statistics/week', [\App\Http\Controllers\StatisticsController::class, 'week'])->name('admin.statistics.week');
-    Route::get('/statistics/month', [\App\Http\Controllers\StatisticsController::class, 'month'])->name('admin.statistics.month');
+    Route::get('/statistics', [\App\Http\Controllers\StatisticsController::class, 'index'])->name(
+        'admin.statistics.index'
+    );
+    Route::get('/statistics/week', [\App\Http\Controllers\StatisticsController::class, 'week'])->name(
+        'admin.statistics.week'
+    );
+    Route::get('/statistics/month', [\App\Http\Controllers\StatisticsController::class, 'month'])->name(
+        'admin.statistics.month'
+    );
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
 
-Route::middleware('guest')->group(function () {
-//    Route::get('register', [RegisteredUserController::class, 'create'])
-//                ->name('register');
+//Quality
+Route::resource('admin-quality', \App\Http\Controllers\QualityController::class);
 
-//    Route::post('register', [RegisteredUserController::class, 'store']);
+Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store'])->name('app_login_post');
 });
-
-
-//Route::get('/mails', function() {
-//    return view('mailables.formlazer');
-//});
-//
-//Route::get('/mails2', function() {
-//    return view('mailables.formorder');
-//});
