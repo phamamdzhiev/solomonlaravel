@@ -52,7 +52,7 @@ class OfficeController extends Controller
                 $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileNameToStore = $filename . '_' . time() . '.' . $ext;
-                $request->file('image')->storeAs('public/assets/office', $fileNameToStore);
+                $request->file('image')->storeAs('public/office', $fileNameToStore);
                 $office->image = $fileNameToStore;
             }
 
@@ -64,7 +64,6 @@ class OfficeController extends Controller
 
             return redirect()->route('office.index')->with('message', 'Успешно добавихте офис!');
         } catch (\Throwable $e) {
-            dd($e->getMessage());
             return redirect()->route('office.index')->with('message', 'Има проблем опитайте отново!');
         }
     }
@@ -116,7 +115,7 @@ class OfficeController extends Controller
                 $filename = pathinfo($fileWithExt, PATHINFO_FILENAME);
                 $ext = $request->file('image')->getClientOriginalExtension();
                 $fileNameToStore = $filename . '_' . time() . '.' . $ext;
-                $request->file('image')->storeAs('public/assets/office', $fileNameToStore);
+                $request->file('image')->storeAs('public/office', $fileNameToStore);
                 $office->image = $fileNameToStore;
             }
 
@@ -143,7 +142,7 @@ class OfficeController extends Controller
         try {
             $office = Office::findOrFail($id);
 
-            $imagePath = '/public/assets/office/' . $office->image;
+            $imagePath = '/public/office/' . $office->image;
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
@@ -164,7 +163,7 @@ class OfficeController extends Controller
             $office->image = null;
             $office->save();
 
-            $imagePath = '/public/assets/office/' . $office->image;
+            $imagePath = '/public/office/' . $office->image;
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
