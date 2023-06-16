@@ -28,7 +28,7 @@
                             <tr>
                                 <td>
                                     @isset($office->image)
-                                        <img width="200" src="{{asset('storage/assets/office/' . $office->image)}}"
+                                        <img width="200" src="{{asset('storage/office/' . $office->image)}}"
                                              alt="Office Image" class="mx-auto"/>
                                     @else
                                         Няма снимка

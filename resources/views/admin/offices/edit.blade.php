@@ -28,7 +28,7 @@
         </form>
         @isset($office->image)
             <div class="my-5">
-                <img width="500" src="{{asset('storage/assets/office/' . $office->image)}}" alt="Office Image">
+                <img width="500" src="{{asset('storage/office/' . $office->image)}}" alt="Office Image">
             </div>
             <form method="post" class="my-4" action="{{route('office.delete.image', ['id' => $office->id])}}">
                 @method('DELETE')

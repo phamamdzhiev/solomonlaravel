@@ -86,7 +86,7 @@
                         @isset($office->image)
                             <div class="office-img-wrapper">
                                 <img class="w-full md:w-[450px]"
-                                     src="{{asset('storage/assets/office/' . $office->image)}}"
+                                     src="{{asset('storage/office/' . $office->image)}}"
                                      alt="Снимка на офис"
                                 />
                             </div>
