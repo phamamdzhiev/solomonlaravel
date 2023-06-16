@@ -10,6 +10,16 @@
         .office-info iframe {
             width: 100% !important;
         }
+
+        .office-info img {
+            width: 450px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .office-info img {
+                width: 100%;
+            }
+        }
     </style>
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/kleshti.png'])
     @include('includes.flash-message');
@@ -81,12 +91,11 @@
                     <div class="office-desc mb-3">
                         {!! $office->description !!}
                     </div>
-                    <div class="office-info flex gap-3 flex-col md:flex-row">
+                    <div class="office-info flex gap-3 flex-col md:flex-row" style="gap: 12px;">
                         {{--            image--}}
                         @isset($office->image)
                             <div class="office-img-wrapper">
-                                <img class="w-full md:w-[450px]"
-                                     src="{{asset('storage/office/' . $office->image)}}"
+                                <img src="{{asset('storage/office/' . $office->image)}}"
                                      alt="Снимка на офис"
                                 />
                             </div>
