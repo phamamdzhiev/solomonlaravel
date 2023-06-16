@@ -2,14 +2,14 @@
    class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
     Довави продукт
 </a>
-<a href="{{route('app_orders')}}"
-   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
-    Поръчки
-</a>
-<a href="{{route('app_admin_formlazers')}}"
-   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
-    Лазерно надписване
-</a>
+{{--<a href="{{route('app_orders')}}"--}}
+{{--   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">--}}
+{{--    Поръчки--}}
+{{--</a>--}}
+{{--<a href="{{route('app_admin_formlazers')}}"--}}
+{{--   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">--}}
+{{--    Лазерно надписване--}}
+{{--</a>--}}
 <a href="{{route('app_admin_pages')}}"
    class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
     Страници
@@ -25,6 +25,10 @@
 <a href="{{route('admin-quality.index')}}"
    class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
     стр. "Качество"
+</a>
+<a href="{{route('office.index')}}"
+   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+    Офиси
 </a>
 <form action="{{route('logout')}}" method="post" class="inline-block">
     @csrf

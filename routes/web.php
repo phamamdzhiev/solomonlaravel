@@ -104,7 +104,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 });
 
 //Quality
-Route::resource('admin-quality', \App\Http\Controllers\QualityController::class)->middleware('auth');
+Route::resource('admin-quality', \App\Http\Controllers\QualityController::class)
+    ->middleware('auth');
+
+Route::resource('office', \App\Http\Controllers\OfficeController::class)
+    ->middleware('auth');
+
+//delete only image for office
+Route::delete('/office/{id}/delete/image', [\App\Http\Controllers\OfficeController::class, 'deleteImage'])
+    ->middleware('auth')
+    ->name('office.delete.image');
+
 
 Route::middleware('guest')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
