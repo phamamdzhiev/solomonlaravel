@@ -99,9 +99,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         'admin.statistics.month'
     );
 
+    //HTML to PDF
+
+
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+Route::get('/html-to-pdf', [\App\Http\Controllers\HTMLToPDFController::class, 'index']);
 
 //Quality
 Route::resource('admin-quality', \App\Http\Controllers\QualityController::class)
