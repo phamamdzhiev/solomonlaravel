@@ -1,0 +1,95 @@
+@extends('welcome')
+
+@section('title', 'Админ Панел | Животновъдни обекти')
+
+@section('body')
+    @if ($errors->any())
+        <p class="p-3 text-center bg-red-500 rounded-md font-semibold text-xl text-white">{{$errors->first()}}</p>
+    @endif
+    <div class="container">
+        <a href="{{route('app_admin')}}"
+           class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+            Назад
+        </a>
+        <a href="{{route('animal-farms.create')}}"
+           class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+            Добавяне на нов
+        </a>
+        <div class="mb-6">
+            <h1 class="font-bold text-2xl mb-4">Обекти</h1>
+            <form action="{{route('generate.letterhead')}}" method="get">
+                @csrf
+                <table class="min-w-full text-center">
+                    <thead>
+                    <tr>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                            Жив. обект №
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                            Име
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                            Регион
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                            Град
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                            Ветеринар
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($animalFarms as $farm)
+                        <tr class="hover:bg-gray-200">
+                            <td class="border-b border-gray-800 py-1">
+                                <input type="checkbox" id="farm_{{ $farm->id }}" name="farm_ids[]"
+                                       value="{{ $farm->id }}">
+                            </td>
+                            <td class="border-b border-gray-800 py-1">
+                                <label for="farm_{{ $farm->id }}">{{$farm->farm_number}}</label>
+                            </td>
+                            <td class="border-b border-gray-800 py-1">
+                                {{$farm->owner}}
+                            </td>
+                            <td class="border-b border-gray-800 py-1">
+                                {{$farm->region}}
+                            </td>
+                            <td class="border-b border-gray-800 py-1">
+                                {{$farm->city}}
+                            </td>
+                            <td class="border-b border-gray-800 py-1">
+                                {{$farm->vet}}
+                            </td>
+                            <td class="border-b border-gray-800 py-1">
+                                <a class="font-semibold text-green-500"
+                                   href="{{route('animal-farms.edit', $farm->id)}}">Редактиране</a>
+                                <br/>
+                                <form
+                                    id="deleteForm"
+                                    onsubmit="return window.confirm('Сигурни ли сте, че искате да изтриете този запис?');"
+                                    action="{{route('animal-farms.destroy', $farm->id)}}" method="post">
+
+                                    @csrf
+                                    @method('DELETE')
+                                    <button form="deleteForm" type="submit" class="font-semibold text-red-500">
+                                        Изтриване
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
+                <button class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full" type="submit">
+                    Създай справка
+                </button>
+            </form>
+        </div>
+    </div>
+@endsection

@@ -98,14 +98,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/statistics/month', [\App\Http\Controllers\StatisticsController::class, 'month'])->name(
         'admin.statistics.month'
     );
-
+    //Animal farms
+    Route::resource('animal-farms', \App\Http\Controllers\AnimalFarmController::class);
     //HTML to PDF
+    Route::get('generate-letterhead', [\App\Http\Controllers\HTMLToPDFController::class, 'index'])->name(
+        'generate.letterhead'
+    );
 
-
+    Route::post('html-to-pdf', [\App\Http\Controllers\HTMLToPDFController::class, 'store'])->name('store.html-to-pdf');
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
-Route::get('/html-to-pdf', [\App\Http\Controllers\HTMLToPDFController::class, 'index']);
 
 //Quality
 Route::resource('admin-quality', \App\Http\Controllers\QualityController::class)

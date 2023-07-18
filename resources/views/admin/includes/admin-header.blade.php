@@ -30,6 +30,10 @@
    class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
     Офиси
 </a>
+<a href="{{route('animal-farms.index')}}"
+   class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
+    Справки ОДБХ
+</a>
 <form action="{{route('logout')}}" method="post" class="inline-block">
     @csrf
     <button type="submit"

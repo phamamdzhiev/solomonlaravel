@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,8 +18,12 @@
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
-            font-size: 10px;
+            font-size: 9px;
             text-align: center;
+        }
+
+        #subtable, #subtable tr, #subtable td {
+            border: 0;
         }
 
         td {
@@ -35,13 +39,14 @@
 </head>
 
 <body>
-<div>
+<div style="margin-bottom: -25px;">
     <p class="small">Образец ЗХОЖКФ – 182 / Утвърден със Заповед № РД 11-1240 / 19.11.2013 г. на изпълнителния директор
         на БАБХ</p>
-    <h5 style="text-align: right">ДО <br/> ДИРЕКТОРА НА ОДБХ <br/> ГР. СОФИЯ</h5>
+    <h5 style="text-align: right; text-transform: uppercase">ДО <br/> ДИРЕКТОРА НА ОДБХ <br/> ГР. {{$data['region'][0]}}
+    </h5>
 </div>
 <div>
-    <h5 style="text-align: center; margin-bottom: 5px;">СПРАВКА Изх.№ {{ \Illuminate\Support\Str::random(6) }}</h5>
+    <h5 style="text-align: center; margin-bottom: 5px;">СПРАВКА Изх.№ {{ $data['letterhead_number'] }}</h5>
     <div style="font-size: 11px">
         <p>по чл. 13, ал. 2 от Наредба № 6 от 8 октомври 2013 г. за изискванията към средствата за официална
             идентификация
@@ -67,18 +72,35 @@
 </div>
 <div>
     <table>
-        <tr>
+        <tr style="font-size: 9px;">
             <td>№ по ред</td>
-            <td>Лице на което са доставени средствата за официална идентификация, ЕГН (за собственици или посочени от
+            <td>Лице на което са доставени средствата за официална идентификация, ЕГН
+                <span style="font-weight: normal">
+                    (за собственици или посочени от
                 тях ветеринарни лекари, ветеринарни техници или развъдни организации по чл. 8 от Закона за
                 животновъдството)
+                </span>
             </td>
             <td>№ на животно-въдния обект</td>
+            <td>Населено място на животно-въдния обект</td>
             <td>Име и фамилия, ЕГН на ветеринарния лекар, който въвежда данните в Интегрираната информационна система на
                 БАБХ
             </td>
-            <td>От №</td>
-            <td>До №</td>
+            <td colspan="2">
+                <table id="subtable">
+                    <tbody>
+                    <tr style="border-bottom: 1px solid black;">
+                        <td colspan="2">
+                            Доставени идентификационни средства (пълен номер)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border-right: 1px solid black;">От №</td>
+                        <td>До №</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
             <td>Брой</td>
             <td>Дата на доставяне</td>
         </tr>
@@ -91,10 +113,23 @@
             <td>6</td>
             <td>7</td>
             <td>8</td>
+            <td>9</td>
         </tr>
-
+        @foreach($data['farm_ids'] as $key => $farm)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$data['owner'][$key]}}</td>
+                <td>{{$data['farm_number'][$key]}}</td>
+                <td>{{$data['city'][$key] }}</td>
+                <td>{{$data['vet'][$key] }}</td>
+                <td>{{$data['num_from'][$key] }}</td>
+                <td>{{$data['num_to'][$key] }}</td>
+                <td>{{$data['quantity'][$key] }}</td>
+                <td>{{ \Carbon\Carbon::parse($data['date'][$key])->format('d.m.Y')  }}</td>
+            </tr>
+        @endforeach
     </table>
-    <p style="font-style: italic; font-size: 9px; margin-bottom: 0; text-align: right">Забележка: 1. Справката се подава
+    <p style="font-style: italic; font-size: 9px; margin-bottom: -8px; text-align: right">Забележка: 1. Справката се подава
         в електронен формат в срок от 2
         работни дни от доставянето на средствата за официална идентификация;</p>
     <p style="font-style: italic; font-size: 9px; margin-bottom: 0; text-align: right">2. Информацията по колона 3 и 4
@@ -103,7 +138,7 @@
 </div>
 <div class="clearfix" style="font-size: 12px; margin-top: 25px">
     <div style="float: left">
-        <p>гр. София ???</p>
+        <p>гр. София</p>
         <p>Дата: <span style="font-weight: bold">{{  \Illuminate\Support\Carbon::today()->format('d.m.Y') }}</span></p>
     </div>
     <div style="float: right">
@@ -118,7 +153,8 @@
         </div>
     </div>
 </div>
-<p style="font-size: 11px; font-weight: bold; margin-top: 25px">ВАЖНО:Обхвата се намира на склад за търговия на едро с ВМП Соломон-София
+<p style="font-size: 11px; font-weight: bold; margin-top: 25px">ВАЖНО:Обхвата се намира на склад за търговия на едро с
+    ВМП Соломон-София
     ЕООД номер 90 ВетИС</p>
 </body>
 </html>
