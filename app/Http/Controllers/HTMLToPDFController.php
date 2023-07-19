@@ -49,15 +49,12 @@ class HTMLToPDFController extends Controller
             abort(400, 'Data is empty. PDF cannot be generated');
         }
 
-        $public = public_path('storage');
-
         $options = new Options();
         $options->set('isRemoteEnabled', true);
 
         $dompdf = new Dompdf();
         $dompdf->setOptions($options);
         $dompdf->setPaper('A4');
-        $dompdf->getOptions()->setChroot($public);
 
         $html = view('admin.letterhead.letterhead', compact('data'))->render();
 
