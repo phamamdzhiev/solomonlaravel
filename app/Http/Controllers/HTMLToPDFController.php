@@ -23,7 +23,7 @@ class HTMLToPDFController extends Controller
             abort(400, 'Emails are empty');
         }
 
-        $emailArray = explode(';', $emails);
+        $emailArray = explode(',', $emails);
         $emailArray = array_map('trim', $emailArray);
         $emailArray = array_filter($emailArray);
 
