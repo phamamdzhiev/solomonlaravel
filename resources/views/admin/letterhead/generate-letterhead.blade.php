@@ -61,9 +61,8 @@
             <div class="mb-3">
                 <label for="emails" class="block mb-1 font-semibold">Имейли, до които да бъде изпратена</label>
                 <textarea type="textarea" name="emails" id="emails" cols="40" rows="5"></textarea>
-                <p>При изброяване на имейлите ги разделяйте със ','<br/>Пример: test@abv.bg;todor@mail.bg</p>
+                <p>При изброяване на имейл като ги разделяте със запетая<br/>Пример: test@abv.bg,todor@mail.bg</p>
             </div>
-
             <button type="submit" class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
                 Преглед на справката
             </button>
