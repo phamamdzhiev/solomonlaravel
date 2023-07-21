@@ -14,20 +14,7 @@ return new class extends Migration {
     {
         Schema::create('letter_heads', function (Blueprint $table) {
             $table->id();
-            $table->string('letterhead_number');
-            $table->string('num_from');
-            $table->string('num_to');
-            $table->string('quantity');
-            $table->date('date');
-
-            $table->unsignedBigInteger('farm_id');
-
-            $table->foreign('farm_id')
-                ->references('id')
-                ->on('animal_farms')
-                ->onDelete('cascade');
-
-            $table->timestamps();
+            $table->autoIncrementingStartingValues();
         });
     }
 

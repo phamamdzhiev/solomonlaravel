@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AnimalFarm;
 use App\Models\LetterHead;
+use App\Models\LetterHeadsRows;
 use Illuminate\Http\Request;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -11,32 +12,22 @@ use Illuminate\Support\Facades\Mail;
 
 class HTMLToPDFController extends Controller
 {
-    private function generateLetterHeadNumber(): string
+    private function sendLetterHeadToEmail(string $pdf, array|null $data): void
     {
-        $lastFourDigitFromTime = time() % 10000;
-        return rand(1, 9) . $lastFourDigitFromTime . rand(10, 99);
-    }
-
-    private function sendLetterHeadToEmail(string $pdf, string|null $emails): void
-    {
-        if (!$emails) {
-            abort(400, 'Emails are empty');
-        }
-
-        $emailArray = explode(',', $emails);
+        $emailArray = explode(',', $data['emails']);
         $emailArray = array_map('trim', $emailArray);
         $emailArray = array_filter($emailArray);
 
-        if (app()->environment() === 'production') {
+        if (app()->environment() !== 'production') {
             foreach ($emailArray as $email) {
                 Mail::send(
                     'mailables.letterhead-mail',
                     [],
-                    function (\Illuminate\Mail\Message $message) use ($pdf, $email) {
+                    function (\Illuminate\Mail\Message $message) use ($pdf, $email, $data) {
                         $message->to($email)
-                            ->from(config('mail.from.address'), 'Справка')
-                            ->subject('Справка ОДБХ')
-                            ->attachData($pdf, 'spravka.pdf');
+                            ->from(config('mail.from.address'), 'Справка ОДБХ')
+                            ->subject('Справка - Образец 18 - ' . $data['letterhead_number'])
+                            ->attachData($pdf, sprintf('spravka_%s.pdf', $data['letterhead_number']));
                     }
                 );
             }
@@ -65,7 +56,7 @@ class HTMLToPDFController extends Controller
         if ($withEmail) {
             //set pdf to email(s)
             $pdfContents = $dompdf->output(['compress' => 0]);
-            $this->sendLetterHeadToEmail($pdfContents, $data['emails']);
+            $this->sendLetterHeadToEmail($pdfContents, $data);
         }
 
         $dompdf->stream('filename.pdf', ['Attachment' => false]);
@@ -93,21 +84,29 @@ class HTMLToPDFController extends Controller
             'farm_ids.exists' => 'Невалиден обект!'
         ]);
 
-        // set letterhead number
-        $result['letterhead_number'] = $this->generateLetterHeadNumber();
+        $withEmail = $request->query('withEmail') == '1';
+        $result['letterhead_number'] = '0000';
 
         try {
-            foreach ($result['farm_ids'] as $key => $id) {
+            if ($withEmail) {
                 $letterHead = new LetterHead();
-                $letterHead->letterhead_number = $result['letterhead_number'];
-                $letterHead->num_from = $result['num_from'][$key];
-                $letterHead->num_to = $result['num_to'][$key];
-                $letterHead->quantity = $result['quantity'][$key];
-                $letterHead->date = $result['date'][$key];
-                $letterHead->farm_id = $id;
                 $letterHead->save();
+
+                $result['letterhead_number'] = $letterHead->id;
+
+                foreach ($result['farm_ids'] as $key => $id) {
+                    $letterHeadRow = new LetterHeadsRows();
+                    $letterHeadRow->num_from = $result['num_from'][$key];
+                    $letterHeadRow->num_to = $result['num_to'][$key];
+                    $letterHeadRow->quantity = $result['quantity'][$key];
+                    $letterHeadRow->date = $result['date'][$key];
+                    $letterHeadRow->farm_id = $id;
+                    $letterHeadRow->letter_head_id = $letterHead->id;
+                    $letterHeadRow->save();
+                }
             }
-            $this->generatePdf($result, $request->query('withEmail') == '1');
+
+            $this->generatePdf($result, $withEmail);
         } catch (\Throwable $e) {
             throw new \Exception($e->getMessage());
         }
