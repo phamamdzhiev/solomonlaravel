@@ -156,7 +156,7 @@
         </div>
     </div>
 </div>
-<p style="font-size: 11px; font-weight: bold; margin-top: 25px">ВАЖНО:Обхвата се намира на склад за търговия на едро с
+<p style="font-size: 11px; font-weight: bold; margin-top: 25px">ВАЖНО:Обхвата с код 42 и 042 се намира на склад за търговия на едро с
     ВМП Соломон-София
     ЕООД номер 90 ВетИС</p>
 </body>
