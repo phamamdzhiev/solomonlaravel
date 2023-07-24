@@ -15,18 +15,8 @@ class AnimalFarmController extends Controller
      */
     public function index(Request $request)
     {
-        $animalFarms = AnimalFarm::query();
-
-        $searchQuery = $request->input('search');
-
-        if ($searchQuery) {
-            $animalFarms->where('owner', 'LIKE', "%$searchQuery%")
-                ->orWhere('farm_number', 'LIKE', "%$searchQuery%")
-                ->orWhere('vet', 'LIKE', "%$searchQuery%");
-        }
-
         return View::make('admin.animal-farms.index')->with([
-            'animalFarms' => $animalFarms->get()
+            'animalFarms' => AnimalFarm::all()->sortByDesc('id')
         ]);
     }
 

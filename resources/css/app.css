@@ -7,7 +7,7 @@
         overflow: hidden;
     }
     #order-modal-overlay:after {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         inset: 0;
@@ -20,4 +20,16 @@
     .border {
         @apply border-black;
     }
+}
+
+input[id^="farm_"]:checked ~ input[id^="farm_id_quantity"] {
+    opacity: 1;
+    pointer-events: all;
+    border-color: #333;
+}
+
+input[id^="farm_id_quantity"] {
+    opacity: 0.5;
+    pointer-events: none;
+    border-color: #bebebb;
 }

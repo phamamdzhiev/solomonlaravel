@@ -46,7 +46,7 @@
                     <option @selected($animalFarm->region === 'Ямбол') value="Ямбол">Ямбол</option>
                 </select>
             </div>
-            <div class="mb-3"><label class="block mb-1" for="city">Град:</label>
+            <div class="mb-3"><label class="block mb-1" for="city">Населено място:</label>
                 <input class="p-3" type="text" name="city" value="{{$animalFarm->city}}" required></div>
             <div class="mb-3">
                 <label class="block mb-1" for="vet">Вет. лекар (Име, Егн или/и Двете):</label>

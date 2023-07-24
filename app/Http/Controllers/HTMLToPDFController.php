@@ -18,7 +18,7 @@ class HTMLToPDFController extends Controller
         $emailArray = array_map('trim', $emailArray);
         $emailArray = array_filter($emailArray);
 
-        if (app()->environment() !== 'production') {
+        if (app()->environment() === 'production') {
             foreach ($emailArray as $email) {
                 Mail::send(
                     'mailables.letterhead-mail',
@@ -83,7 +83,7 @@ class HTMLToPDFController extends Controller
             'farm_ids.required' => 'Моля изберете поне един обект!',
             'farm_ids.exists' => 'Невалиден обект!'
         ]);
-
+        
         $withEmail = $request->query('withEmail') == '1';
         $result['letterhead_number'] = '0000';
 
@@ -116,6 +116,7 @@ class HTMLToPDFController extends Controller
     {
         $request->validate([
             'farm_ids' => 'required|exists:animal_farms,id',
+            'farm_id_quantity' => 'required'
         ], [
             'farm_ids.required' => 'Моля изберете поне един обект!',
             'farm_ids.exists' => 'Невалиден обект!'
@@ -124,10 +125,24 @@ class HTMLToPDFController extends Controller
         $itemIds = $request->input('farm_ids');
         $selectedAnimalFarms = AnimalFarm::whereIn('id', $itemIds)->get();
 
-        if ($selectedAnimalFarms->count() === 0) {
+        if ($selectedAnimalFarms->count() == 0) {
             abort(404);
         }
+        
+        $farm_id_quantity = $request->input('farm_id_quantity');
 
-        return view('admin.letterhead.generate-letterhead', compact('selectedAnimalFarms'));
+        $duplicatedAnimalFarms = collect();
+
+        foreach ($selectedAnimalFarms as $animalFarm) {
+            $quantity = $farm_id_quantity[$animalFarm->id] ?? 1;
+            
+            for ($i = 0; $i < $quantity; $i++) {
+                $duplicatedAnimalFarms->push($animalFarm);
+            }
+        }
+
+        return view('admin.letterhead.generate-letterhead')->with([
+            'selectedAnimalFarms' => $duplicatedAnimalFarms
+        ]);
     }
 }
