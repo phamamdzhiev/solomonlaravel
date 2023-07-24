@@ -14,12 +14,12 @@ class HTMLToPDFController extends Controller
 {
     private function sendLetterHeadToEmail(string $pdf, array|null $data): void
     {
-        $emailArray = explode(',', $data['emails']);
-        $emailArray = array_map('trim', $emailArray);
-        $emailArray = array_filter($emailArray);
+        if (!array_key_exists('emails', $data)) {
+            abort(400, "Не сте посочили имейли");
+        }
 
         if (app()->environment() === 'production') {
-            foreach ($emailArray as $email) {
+            foreach ($data['emails'] as $email) {
                 Mail::send(
                     'mailables.letterhead-mail',
                     [],
@@ -108,7 +108,7 @@ class HTMLToPDFController extends Controller
 
             $this->generatePdf($result, $withEmail);
         } catch (\Throwable $e) {
-            throw new \Exception($e->getMessage());
+            return back()->with('error', $e->getMessage());
         }
     }
 

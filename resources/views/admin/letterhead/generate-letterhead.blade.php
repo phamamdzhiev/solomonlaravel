@@ -2,6 +2,11 @@
 
 @section('title', 'Админ Панел | Създаване на справка')
 
+@push('head')
+    <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
+    <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet" />
+@endpush
+
 @section('body')
     <style>
         [readonly] {
@@ -15,6 +20,12 @@
         @endphp
         @if ($regions->count() > 1)
             <p class="text-red-500 text-center mb-6 font-semibold text-xl">Има различни региони!</p>
+        @endif
+
+        @if (session()->has('error'))
+            <p class="p-3 text-center bg-red-500 rounded-md font-semibold text-xl text-white">
+                {{ session()->get('error') }}
+            </p>
         @endif
 
         @if ($errors->any())
@@ -68,9 +79,19 @@
             </div>
 
             <div class="mb-3">
-                <label for="emails" class="block mb-1 font-semibold">Имейли, до които да бъде изпратена</label>
-                <textarea type="textarea" name="emails" id="emails" cols="40" rows="5"></textarea>
-                <p>При изброяване на имейлите ги разделяйте със запетая<br />Пример: test@abv.bg,todor@mail.bg</p>
+                <label for="regions_with_emails" class="block mb-1 font-semibold">Имейли, до които да бъде изпратена</label>
+                <select name="emails[]" id="regions_with_emails" multiple>
+                    @php
+                        $regions = \App\Models\Region::with('emails')->get();
+                    @endphp
+                    @foreach ($regions as $region)
+                        <optgroup label="{{ $region->name }}">
+                            @foreach ($region->emails as $email)
+                                <option value="{{ $email->email }}">{{ $email->email }}</option>
+                            @endforeach
+                        </optgroup>
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full">
                 Преглед на справката
@@ -87,6 +108,16 @@
     </div>
 
     <script>
+        new SlimSelect({
+            select: '#regions_with_emails',
+            settings: {
+                searchText: 'Няма резултати...',
+                searchPlaceholder: 'Търси имейл...',
+                placeholder: 'Търсене на имейл',
+                allowDeselect: true
+            }
+        })
+
         function submitForm() {
             var form = document.getElementById('myForm');
             var formData = new FormData(form);
