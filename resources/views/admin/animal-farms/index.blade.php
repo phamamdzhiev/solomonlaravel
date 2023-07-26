@@ -18,7 +18,7 @@
             <h1 class="font-bold text-2xl mb-4">Обекти</h1>
             <input id="js-animal-farm-search" type="text" class="p-3"
                 style="width: 100%; max-width: 350px; border: 1px solid #333" name="search"
-                placeholder="Търси по Жив.обект №" required />
+                placeholder="Търси по име..." required />
             <form target="_blank" action="{{ route('generate.letterhead') }}" method="get">
                 @csrf
                 <div class="overflow-x-auto">
@@ -57,10 +57,10 @@
                                             class="p-1 border text-center" style="width:40px;" />
                                     </td>
                                     <td class="border-b border-gray-800 py-1">
-                                        <label class="js-farm-number" data-farm-number={{ $farm->farm_number }}
-                                            for="farm_{{ $farm->id }}">{{ $farm->farm_number }}</label>
+                                        <label for="farm_{{ $farm->id }}">{{ $farm->farm_number }}</label>
                                     </td>
-                                    <td class="border-b border-gray-800 py-1">
+                                    <td data-farm-number={{ $farm->owner }}
+                                        class="js-farm-number border-b border-gray-800 py-1">
                                         {{ $farm->owner }}
                                     </td>
                                     <td class="border-b border-gray-800 py-1">
@@ -110,7 +110,7 @@
             var searchQuery = e.target.value;
 
             for (var i = 0; i < farmNumberNodes.length; i++) {
-                var parent = farmNumberNodes[i].parentNode.parentNode;
+                var parent = farmNumberNodes[i].parentNode;
 
                 parent.style.display = "none";
 

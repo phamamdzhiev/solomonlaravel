@@ -26,7 +26,7 @@ class HTMLToPDFController extends Controller
                     function (\Illuminate\Mail\Message $message) use ($pdf, $email, $data) {
                         $message->to($email)
                             ->from(config('mail.from.address'), 'Справка ОДБХ')
-                            ->subject('Справка - Образец 18 - ' . $data['letterhead_number'])
+                            ->subject('Справка - Образец 182 - ' . $data['letterhead_number'])
                             ->attachData($pdf, sprintf('spravka_%s.pdf', $data['letterhead_number']));
                     }
                 );
