@@ -17,8 +17,8 @@
         <div class="mb-6">
             <h1 class="font-bold text-2xl mb-4">Обекти</h1>
             <input id="js-animal-farm-search" type="text" class="p-3"
-                style="width: 100%; max-width: 350px; border: 1px solid #333" name="search"
-                placeholder="Търси по име..." required />
+                style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по име..."
+                required />
             <form target="_blank" action="{{ route('generate.letterhead') }}" method="get">
                 @csrf
                 <div class="overflow-x-auto">
@@ -114,7 +114,8 @@
 
                 parent.style.display = "none";
 
-                if (farmNumberNodes[i].getAttribute('data-farm-number').indexOf(searchQuery) > -1) {
+                if (farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase().indexOf(searchQuery.toLowerCase()) > -
+                    1) {
                     parent.style.display = "table-row";
                 }
             }
