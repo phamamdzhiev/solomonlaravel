@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\RegionEmailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -106,6 +107,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     );
 
     Route::post('html-to-pdf', [\App\Http\Controllers\HTMLToPDFController::class, 'store'])->name('store.html-to-pdf');
+
+    //region emails
+    Route::resource('region-email', \App\Http\Controllers\RegionEmailController::class);
+
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
