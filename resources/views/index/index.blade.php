@@ -76,6 +76,7 @@
                         <div class="body">
                             <form action="{{route('app_order_post')}}" method="post">
                                 @csrf
+                                @honeypot
                                 <input type="hidden" name="product_name" value="{{$product->name}}">
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <div class="flex justify-between md:flex-row flex-col">
