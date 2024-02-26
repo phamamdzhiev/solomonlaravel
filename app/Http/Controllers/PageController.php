@@ -16,6 +16,7 @@ class PageController extends Controller
     const MOBILE = 6;
     const ADDRESS = 7;
     const COMPANY = 8;
+    const GREEN_LINE = 9;
 
     /**
      * Display a listing of the resource.

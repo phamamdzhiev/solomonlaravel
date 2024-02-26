@@ -21,9 +21,14 @@
     <div class="text-center text-xl max-w-[500px] mx-auto my-10 px-3">
         {!! \App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::HOME)->first()?->content !!}
     </div>
-    <div class="bg-main-green-dark p-4 text-center">
+
+    <?php $greenLine = \App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::GREEN_LINE)->first(); ?>
+
+    <div class="bg-main-green-dark p-4 text-center" @if (!$greenLine?->is_active) style="pointer-events: none" @endif>
         <a href="{{ route('app_formlazer') }}">
-            <h2 class="text-xl text-[#fff]">Заявка за лазерно надписване на дубликати >> Доставка от 1 до 3 дни</h2>
+            <h2 class="text-xl text-[#fff]">
+                {!! $greenLine?->content !!}
+            </h2>
         </a>
     </div>
 
