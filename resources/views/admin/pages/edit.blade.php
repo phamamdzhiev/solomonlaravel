@@ -15,7 +15,7 @@
             <textarea name="page_content" rows="20"
                       class="border w-full rounded p-3">{{$page->contents?->content ?? ''}}</textarea>
             <br/>
-            <div>
+            <div @if ($page->id != 9) style="visibility: hidden" @endif>
                 <input id="is_active" name="is_active" type="checkbox" @checked($page->contents?->is_active) />
                 <label for="is_active">Активна?</label>
             </div>
