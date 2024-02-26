@@ -87,6 +87,7 @@ class PageController extends Controller
             $pageContent = $page->contents;
             if ($pageContent) {
                 $pageContent->content = $request->input('page_content');
+                $pageContent->is_active = $request->input('is_active');
                 try {
                     $pageContent->save();
                 } catch (\Exception $e) {
