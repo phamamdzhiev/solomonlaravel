@@ -16,14 +16,13 @@ class FormLazerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Application|Factory|View
      */
     public function index()
     {
         $page = PageContent::findOrFail(PageController::GREEN_LINE);
 
         if (!$page->is_active) {
-            return redirect('/');
+            return to_route('app_index');
         }
 
         return view('formlazer.formlazer');
