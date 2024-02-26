@@ -21,6 +21,7 @@ class FormLazerController extends Controller
     public function index(): View|Factory|Application
     {
         $page = PageContent::findOrFail(PageController::GREEN_LINE);
+        dd($page);
 
         if (null !== $page && $page->is_active === false) {
             return redirect('/');
