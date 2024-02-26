@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\FormLazerMail;
 use App\Models\Formlazer;
+use App\Models\PageContent;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,6 +20,12 @@ class FormLazerController extends Controller
      */
     public function index(): View|Factory|Application
     {
+        $page = PageContent::findOrFail(PageController::GREEN_LINE);
+
+        if (null !== $page && $page->is_active === false) {
+            return redirect('/');
+        }
+
         return view('formlazer.formlazer');
     }
 
