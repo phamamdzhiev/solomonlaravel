@@ -16,7 +16,7 @@
                       class="border w-full rounded p-3">{{$page->contents?->content ?? ''}}</textarea>
             <br/>
             <div>
-                <input id="is_active" name="is_active" type="checkbox" value="{{(bool)$page->contents?->is_active}}"/>
+                <input id="is_active" name="is_active" type="checkbox" @checked($page->contents?->is_active) />
                 <label for="is_active">Активна?</label>
             </div>
             <button class="bg-main-green hover:bg-blue-700 font-semibold py-2 px-4 rounded-full mt-3" type="submit">
