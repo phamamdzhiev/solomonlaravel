@@ -124,7 +124,7 @@ class IndexController extends Controller
         $url = "https://www.google.com/recaptcha/api/siteverify";
 
         $body = [
-            'secret' => '6LfpDJ8pAAAAAFI3Ixyj3F5EfsBFxraO4RnSUJW_',
+            'secret' => config('app.GOOGLE_SECRET_KEY'),
             'response' => $recaptcha_response,
             'remoteip' => IpUtils::anonymize($request->ip()) //anonymize the ip to be GDPR compliant. Otherwise just pass the default ip address
         ];
