@@ -10,6 +10,11 @@
             <h1 class="text-[#fff] font-semibold text-2xl">{{ session('status') }}</h1>
         </div>
     @endif
+    @if (session('error'))
+        <div class="text-center bg-red-500 p-3 mb-6 rounded">
+            <h1 class="text-[#fff] font-semibold text-2xl">{{ session('error') }}</h1>
+        </div>
+    @endif
     <div id="_featured_products" class="max-w-[800px] mx-auto my-8 w-full">
         <div id="_featured_products_heading"
             class="my-10 px-3 text-main-green-dark font-bold md:text-left text-center text-[26px]">
