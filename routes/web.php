@@ -20,7 +20,7 @@ Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('
 Route::get('/product/{id}', [\App\Http\Controllers\IndexController::class, 'showProduct'])->name('app_product');
 Route::post('/messages', [\App\Http\Controllers\IndexController::class, 'storeMessage'])->name('app_message_post');
 Route::post('/order/send', [\App\Http\Controllers\IndexController::class, 'storeOrder'])
-->middleware(ProtectAgainstSpam::class)
+//->middleware(ProtectAgainstSpam::class)
 ->name('app_order_post');
 
 //NO CONTROLLER ROUTES

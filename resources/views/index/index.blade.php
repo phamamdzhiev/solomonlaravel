@@ -3,6 +3,7 @@
 @section('title', 'Начало |')
 
 @section('body')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     @include('includes.banners', ['banner' => 'https://solomonsofia.com/cow.png'])
     @if (session('status'))
         <div class="text-center bg-main-green-dark p-3 mb-6 rounded">
@@ -74,13 +75,14 @@
                     <div id="order-modal"
                         class="w-full max-w-[700px] fixed bg-[#F1F2F2] z-[9000] top-1/2 left-1/2 -translate-x-1/2 p-6 py-3 border shadow-xl rounded-md -translate-y-1/2">
                         <div class="header text-center mb-4">
-                            <h1 class="text-lg font-bold uppercase text-main-green-dark font-light">Поръчка на <strong
+                            <h1 class="text-lg font-bold uppercase text-main-green-dark">Поръчка на <strong
                                     class="font-bold">{{ $product->name }}</strong></h1>
                         </div>
                         <div class="body">
-                            <form action="{{ route('app_order_post') }}" method="post">
+                            <form action="{{ route('app_order_post') }}" method="post" id="js-order-form">
+                                <div class="g-recaptcha" data-sitekey="6LfpDJ8pAAAAABOPQh5CBmwGtddhui5z6XU5_mCT"></div>
                                 @csrf
-                                <x-honeypot />
+{{--                                <x-honeypot />--}}
                                 <input type="hidden" name="product_name" value="{{ $product->name }}">
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                                 <div class="flex justify-between md:flex-row flex-col">
@@ -140,6 +142,19 @@
     </div>
 
     <script>
+        var orderForm = document.getElementById('js-order-form');
+
+        orderForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var recapchaResponse = grecaptcha.getResponse();
+
+            if (!recapchaResponse) {
+                throw new Error('Recaptcha is not valid.');
+            }
+
+            orderForm.submit();
+        });
+
         var modals = document.querySelectorAll('.order-modal-overlay');
         var openModalButtons = document.querySelectorAll('.js-open-modal');
         var closeModalButtons = document.querySelectorAll('.js-close-modal');
