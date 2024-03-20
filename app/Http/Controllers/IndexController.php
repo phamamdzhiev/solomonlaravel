@@ -113,7 +113,6 @@ class IndexController extends Controller
             'product_name' => 'required',
             'product_id' => 'required',
             'message' => 'required',
-            'g-recaptcha-response' => 'required'
         ]);
 
         $recaptcha_response = $request->input('g-recaptcha-response');
