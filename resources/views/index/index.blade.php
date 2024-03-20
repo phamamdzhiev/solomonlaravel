@@ -79,7 +79,7 @@
                                     class="font-bold">{{ $product->name }}</strong></h1>
                         </div>
                         <div class="body">
-                            <form action="{{ route('app_order_post') }}" id="js-order-form" method="post">
+                            <form action="{{ route('app_order_post') }}" method="post">
                                 @csrf
 {{--                                <x-honeypot />--}}
                                 <input type="hidden" name="product_name" value="{{ $product->name }}">
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                                 <div class="g-recaptcha" data-sitekey="6LfpDJ8pAAAAABOPQh5CBmwGtddhui5z6XU5_mCT"></div>
-                                <button id="js-order-submit-button"
+                                <button
                                     class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
                                     ИЗПРАТИ
                                 </button>
@@ -142,21 +142,6 @@
     </div>
 
     <script>
-        var orderFormButton = document.getElementById('js-order-submit-button');
-        var orderForm = document.getElementById('js-order-form');
-
-        orderFormButton.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            var recapchaResponse = grecaptcha.getResponse();
-
-            if (!recapchaResponse) {
-                throw new Error('Recaptcha is not valid.');
-            }
-
-            orderForm.submit();
-        });
-
         var modals = document.querySelectorAll('.order-modal-overlay');
         var openModalButtons = document.querySelectorAll('.js-open-modal');
         var closeModalButtons = document.querySelectorAll('.js-close-modal');

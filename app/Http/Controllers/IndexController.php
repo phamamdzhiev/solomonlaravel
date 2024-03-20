@@ -13,7 +13,9 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\HttpFoundation\IpUtils;
 
 class IndexController extends Controller
 {
@@ -111,21 +113,52 @@ class IndexController extends Controller
             'product_name' => 'required',
             'product_id' => 'required',
             'message' => 'required',
+            'g-recaptcha-response' => 'required'
         ]);
 
-        try {
-            Order::create([
-                'client_name' => $request->input('name'),
-                'client_mobile' => $request->input('mobile'),
-                'client_email' => $request->input('email'),
-                'quantity' => $request->input('quantity'),
-                'product_id' => $request->input('product_id'),
-                'message' => $request->input('message'),
-            ]);
+        $recaptcha_response = $request->input('g-recaptcha-response');
 
-            if (app()->environment('production')) {
-                foreach ([env('MAIL_FROM_ADDRESS'), $request->input('email')] as $mail) {
-                    Mail::to($mail)->send(
+        if (is_null($recaptcha_response)) {
+            return redirect()->back()->with('error', 'Please Complete the Recaptcha to proceed');
+        }
+
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+
+        $body = [
+            'secret' => '6LfpDJ8pAAAAAFI3Ixyj3F5EfsBFxraO4RnSUJW_',
+            'response' => $recaptcha_response,
+            'remoteip' => IpUtils::anonymize($request->ip()) //anonymize the ip to be GDPR compliant. Otherwise just pass the default ip address
+        ];
+
+        $response = Http::asForm()->post($url, $body);
+
+        $result = json_decode($response);
+
+        if ($response->successful() && $result->success == true) {
+            try {
+                Order::create([
+                    'client_name' => $request->input('name'),
+                    'client_mobile' => $request->input('mobile'),
+                    'client_email' => $request->input('email'),
+                    'quantity' => $request->input('quantity'),
+                    'product_id' => $request->input('product_id'),
+                    'message' => $request->input('message'),
+                ]);
+
+                if (app()->environment('production')) {
+                    foreach ([env('MAIL_FROM_ADDRESS'), $request->input('email')] as $mail) {
+                        Mail::to($mail)->send(
+                            new NewOrder(
+                                $request->input('name'),
+                                $request->input('quantity'),
+                                $request->input('mobile'),
+                                $request->input('product_name'),
+                                $request->input('message')
+                            )
+                        );
+                    }
+                } else {
+                    Mail::to(env('TEST_FROM_ADDRESS'))->send(
                         new NewOrder(
                             $request->input('name'),
                             $request->input('quantity'),
@@ -135,21 +168,13 @@ class IndexController extends Controller
                         )
                     );
                 }
-            } else {
-                Mail::to(env('TEST_FROM_ADDRESS'))->send(
-                    new NewOrder(
-                        $request->input('name'),
-                        $request->input('quantity'),
-                        $request->input('mobile'),
-                        $request->input('product_name'),
-                        $request->input('message')
-                    )
-                );
-            }
 
-            return redirect()->back()->with('status', 'Успешно направена поръчка!');
-        } catch (\Exception $e) {
-            throw new Exception($e->getMessage());
+                return redirect()->back()->with('status', 'Успешно направена поръчка!');
+            } catch (\Exception $e) {
+                throw new Exception($e->getMessage());
+            }
         }
+
+        return redirect()->back()->with('error', 'Please Complete the Recaptcha to proceed');
     }
 }
