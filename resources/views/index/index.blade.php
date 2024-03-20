@@ -80,7 +80,6 @@
                         </div>
                         <div class="body">
                             <form action="{{ route('app_order_post') }}" method="post" id="js-order-form">
-                                <div class="g-recaptcha" data-sitekey="6LfpDJ8pAAAAABOPQh5CBmwGtddhui5z6XU5_mCT"></div>
                                 @csrf
 {{--                                <x-honeypot />--}}
                                 <input type="hidden" name="product_name" value="{{ $product->name }}">
@@ -125,6 +124,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="g-recaptcha" data-sitekey="6LfpDJ8pAAAAABOPQh5CBmwGtddhui5z6XU5_mCT"></div>
                                 <button type="submit"
                                     class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
                                     ИЗПРАТИ
