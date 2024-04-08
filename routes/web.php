@@ -105,7 +105,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     //Animal farms
     Route::resource('animal-farms', \App\Http\Controllers\AnimalFarmController::class);
     //HTML to PDF
-    Route::post('generate-letterhead', [\App\Http\Controllers\HTMLToPDFController::class, 'index'])->name(
+    Route::any('generate-letterhead', [\App\Http\Controllers\HTMLToPDFController::class, 'index'])->name(
         'generate.letterhead'
     );
 
