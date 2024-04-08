@@ -19,7 +19,7 @@
             <input id="js-animal-farm-search" type="text" class="p-3"
                 style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по име..."
                 required />
-            <form target="_blank" action="{{ route('generate.letterhead') }}" method="get">
+            <form target="_blank" action="{{ route('generate.letterhead') }}" method="post">
                 @csrf
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-center">
