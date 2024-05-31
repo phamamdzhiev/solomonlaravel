@@ -152,7 +152,8 @@ class IndexController extends Controller
                                 $request->input('quantity'),
                                 $request->input('mobile'),
                                 $request->input('product_name'),
-                                $request->input('message')
+                                $request->input('message'),
+                                $request->input('email')
                             )
                         );
                     }
@@ -163,7 +164,8 @@ class IndexController extends Controller
                             $request->input('quantity'),
                             $request->input('mobile'),
                             $request->input('product_name'),
-                            $request->input('message')
+                            $request->input('message'),
+                            $request->input('email')
                         )
                     );
                 }

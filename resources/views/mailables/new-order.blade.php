@@ -5,6 +5,7 @@
     <ul>
         <li>Име: {{$name}}</li>
         <li>Мобилен: {{$mobile}}</li>
+        <li>Имейл: {{$email}}</li>
         <li>Количество: {{$qnt}}</li>
         <li>Продукт: {{$prodID}}</li>
         <li>Адрес: {{$address}}</li>

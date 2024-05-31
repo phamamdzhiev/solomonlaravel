@@ -15,18 +15,20 @@ class NewOrder extends Mailable
     private $prodID;
     private $qnt;
     private $address;
+    private $email;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($name, $qnt, $mobile, $prodID, $address)
+    public function __construct($name, $qnt, $mobile, $prodID, $address, $email)
     {
         $this->name = $name;
         $this->mobile = $mobile;
         $this->prodID = $prodID;
         $this->qnt = $qnt;
+        $this->email = $email;
         $this->address = $address;
     }
 
@@ -41,6 +43,7 @@ class NewOrder extends Mailable
             'name' => $this->name,
             'mobile' => $this->mobile,
             'prodID' => $this->prodID,
+            'email' => $this->email,
             'qnt' => $this->qnt,
             'address' => $this->address
         ]);
