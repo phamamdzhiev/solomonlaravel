@@ -104,4 +104,16 @@ class AnimalFarmController extends Controller
         $animalFarm->delete();
         return redirect()->route('animal-farms.index');
     }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete(AnimalFarm $animalFarm)
+    {
+        $animalFarm->delete();
+        return redirect()->route('animal-farms.index');
+    }
 }

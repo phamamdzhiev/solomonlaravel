@@ -77,8 +77,12 @@
                                     </td>
                                     <td class="border-b border-gray-800 py-1">
                                         <a class="font-semibold text-green-500"
-                                            href="{{ route('animal-farms.edit', $farm->id) }}">Редактиране</a>
-                                        <br />
+                                            href="{{ route('animal-farms.edit', $farm->id) }}">Редактиране
+                                        </a>
+                                        <a class="font-semibold text-green-500"
+                                            href="{{ route('animal-farms.delete', $farm->id) }}">Изтриване
+                                        </a>
+                                        {{-- <br />
                                         <form id="deleteForm"
                                             onsubmit="return window.confirm('Сигурни ли сте, че искате да изтриете този запис?');"
                                             action="{{ route('animal-farms.destroy', $farm->id) }}" method="post">
@@ -88,7 +92,7 @@
                                             <button form="deleteForm" type="submit" class="font-semibold text-red-500">
                                                 Изтриване
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -105,25 +109,25 @@
         window.addEventListener('load', function() {
             var searchBar = document.getElementById('js-animal-farm-search');
             var farmNumberNodes = document.querySelectorAll('.js-farm-number');
-    
+
             searchBar.addEventListener('keyup', (e) => handleSearch(e, farmNumberNodes));
         });
-    
+
         function handleSearch(e, farmNumberNodes) {
             var searchQuery = e.target.value.trim().toLowerCase();
             var searchWords = searchQuery.split(/\s+/); // Split the query by spaces
-    
+
             for (var i = 0; i < farmNumberNodes.length; i++) {
                 var parent = farmNumberNodes[i].parentNode;
                 var farmNumber = farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase();
                 var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
-    
+
                 // Check if any search word is present in the farm number words
                 var matches = searchWords.some(word => farmWords.some(farmWord => farmWord.indexOf(word) > -1));
-    
+
                 parent.style.display = matches ? "table-row" : "none";
             }
         }
     </script>
-    
+
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnimalFarmController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\RegionEmailController;
 use Illuminate\Support\Facades\Route;
@@ -104,6 +105,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     );
     //Animal farms
     Route::resource('animal-farms', \App\Http\Controllers\AnimalFarmController::class);
+    //custom delete route
+    Route::get('animal-farm/{id}/delete', [AnimalFarmController::class, 'delete'])->name('animal-farms.delete');
     //HTML to PDF
     Route::any('generate-letterhead', [\App\Http\Controllers\HTMLToPDFController::class, 'index'])->name(
         'generate.letterhead'
