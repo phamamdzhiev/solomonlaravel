@@ -99,21 +99,23 @@ class AnimalFarmController extends Controller
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(AnimalFarm $animalFarm)
-    {
-        $animalFarm->delete();
-        return redirect()->route('animal-farms.index');
-    }
+    // public function destroy(AnimalFarm $animalFarm)
+    // {
+    //     $animalFarm->delete();
+    //     return redirect()->route('animal-farms.index');
+    // }
 
-        /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function delete(AnimalFarm $animalFarm)
+    public function delete($id)
     {
+        $animalFarm = AnimalFarm::findOrFail($id);
         $animalFarm->delete();
+
         return redirect()->route('animal-farms.index');
     }
 }
