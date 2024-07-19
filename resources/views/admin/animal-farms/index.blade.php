@@ -107,7 +107,7 @@
             var farmNumberNodes = document.querySelectorAll('.js-farm-number');
     
             searchBar.addEventListener('keyup', (e) => handleSearch(e, farmNumberNodes));
-        })
+        });
     
         function handleSearch(e, farmNumberNodes) {
             var searchQuery = e.target.value.trim().toLowerCase();
@@ -116,9 +116,10 @@
             for (var i = 0; i < farmNumberNodes.length; i++) {
                 var parent = farmNumberNodes[i].parentNode;
                 var farmNumber = farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase();
-                
-                // Check if all search words are present in the farm number
-                var matches = searchWords.every(word => farmNumber.indexOf(word) > -1);
+                var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
+    
+                // Check if any search word is present in the farm number words
+                var matches = searchWords.some(word => farmWords.some(farmWord => farmWord.indexOf(word) > -1));
     
                 parent.style.display = matches ? "table-row" : "none";
             }
