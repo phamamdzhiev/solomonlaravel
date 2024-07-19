@@ -20,6 +20,9 @@
                 style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по име..."
                 required />
             <form target="_blank" action="{{ route('generate.letterhead') }}" method="post">
+                <button class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full" type="submit">
+                    Създай справка
+                </button>
                 @csrf
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-center">
@@ -102,23 +105,24 @@
         window.addEventListener('load', function() {
             var searchBar = document.getElementById('js-animal-farm-search');
             var farmNumberNodes = document.querySelectorAll('.js-farm-number');
-
+    
             searchBar.addEventListener('keyup', (e) => handleSearch(e, farmNumberNodes));
         })
-
+    
         function handleSearch(e, farmNumberNodes) {
-            var searchQuery = e.target.value;
-
+            var searchQuery = e.target.value.trim().toLowerCase();
+            var searchWords = searchQuery.split(/\s+/); // Split the query by spaces
+    
             for (var i = 0; i < farmNumberNodes.length; i++) {
                 var parent = farmNumberNodes[i].parentNode;
-
-                parent.style.display = "none";
-
-                if (farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase().indexOf(searchQuery.toLowerCase()) > -
-                    1) {
-                    parent.style.display = "table-row";
-                }
+                var farmNumber = farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase();
+                
+                // Check if all search words are present in the farm number
+                var matches = searchWords.every(word => farmNumber.indexOf(word) > -1);
+    
+                parent.style.display = matches ? "table-row" : "none";
             }
         }
     </script>
+    
 @endsection
