@@ -79,7 +79,7 @@
                                         <a class="font-semibold text-green-500"
                                             href="{{ route('animal-farms.edit', $farm->id) }}">Редактиране
                                         </a>
-                                        <a class="font-semibold text-green-500"
+                                        <a class="font-semibold text-red-500"
                                             href="{{ route('animal-farms.delete', $farm->id) }}">Изтриване
                                         </a>
                                         {{-- <br />
