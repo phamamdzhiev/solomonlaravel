@@ -19,7 +19,7 @@ class FormLazerController extends Controller
      */
     public function index()
     {
-        $page = PageContent::findOrFail(PageController::GREEN_LINE);
+        $page = PageContent::where('page_id', PageController::GREEN_LINE)->firstOrFail();
 
         if (!$page->is_active) {
             return to_route('app_index');
