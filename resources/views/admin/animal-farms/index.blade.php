@@ -62,7 +62,7 @@
                                     <td class="border-b border-gray-800 py-1">
                                         <label for="farm_{{ $farm->id }}">{{ $farm->farm_number }}</label>
                                     </td>
-                                    <td data-farm-number={{ $farm->owner }}
+                                    <td data-farm-number="{{ $farm->owner }}"
                                         class="js-farm-number border-b border-gray-800 py-1">
                                         {{ $farm->owner }}
                                     </td>
@@ -113,20 +113,20 @@
             searchBar.addEventListener('keyup', (e) => handleSearch(e, farmNumberNodes));
         });
 
-        function handleSearch(e, farmNumberNodes) {
-            var searchQuery = e.target.value.trim().toLowerCase();
-            var searchWords = searchQuery.split(/\s+/); // Split the query by spaces
+         function handleSearch(e, farmNumberNodes) {
+          var searchQuery = e.target.value.trim().toLowerCase();
+          var searchWords = searchQuery.split(/\s+/); // Split the query by spaces
 
-            for (var i = 0; i < farmNumberNodes.length; i++) {
-                var parent = farmNumberNodes[i].parentNode;
-                var farmNumber = farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase();
-                var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
+          for (var i = 0; i < farmNumberNodes.length; i++) {
+            var parent = farmNumberNodes[i].parentNode;
+            var farmNumber = farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase();
+            var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
 
-                // Check if any search word is present in the farm number words
-                var matches = searchWords.some(word => farmWords.some(farmWord => farmWord.indexOf(word) > -1));
+            // Check if all search words are present in the farm number words
+            var matches = searchWords.every(word => farmWords.some(farmWord => farmWord.indexOf(word) > -1));
 
-                parent.style.display = matches ? "table-row" : "none";
-            }
+            parent.style.display = matches ? "table-row" : "none";
+          }
         }
     </script>
 

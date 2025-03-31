@@ -36,6 +36,7 @@ class FormLazerController extends Controller
      */
     public function create(Request $request): View|Factory|Application
     {
+        // dd($request->all());
         try {
             $formlazer = Formlazer::create([
                 'odbh' => $request->input('odbh'),
@@ -53,18 +54,19 @@ class FormLazerController extends Controller
                 'field1' => json_encode($request->input('field1')),
                 'field2' => json_encode($request->input('field2')),
                 'field3' => json_encode($request->input('field3')),
+                'marka_model' => $request->input('marka_model', null),
             ]);
 
             if (app()->environment('production')) {
                 foreach ([env('MAIL_FROM_ADDRESS'), $request->input('mail')] as $mail) {
                     Mail::to($mail)->send(new FormLazerMail($formlazer));
                 }
-            }  else {
-                Mail::to(env('TEST_FROM_ADDRESS'))->send(new FormLazerMail($formlazer));
+            } else {
+                //Mail::to(env('TEST_FROM_ADDRESS'))->send(new FormLazerMail($formlazer));
             }
 
 
-            return view('formlazer.formlazer-generated')->with('data',$formlazer);
+            return view('formlazer.formlazer-generated')->with('data', $formlazer);
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }

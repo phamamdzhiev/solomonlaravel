@@ -23,6 +23,7 @@
     <li>Имейл: <strong>{{$data['mail']}}</strong></li>
     <li>Телефон за контакт: <strong>{{$data['client_mobile']}}</strong></li>
     <li>Данни за фактура: <strong>{{$data['invoice'] ?? 'Не са посочени'}}</strong></li>
+    <li>Модел на марка: <strong>{{$data['marka_model'] ?? 'Не е посочено'}}</strong></li>
     <table style="text-align: center">
         <thead>
         <tr>
