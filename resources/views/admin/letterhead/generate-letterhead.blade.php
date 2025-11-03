@@ -85,7 +85,7 @@ https://cdn.jsdelivr.net/npm/slim-select@3.1.0/dist/slimselect.min.css
 
             <div class="mb-3">
                 <label for="regions_with_emails" class="block mb-1 font-semibold">Имейли, до които да бъде изпратена</label>
-                <select name="emails[]" id="regions_with_emails" multiple style="height: 300px">
+                <select name="emails[]" id="regions_with_emails" multiple>
                     @php
                         $regions = \App\Models\Region::with('emails')->get();
                     @endphp
