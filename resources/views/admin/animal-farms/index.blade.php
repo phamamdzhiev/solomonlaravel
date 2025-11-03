@@ -197,26 +197,6 @@
             parent.style.display = matches ? "table-row" : "none";
           }
         }
-<<<<<<< HEAD
     </script> -->
-=======
-        
-              function handleVetSearch(e, farmNumberNodes) {
-          var searchQuery = e.target.value.trim().toLowerCase();
-          var searchWords = searchQuery.split(/\s+/); // Split the query by spaces
-
-          for (var i = 0; i < farmNumberNodes.length; i++) {
-            var parent = farmNumberNodes[i].parentNode;
-            var farmNumber = farmNumberNodes[i].getAttribute('data-vet-number').toLowerCase();
-            var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
-
-            // Check if all search words are present in the farm number words
-            var matches = searchWords.every(word => farmWords.some(farmWord => farmWord.indexOf(word) > -1));
-
-            parent.style.display = matches ? "table-row" : "none";
-          }
-        }
-    </script>
->>>>>>> b8b7baa600d4efabe1e90f5c1962394817dd5227
 
 @endsection
