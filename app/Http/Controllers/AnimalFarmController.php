@@ -16,7 +16,7 @@ class AnimalFarmController extends Controller
     public function index(Request $request)
     {
         return View::make('admin.animal-farms.index')->with([
-            'animalFarms' => AnimalFarm::all()->sortByDesc('id')
+            'animalFarms' => AnimalFarm::orderByDesc('id')->paginate(80)
         ]);
     }
 
