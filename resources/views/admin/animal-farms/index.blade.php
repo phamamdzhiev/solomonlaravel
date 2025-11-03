@@ -19,6 +19,9 @@
             <input id="js-animal-farm-search" type="text" class="p-3"
                 style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по име..."
                 required />
+            <input id="js-vet-search" type="text" class="p-3"
+                style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по ветеринар..."
+                required />
             <form target="_blank" action="{{ route('generate.letterhead') }}" method="post">
                 <button class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full" type="submit">
                     Създай справка
@@ -74,7 +77,7 @@
                                     <td class="border-b border-gray-800 py-1">
                                         {{ $farm->city }}
                                     </td>
-                                    <td class="border-b border-gray-800 py-1">
+                                    <td data-vet-number="{{ $farm->vet }}" class="js-vet-name border-b border-gray-800 py-1">
                                         {{ $farm->vet }}
                                     </td>
                                     <td class="border-b border-gray-800 py-1">
@@ -113,9 +116,13 @@
     <script>
         window.addEventListener('load', function() {
             var searchBar = document.getElementById('js-animal-farm-search');
+            var vetSearchBar = document.getElementById('js-vet-search');
+            
             var farmNumberNodes = document.querySelectorAll('.js-farm-number');
+            var vetNodes = document.querySelectorAll('.js-vet-name');
 
             searchBar.addEventListener('keyup', (e) => handleSearch(e, farmNumberNodes));
+            vetSearchBar.addEventListener('keyup', (e) => handleVetSearch(e, vetNodes));
         });
 
          function handleSearch(e, farmNumberNodes) {
@@ -125,6 +132,22 @@
           for (var i = 0; i < farmNumberNodes.length; i++) {
             var parent = farmNumberNodes[i].parentNode;
             var farmNumber = farmNumberNodes[i].getAttribute('data-farm-number').toLowerCase();
+            var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
+
+            // Check if all search words are present in the farm number words
+            var matches = searchWords.every(word => farmWords.some(farmWord => farmWord.indexOf(word) > -1));
+
+            parent.style.display = matches ? "table-row" : "none";
+          }
+        }
+        
+              function handleVetSearch(e, farmNumberNodes) {
+          var searchQuery = e.target.value.trim().toLowerCase();
+          var searchWords = searchQuery.split(/\s+/); // Split the query by spaces
+
+          for (var i = 0; i < farmNumberNodes.length; i++) {
+            var parent = farmNumberNodes[i].parentNode;
+            var farmNumber = farmNumberNodes[i].getAttribute('data-vet-number').toLowerCase();
             var farmWords = farmNumber.split(/\s+/); // Split the farm number by spaces
 
             // Check if all search words are present in the farm number words
