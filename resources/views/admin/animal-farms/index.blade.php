@@ -23,6 +23,8 @@
                 <button class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full" type="submit">
                     Създай справка
                 </button>
+                <br/>
+                {!! $animalFarms->links() !!}
                 @csrf
                 <div class="overflow-x-auto">
                     <table class="min-w-full text-center">
@@ -99,6 +101,9 @@
                         </tbody>
                     </table>
                 </div>
+                <br/>
+                {!! $animalFarms->links() !!}
+                <br/>
                 <button class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full" type="submit">
                     Създай справка
                 </button>
