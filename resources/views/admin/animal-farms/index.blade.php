@@ -21,7 +21,7 @@
             <!-- search -->
              <div>
                 <form method="GET" action="{{ url()->current() }}" class="mb-4">
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
         <input 
             type="text" 
             name="owner" 
@@ -64,7 +64,7 @@
     </div>
 
     <div class="mt-3">
-        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button type="submit" class="inline-block bg-main-green font-semibold py-2 px-4 rounded-full">
             Търси
         </button>
         <a href="{{ url()->current() }}" class="ml-2 text-gray-600 hover:underline">
