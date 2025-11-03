@@ -15,9 +15,19 @@ class AnimalFarmController extends Controller
      */
     public function index(Request $request)
     {
-        return View::make('admin.animal-farms.index')->with([
-            'animalFarms' => AnimalFarm::orderByDesc('id')->paginate(50)
-        ]);
+        $query = AnimalFarm::query();
+
+        // Filtering by fields if provided in query params
+        $fillableFields = ['owner', 'farm_number', 'region', 'city', 'vet'];
+        foreach ($fillableFields as $field) {
+            if ($request->filled($field)) {
+                $query->where($field, 'LIKE', '%' . $request->input($field) . '%');
+            }
+        }
+
+        $animalFarms = $query->orderByDesc('id')->paginate(50)->appends($request->all());
+
+        return View::make('admin.animal-farms.index')->with('animalFarms', $animalFarms);
     }
 
     /**

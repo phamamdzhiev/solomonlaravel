@@ -16,12 +16,66 @@
         </a>
         <div class="mb-6">
             <h1 class="font-bold text-2xl mb-4">Обекти</h1>
-            <input id="js-animal-farm-search" type="text" class="p-3"
-                style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по име..."
-                required />
-            <input id="js-vet-search" type="text" class="p-3"
-                style="width: 100%; max-width: 350px; border: 1px solid #333" name="search" placeholder="Търси по ветеринар..."
-                required />
+         
+
+            <!-- search -->
+             <div>
+                <form method="GET" action="{{ url()->current() }}" class="mb-4">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <input 
+            type="text" 
+            name="owner" 
+            value="{{ request('owner') }}" 
+            placeholder="Име" 
+            class="border rounded px-3 py-2"
+        />
+
+        <!-- <input 
+            type="text" 
+            name="farm_number" 
+            value="{{ request('farm_number') }}" 
+            placeholder="Farm Number" 
+            class="border rounded px-3 py-2"
+        />
+
+        <input 
+            type="text" 
+            name="region" 
+            value="{{ request('region') }}" 
+            placeholder="Регион" 
+            class="border rounded px-3 py-2"
+        />
+
+        <input 
+            type="text" 
+            name="city" 
+            value="{{ request('city') }}" 
+            placeholder="Град" 
+            class="border rounded px-3 py-2"
+        /> -->
+
+        <input 
+            type="text" 
+            name="vet" 
+            value="{{ request('vet') }}" 
+            placeholder="Ветеринар" 
+            class="border rounded px-3 py-2"
+        />
+    </div>
+
+    <div class="mt-3">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Търси
+        </button>
+        <a href="{{ url()->current() }}" class="ml-2 text-gray-600 hover:underline">
+            Нулирай
+        </a>
+    </div>
+</form>
+
+             </div>
+             <!-- end of search -->
+
             <form target="_blank" action="{{ route('generate.letterhead') }}" method="post">
                 <button class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full" type="submit">
                     Създай справка
@@ -113,7 +167,10 @@
             </form>
         </div>
     </div>
+    <!-- 
+    OLD SEARCH FUNTIONALITY
     <script>
+    
         window.addEventListener('load', function() {
             var searchBar = document.getElementById('js-animal-farm-search');
             var vetSearchBar = document.getElementById('js-vet-search');
@@ -140,6 +197,9 @@
             parent.style.display = matches ? "table-row" : "none";
           }
         }
+<<<<<<< HEAD
+    </script> -->
+=======
         
               function handleVetSearch(e, farmNumberNodes) {
           var searchQuery = e.target.value.trim().toLowerCase();
@@ -157,5 +217,6 @@
           }
         }
     </script>
+>>>>>>> b8b7baa600d4efabe1e90f5c1962394817dd5227
 
 @endsection
