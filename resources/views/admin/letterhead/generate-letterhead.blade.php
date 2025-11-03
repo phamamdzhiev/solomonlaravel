@@ -3,8 +3,13 @@
 @section('title', 'Админ Панел | Създаване на справка')
 
 @push('head')
-    <script src="https://unpkg.com/slim-select@latest/dist/slimselect.min.js"></script>
-    <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet" />
+  <script src="
+https://cdn.jsdelivr.net/npm/slim-select@3.1.0/dist/slimselect.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/slim-select@3.1.0/dist/slimselect.min.css
+" rel="stylesheet">
+
 @endpush
 
 @section('body')
