@@ -71,8 +71,8 @@
                 <label class="font-semibold" for="marka_model">Избор на модел на марка</label>
                 <select id="marka_model" name="marka_model" class="border rounded px-2 py-1 mb-4 w-full">
                     <option value="" selected></option>
-                    <option>BM200 - 2,94лв.</option>
-                    <option>Boss2 - 3,96лв.</option>
+                    <option>BM200 - 1,50 €</option>
+                    <option>Boss2 - 2.04 €</option>
                 </select>
             </div>
 
