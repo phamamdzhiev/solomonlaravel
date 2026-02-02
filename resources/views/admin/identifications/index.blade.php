@@ -11,10 +11,10 @@
         <div class="mb-3">
             <h1 class="font-bold text-2xl mb-4">Добавяне на Идентификатор</h1>
             <form
-                action="{{ isset($identificator)
+                    action="{{ isset($identificator)
         ? route('identification.update', $identificator->id)
         : route('identification.store') }}"
-                method="POST"
+                    method="POST"
             >
                 @csrf
 
@@ -32,12 +32,12 @@
                         </label>
 
                         <input
-                            class="{{ $inputClass }}"
-                            type="text"
-                            name="name"
-                            id="name"
-                            value="{{ old('name', $identificator->name ?? '') }}"
-                            required
+                                class="{{ $inputClass }}"
+                                type="text"
+                                name="name"
+                                id="name"
+                                value="{{ old('name', $identificator->name ?? '') }}"
+                                required
                         />
 
                         @error('name')
@@ -51,12 +51,12 @@
                         </label>
 
                         <input
-                            class="{{ $inputClass }}"
-                            type="text"
-                            name="model"
-                            id="model"
-                            value="{{ old('model', $identificator->model ?? '') }}"
-                            required
+                                class="{{ $inputClass }}"
+                                type="text"
+                                name="model"
+                                id="model"
+                                value="{{ old('model', $identificator->model ?? '') }}"
+                                required
                         />
 
                         @error('model')
@@ -82,8 +82,42 @@
                 @endif
             </form>
         </div>
+        <!-- search -->
+        <div>
+            <form method="GET" action="{{ url()->current() }}" class="mb-4">
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                    <input
+                            type="text"
+                            name="name"
+                            value="{{ request('name') }}"
+                            placeholder="Идентификатор"
+                            class="border rounded px-3 py-2"
+                    />
+
+                    <input
+                            type="text"
+                            name="model"
+                            value="{{ request('model') }}"
+                            placeholder="МОДЕЛ"
+                            class="border rounded px-3 py-2"
+                    />
+                </div>
+
+                <div class="mt-3">
+                    <button type="submit" class="inline-block bg-main-green font-semibold py-2 px-4 rounded-full">
+                        Търси
+                    </button>
+                    <a href="{{ url()->current() }}" class="ml-2 text-gray-600 hover:underline">
+                        Нулирай
+                    </a>
+                </div>
+            </form>
+
+        </div>
+        <!-- end of search -->
         <div class="mb-6">
             <form action="{{ route('spravka.babh') }}" method="post">
+                {!! $identifications->links() !!}
                 @csrf
                 <h1 class="font-bold text-2xl mb-4">Идентификатори</h1>
                 <button class="bg-main-green font-semibold py-2 px-4 rounded-full mt-3"
@@ -145,6 +179,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                {!! $identifications->links() !!}
             </form>
         </div>
     </div>

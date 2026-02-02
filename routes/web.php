@@ -55,6 +55,12 @@ Route::group(['prefix' => 'formorder'], function () {
 
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/json/marka-model', [\App\Http\Controllers\JSONController::class, 'create'])->name('json.marka-model');
+    Route::put('/json/marka-model/{id}', [\App\Http\Controllers\JSONController::class, 'update'])->name('json.marka-model.update');
+    Route::post('/json/marka-model', [\App\Http\Controllers\JSONController::class, 'store'])->name('json.marka-model.post');
+    Route::get('/marka/delete/{id}', [\App\Http\Controllers\JSONController::class, 'destroy'])
+        ->name('marka.destroy');
+
     Route::get('/products', [\App\Http\Controllers\AdminController::class, 'index'])->name('app_admin');
     Route::get('/orders', [\App\Http\Controllers\AdminController::class, 'orders'])->name('app_orders');
     Route::get('/product/edit/{id}', [\App\Http\Controllers\AdminController::class, 'editProduct'])->name(

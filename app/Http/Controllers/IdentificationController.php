@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AnimalFarm;
 use App\Models\Identification;
 use App\Models\LetterHead;
 use App\Models\LetterHeadsRows;
@@ -10,18 +11,34 @@ use Illuminate\Support\Facades\DB;
 
 class IdentificationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $edit = request()->boolean('edit');
-        $identificatorID = request()->query('identificatorID');
+        $edit = $request->boolean('edit');
+        $identificatorID = $request->query('identificatorID');
 
         $identificator = $edit && $identificatorID
             ? Identification::findOrFail($identificatorID)
             : null;
 
+        $query = Identification::query();
+
+        // Filtering by fields if provided in query params
+        $fillableFields = ['name', 'model'];
+
+        foreach ($fillableFields as $field) {
+            if ($request->filled($field)) {
+                $query->where($field, 'LIKE', '%' . $request->input($field) . '%');
+            }
+        }
+
+        $identifications = $query
+            ->latest()
+            ->paginate(50)
+            ->appends($request->all());
+
         return view('admin.identifications.index', [
             'identificator' => $identificator,
-            'identifications' => Identification::latest()->get(),
+            'identifications' => $identifications,
         ]);
     }
 
