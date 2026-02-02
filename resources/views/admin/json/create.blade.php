@@ -64,7 +64,7 @@
                 <div>
                     <button
                         type="submit"
-                        class="bg-green-600 text-white px-6 py-3 rounded font-semibold hover:bg-green-700"
+                        class="inline-block my-6 bg-main-green font-semibold py-2 px-4 rounded-full"
                     >
                         {{ $isEdit ? 'Редактирай' : 'Създай' }}
                     </button>
