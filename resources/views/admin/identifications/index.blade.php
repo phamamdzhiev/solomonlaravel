@@ -26,7 +26,7 @@
                         $inputClass = "border border-black w-full rounded p-3";
                     @endphp
 
-                    <div class="flex-1" style="flex: 1" >
+                    <div class="flex-1" style="flex: 1">
                         <label class="mb-1 font-semibold inline-block" for="name">
                             Идентификатор:
                         </label>
@@ -95,6 +95,9 @@
                     <thead>
                     <tr>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
+
+                        </th>
+                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
                             #
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
@@ -105,9 +108,6 @@
                         </th>
                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
                             Добавен на
-                        </th>
-                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-center">
-
                         </th>
                     </tr>
                     </thead>
@@ -137,12 +137,8 @@
                             <td class="border-b border-gray-800 py-1">
                                 <a class="font-semibold text-green-500"
                                    href="{{ url()->current() . '?edit=true&identificatorID=' . $identification->id }}">Редактиране</a>
-                                {{--                            <form onsubmit="return window.confirm('Сигурни ли сте, че искате да изтриете този запис?');"--}}
-                                {{--                                  action="{{route('identification.delete', $identification)}}" method="post">--}}
-                                {{--                                @csrf--}}
-                                {{--                                @method('DELETE')--}}
-                                {{--                                <button type="submit" class="font-semibold text-red-500">Изтриване</button>--}}
-                                {{--                            </form>--}}
+                                <a onclick="return window.confirm('Сигурни ли сте, че искате да изтриете този запис?');" class="font-semibold text-red-500"
+                                   href="{{ route('identification.delete', $identification) }}">Изтриване</a>
                             </td>
                         </tr>
                     @endforeach

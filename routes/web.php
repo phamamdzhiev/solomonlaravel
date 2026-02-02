@@ -122,7 +122,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::put('/identifications/{identification}', [\App\Http\Controllers\IdentificationController::class, 'update'])
         ->name('identification.update');
 
-    Route::delete('/identifications/{identification}', [\App\Http\Controllers\IdentificationController::class, 'destroy'])
+    Route::get('/identifications/{identification}/delete', [\App\Http\Controllers\IdentificationController::class, 'destroy'])
         ->name('identification.delete');
 
     //БАБХ
