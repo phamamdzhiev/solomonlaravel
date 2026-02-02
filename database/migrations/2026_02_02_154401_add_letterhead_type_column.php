@@ -12,7 +12,7 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::dropColumns('letter_heads', ['type']);
+//        Schema::dropColumns('letter_heads', ['type']);
 
         Schema::table('letter_heads', function (Blueprint $table) {
             $table->string('type')->nullable()->index();
