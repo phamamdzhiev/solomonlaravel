@@ -126,7 +126,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         ->name('identification.delete');
 
     //БАБХ
-    Route::any('/spravka-babh', [\App\Http\Controllers\IdentificationController::class, 'babh'])->name('spravka.babh');
+    Route::any('/view-babh', [\App\Http\Controllers\IdentificationController::class, 'babh'])->name('spravka.babh');
+    Route::post('/create-babh', [\App\Http\Controllers\IdentificationController::class, 'generateBabhPDF'])->name('generateBabhPDF');
 
 
     Route::post('html-to-pdf', [\App\Http\Controllers\HTMLToPDFController::class, 'store'])->name('store.html-to-pdf');

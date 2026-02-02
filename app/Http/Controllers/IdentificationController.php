@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Identification;
+use App\Models\LetterHead;
+use App\Models\LetterHeadsRows;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -70,7 +72,6 @@ class IdentificationController extends Controller
 
     public function babh(Request $request)
     {
-
         $request->validate([
             'identificator_ids' => 'required|exists:identifications,id',
             'identificator_id_quantity' => 'required'
@@ -102,5 +103,58 @@ class IdentificationController extends Controller
         return view('admin.identifications.create-babh', [
             'selectedAnimalFarms' => $duplicatedAnimalFarms
         ]);
+    }
+
+
+    public function generateBabhPDF(Request $request)
+    {
+        $data = $request->all();
+
+//        $data = $request->validate([
+//            'identificator_ids' => 'required|exists:identifications,id',
+//            'name' => 'required|string|max:255',
+//            'model' => 'required|string|max:255',
+//            'num_from' => 'required',
+//            'num_to' => 'required',
+//            'quantity' => 'required',
+//            'date' => 'required',
+//            'emails' => 'nullable'
+//        ],
+//            [
+//                'identificator_ids.required' => 'Моля изберете поне един идентификатор!',
+//                'identificator_ids.exists' => 'Невалиден идентификатор!'
+//            ]);
+
+
+        $withEmail = $request->query('withEmail') == '1';
+        $data['letterhead_number'] = '0000';
+
+        try {
+            if ($withEmail) {
+                $letterHead = new LetterHead();
+                $letterHead->type = 'babh';
+                $letterHead->save();
+
+                $data['letterhead_number'] = $letterHead->id;
+
+                foreach ($data['identificator_ids'] as $key => $id) {
+                    $letterHeadRow = new LetterHeadsRows();
+                    $letterHeadRow->num_from = $data['num_from'][$key];
+                    $letterHeadRow->num_to = $data['num_to'][$key];
+                    $letterHeadRow->quantity = $data['quantity'][$key];
+                    $letterHeadRow->date = $data['date'][$key];
+                    $letterHeadRow->letter_head_id = $data['letterhead_number'];
+                    $letterHeadRow->farm_id = null;
+                    $letterHeadRow->save();
+                }
+            }
+
+            app(HTMLToPDFController::class)->generatePdf($data, $withEmail, 'admin.letterhead.babh');
+
+            return to_route('identification.index')->with('success', 'Генерирана справка БАБХ');
+        } catch (\Throwable $e) {
+            dd($e->getMessage());
+            return to_route('identification.index')->with('error', $e->getMessage());
+        }
     }
 }

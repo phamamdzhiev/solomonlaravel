@@ -83,13 +83,13 @@
             </form>
         </div>
         <div class="mb-6">
-            <form target="_blank" action="{{ route('spravka.babh') }}" method="post">
+            <form action="{{ route('spravka.babh') }}" method="post">
                 @csrf
                 <h1 class="font-bold text-2xl mb-4">Идентификатори</h1>
                 <button class="bg-main-green font-semibold py-2 px-4 rounded-full mt-3"
                         id="create_babh"
                         type="submit">
-                    <span>Създване на справка (БАБХ)</span>
+                    <span>Създaване на справка (БАБХ)</span>
                 </button>
                 <table class="min-w-full text-center">
                     <thead>
@@ -120,7 +120,7 @@
                                        value="{{ $identification->id }}"/>
                                 <input type="number" id="identificator_id_quantity[{{ $identification->id }}]"
                                        name="identificator_id_quantity[{{ $identification->id }}]" value="1" min="1"
-                                       class="p-1 border text-center" style="width:40px;"/>
+                                       class="p-1 border text-center" style="display: none!important;width:40px;"/>
                             </td>
                             <td class="border-b border-gray-800 py-1">
                                 {{$identification->id}}
@@ -137,7 +137,8 @@
                             <td class="border-b border-gray-800 py-1">
                                 <a class="font-semibold text-green-500"
                                    href="{{ url()->current() . '?edit=true&identificatorID=' . $identification->id }}">Редактиране</a>
-                                <a onclick="return window.confirm('Сигурни ли сте, че искате да изтриете този запис?');" class="font-semibold text-red-500"
+                                <a onclick="return window.confirm('Сигурни ли сте, че искате да изтриете този запис?');"
+                                   class="font-semibold text-red-500"
                                    href="{{ route('identification.delete', $identification) }}">Изтриване</a>
                             </td>
                         </tr>

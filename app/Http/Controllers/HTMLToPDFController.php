@@ -34,7 +34,7 @@ class HTMLToPDFController extends Controller
         }
     }
 
-    public function generatePdf(array $data = [], $withEmail = false)
+    public function generatePdf(array $data = [], $withEmail = false, string $view = 'admin.letterhead.letterhead')
     {
         if (empty($data)) {
             abort(400, 'Data is empty. PDF cannot be generated');
@@ -47,7 +47,7 @@ class HTMLToPDFController extends Controller
         $dompdf->setOptions($options);
         $dompdf->setPaper('A4');
 
-        $html = view('admin.letterhead.letterhead', compact('data'))->render();
+        $html = view($view, compact('data'))->render();
 
         $dompdf->loadHtml($html);
 
@@ -83,7 +83,7 @@ class HTMLToPDFController extends Controller
             'farm_ids.required' => 'Моля изберете поне един обект!',
             'farm_ids.exists' => 'Невалиден обект!'
         ]);
-        
+
         $withEmail = $request->query('withEmail') == '1';
         $result['letterhead_number'] = '0000';
 
@@ -128,14 +128,14 @@ class HTMLToPDFController extends Controller
         if ($selectedAnimalFarms->count() == 0) {
             abort(404);
         }
-        
+
         $farm_id_quantity = $request->input('farm_id_quantity');
 
         $duplicatedAnimalFarms = collect();
 
         foreach ($selectedAnimalFarms as $animalFarm) {
             $quantity = $farm_id_quantity[$animalFarm->id] ?? 1;
-            
+
             for ($i = 0; $i < $quantity; $i++) {
                 $duplicatedAnimalFarms->push($animalFarm);
             }

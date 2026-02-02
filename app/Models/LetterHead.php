@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class LetterHead extends Model
 {
+    protected $table = 'letter_heads';
     public $timestamps = false;
 }
