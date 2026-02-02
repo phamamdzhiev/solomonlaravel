@@ -8,7 +8,6 @@ window.addEventListener('load', function () {
     const hamburgerMenu = document.getElementById('js-navigation-list');
 
     hamburgerToggleHandler.addEventListener('click', function () {
-        console.log('click');
         hamburgerMenu.classList.toggle('hidden')
     });
 })

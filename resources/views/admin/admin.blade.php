@@ -24,7 +24,9 @@
                 </div>
             @endif
 
-            @include('admin.includes.admin-header')
+           <div class="my-6">
+               @include('admin.includes.admin-header')
+           </div>
 
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

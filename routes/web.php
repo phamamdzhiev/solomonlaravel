@@ -22,7 +22,7 @@ Route::get('/product/{id}', [\App\Http\Controllers\IndexController::class, 'show
 Route::post('/messages', [\App\Http\Controllers\IndexController::class, 'storeMessage'])->name('app_message_post');
 Route::post('/order/send', [\App\Http\Controllers\IndexController::class, 'storeOrder'])
 //->middleware(ProtectAgainstSpam::class)
-->name('app_order_post');
+    ->name('app_order_post');
 
 //NO CONTROLLER ROUTES
 Route::get('/quality', function () {
@@ -111,6 +111,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::any('generate-letterhead', [\App\Http\Controllers\HTMLToPDFController::class, 'index'])->name(
         'generate.letterhead'
     );
+
+    //aids
+    Route::get('/identifications', [\App\Http\Controllers\IdentificationController::class, 'index'])
+        ->name('identification.index');
+
+    Route::post('/identifications', [\App\Http\Controllers\IdentificationController::class, 'store'])
+        ->name('identification.store');
+
+    Route::put('/identifications/{identification}', [\App\Http\Controllers\IdentificationController::class, 'update'])
+        ->name('identification.update');
+
+    Route::delete('/identifications/{identification}', [\App\Http\Controllers\IdentificationController::class, 'destroy'])
+        ->name('identification.delete');
+
+    //БАБХ
+    Route::any('/spravka-babh', [\App\Http\Controllers\IdentificationController::class, 'babh'])->name('spravka.babh');
+
 
     Route::post('html-to-pdf', [\App\Http\Controllers\HTMLToPDFController::class, 'store'])->name('store.html-to-pdf');
 

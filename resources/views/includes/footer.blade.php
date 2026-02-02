@@ -9,8 +9,8 @@
                 Соломон-София ЕООД
             </div>
             <div>
-                <span class="block text-[#fff]"><i class="bi bi-phone"></i>{!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()->content) !!}</span>
-                <span class="block text-[#fff]"><i class="bi bi-envelope"></i> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()->content) !!} </span>
+                <span class="block text-[#fff]"><i class="bi bi-phone"></i>{!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()?->content) !!}</span>
+                <span class="block text-[#fff]"><i class="bi bi-envelope"></i> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()?->content) !!} </span>
                 <a href="{{route('app_policy')}}">
                     <span class="block text-[#000] hover:text-[#fff]">УСЛОВИЯ ЗА ЗАЩИТА НА ЛИЧНИТЕ ДАННИ</span>
                 </a>
