@@ -21,12 +21,12 @@
                 @if(isset($identificator))
                     @method('PUT')
                 @endif
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-4" style="gap: 20px">
                     @php
                         $inputClass = "border border-black w-full rounded p-3";
                     @endphp
 
-                    <div class="flex-1">
+                    <div class="flex-1" style="flex: 1" >
                         <label class="mb-1 font-semibold inline-block" for="name">
                             Идентификатор:
                         </label>
@@ -45,7 +45,7 @@
                         @enderror
                     </div>
 
-                    <div class="flex-1">
+                    <div class="flex-1" style="flex: 1">
                         <label class="mb-1 font-semibold inline-block" for="model">
                             Модел:
                         </label>
