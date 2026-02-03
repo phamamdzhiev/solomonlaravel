@@ -25,9 +25,9 @@ class HTMLToPDFController extends Controller
                     [],
                     function (\Illuminate\Mail\Message $message) use ($pdf, $email, $data) {
                         $message->to($email)
-                            ->from(config('mail.from.address'), 'Справка ОДБХ')
-                            ->subject('Справка - Образец 182 - ' . $data['letterhead_number'])
-                            ->attachData($pdf, sprintf('spravka_%s.pdf', $data['letterhead_number']));
+                            ->from(config('mail.from.address'), $data['type'] === 'babh' ? 'Справка БАБХ' : 'Справка ОДБХ')
+                            ->subject('Справка - ' . $data['letterhead_number'])
+                            ->attachData($pdf, sprintf('spravka_%s_%s.pdf', $data['type'], $data['letterhead_number']));
                     }
                 );
             }
@@ -94,7 +94,8 @@ class HTMLToPDFController extends Controller
                 $letterHead->save();
 
                 $letterHead->refresh();
-                $data['letterhead_number'] = $letterHead->number ?? '0';
+
+                $result['letterhead_number'] = $letterHead->number ?? '0';
 
                 foreach ($result['farm_ids'] as $key => $id) {
                     $letterHeadRow = new LetterHeadsRows();

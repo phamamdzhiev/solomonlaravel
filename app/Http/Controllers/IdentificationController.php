@@ -161,8 +161,8 @@ class IdentificationController extends Controller
                     $letterHeadRow->num_to = $data['num_to'][$key];
                     $letterHeadRow->quantity = $data['quantity'][$key];
                     $letterHeadRow->date = $data['date'][$key];
-                    $letterHeadRow->letter_head_id = $letterHead->id;
                     $letterHeadRow->farm_id = null;
+                    $letterHeadRow->letter_head_id = $letterHead->id;
                     $letterHeadRow->save();
                 }
             }
