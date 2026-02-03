@@ -90,10 +90,11 @@ class HTMLToPDFController extends Controller
         try {
             if ($withEmail) {
                 $letterHead = new LetterHead();
+                $letterHead->type = 'odbh';
                 $letterHead->save();
 
                 $letterHead->refresh();
-                $result['letterhead_number'] = $letterHead->number ?? '0';
+                $data['letterhead_number'] = $letterHead->number ?? '0';
 
                 foreach ($result['farm_ids'] as $key => $id) {
                     $letterHeadRow = new LetterHeadsRows();
