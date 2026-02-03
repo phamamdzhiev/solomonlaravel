@@ -24,9 +24,11 @@ class HTMLToPDFController extends Controller
                     'mailables.letterhead-mail',
                     [],
                     function (\Illuminate\Mail\Message $message) use ($pdf, $email, $data) {
+                        $code = $data['type'] === 'babh' ? '181' : '182';
+
                         $message->to($email)
                             ->from(config('mail.from.address'), $data['type'] === 'babh' ? 'Справка БАБХ' : 'Справка ОДБХ')
-                            ->subject('Справка - ' . $data['letterhead_number'])
+                            ->subject("Справка - Образец - {$code} - {$data['letterhead_number']}")
                             ->attachData($pdf, sprintf('spravka_%s_%s.pdf', $data['type'], $data['letterhead_number']));
                     }
                 );
