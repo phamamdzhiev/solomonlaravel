@@ -92,7 +92,8 @@ class HTMLToPDFController extends Controller
                 $letterHead = new LetterHead();
                 $letterHead->save();
 
-                $result['letterhead_number'] = $letterHead->id;
+                $letterHead->refresh();
+                $result['letterhead_number'] = $letterHead->number ?? '0';
 
                 foreach ($result['farm_ids'] as $key => $id) {
                     $letterHeadRow = new LetterHeadsRows();
