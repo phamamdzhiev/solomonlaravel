@@ -149,7 +149,7 @@ class IdentificationController extends Controller
         try {
             if ($withEmail) {
                 $letterHead = new LetterHead();
-                $letterHead->type = 'babh';
+                $data['type'] = $letterHead->type = 'babh';
                 $letterHead->save();
 
                 $letterHead->refresh();

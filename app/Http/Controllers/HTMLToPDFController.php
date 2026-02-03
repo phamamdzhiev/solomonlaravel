@@ -90,7 +90,7 @@ class HTMLToPDFController extends Controller
         try {
             if ($withEmail) {
                 $letterHead = new LetterHead();
-                $letterHead->type = 'odbh';
+                $result['type'] = $letterHead->type = 'odbh';
                 $letterHead->save();
 
                 $letterHead->refresh();
@@ -111,6 +111,7 @@ class HTMLToPDFController extends Controller
 
             $this->generatePdf($result, $withEmail);
         } catch (\Throwable $e) {
+            dd($e->getMessage());
             return back()->with('error', $e->getMessage());
         }
     }
