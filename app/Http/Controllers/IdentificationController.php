@@ -152,6 +152,7 @@ class IdentificationController extends Controller
                 $letterHead->type = 'babh';
                 $letterHead->save();
 
+                $letterHead->refresh();
                 $data['letterhead_number'] = $letterHead->babh_number ?? '0';
 
                 foreach ($data['identificator_ids'] as $key => $id) {
