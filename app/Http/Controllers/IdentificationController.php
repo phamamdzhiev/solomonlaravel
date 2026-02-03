@@ -152,7 +152,7 @@ class IdentificationController extends Controller
                 $letterHead->type = 'babh';
                 $letterHead->save();
 
-                $data['letterhead_number'] = $letterHead->id;
+                $data['letterhead_number'] = $letterHead->babh_number ?? '0';
 
                 foreach ($data['identificator_ids'] as $key => $id) {
                     $letterHeadRow = new LetterHeadsRows();
@@ -160,7 +160,7 @@ class IdentificationController extends Controller
                     $letterHeadRow->num_to = $data['num_to'][$key];
                     $letterHeadRow->quantity = $data['quantity'][$key];
                     $letterHeadRow->date = $data['date'][$key];
-                    $letterHeadRow->letter_head_id = $data['letterhead_number'];
+                    $letterHeadRow->letter_head_id = $letterHead->id;
                     $letterHeadRow->farm_id = null;
                     $letterHeadRow->save();
                 }
