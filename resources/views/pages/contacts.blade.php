@@ -76,13 +76,17 @@
             <li class="font-semibold my-4 md:my-0">
                 <span
                     class="block"> {!! strip_tags(App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::ADDRESS)->first()->content) !!}</span>
-                <span
-                    class="block">тел.:  {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()->content) !!}</span>
+                <a
+                    style="margin-top: 6px;"
+                    href="tel:{!! str_replace(' ', '', strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()->content)) !!}"
+                    class="block">тел.:  {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()->content) !!}</a>
             </li>
             <li class="font-semibold my-4 md:my-0">
                 <span class="block">Имейл:</span>
-                <span
-                    class="block"> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()->content) !!}</span>
+                <a
+                    style="margin-top: 6px;"
+                    href="mailto:{!! trim(strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()->content)) !!}"
+                    class="block"> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()->content) !!}</a>
             </li>
         </ul>
         <div class="offices-wrapper">

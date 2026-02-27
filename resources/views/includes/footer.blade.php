@@ -1,6 +1,7 @@
 <footer>
     <div class="inner bg-main-green p-8">
-        <div class="flex items-center flex-col md:flex-row text-center md:text-left justify-between max-w-[900px] mx-auto">
+        <div
+            class="flex items-center flex-col md:flex-row text-center md:text-left justify-between max-w-[900px] mx-auto">
             <div class="_logo_wrapper mb-4">
                 <img width="200" class="brightness-0 invert	" src="{{asset('/storage/images/logo.png')}}"
                      alt="Logo Solomon">
@@ -9,8 +10,16 @@
                 Соломон-София ЕООД
             </div>
             <div>
-                <span class="block text-[#fff]"><i class="bi bi-phone"></i>{!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()?->content) !!}</span>
-                <span class="block text-[#fff]"><i class="bi bi-envelope"></i> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()?->content) !!} </span>
+                <a href="tel:{!! str_replace(' ', '', strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()?->content)) !!}"
+                   style="margin-bottom: 6px"
+                   class="block text-[#fff]"><i
+                        class="bi bi-phone"></i>{!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::MOBILE)->first()?->content) !!}
+                </a>
+                <a href="mailto:{!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()?->content) !!}"
+                   style="margin-bottom: 6px"
+                   class="block text-[#fff]"><i
+                        class="bi bi-envelope"></i> {!! strip_tags(\App\Models\PageContent::where('page_id', \App\Http\Controllers\PageController::EMAIL)->first()?->content) !!}
+                </a>
                 <a href="{{route('app_policy')}}">
                     <span class="block text-[#000] hover:text-[#fff]">УСЛОВИЯ ЗА ЗАЩИТА НА ЛИЧНИТЕ ДАННИ</span>
                 </a>

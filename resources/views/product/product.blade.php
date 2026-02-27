@@ -27,26 +27,31 @@
                 @endif
             </h2>
             @php
-                $isOrderButtonActive = $product->can_order == 0;
+                if ($product->can_order == 0) {
+                    $url = route('app_contacts');
+                    $useButton = false;
+                } elseif ($product->features == 1) {
+                    $url = route('app_formorder');
+                    $useButton = false;
+                } elseif ($product->name === 'Паднали марки за ЕПЖ') {
+                    $url = route('app_formlazer');
+                    $useButton = false;
+                } else {
+                    $useButton = true;
+                }
             @endphp
-            @if ($product->features == 1)
-                <a href="{{ $isOrderButtonActive ? '#' : route('app_formorder') }}"
-                    class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{ $isOrderButtonActive ? 'pointer-events-none opacity-70' : '' }}">
-                    ПОРЪЧАЙ
+
+            @if (!$useButton)
+                <a href="{{ $url }}"
+                   class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
+                    {{ $product->can_order == 0 ? 'ЗАПИТВАНЕ' : 'ПОРЪЧАЙ' }}
                 </a>
             @else
-                @if ($product->name === 'Паднали марки за ЕПЖ')
-                    <a href="{{ route('app_formlazer') }}"
+                <button type="button"
+                        id="js-open-modal"
                         class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
-                        ПОРЪЧАЙ
-                    </a>
-                @else
-                    <button type="button" id="js-open-modal"
-                        class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4 {{ $isOrderButtonActive ? 'pointer-events-none opacity-70' : '' }}"
-                        @disabled($isOrderButtonActive)>
-                        ПОРЪЧАЙ
-                    </button>
-                @endif
+                    ПОРЪЧАЙ
+                </button>
             @endif
         </div>
         {{--  </div> --}}
