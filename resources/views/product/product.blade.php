@@ -11,8 +11,9 @@
         @endif
         {{--  <div class="flex items-center my-10"> --}}
         <div>
-            <img width="300px" class="rounded inline-block" src="{{ asset('storage/products/' . $product->image_path) }}"
-                alt="{{ $product->name }}">
+            <img width="300px" class="rounded inline-block"
+                 src="{{ asset('storage/products/' . $product->image_path) }}"
+                 alt="{{ $product->name }}">
         </div>
         <div class="mt-10">
             <h1 class="text-2xl font-bold text-main-green-dark ">{{ $product->name }}</h1>
@@ -48,8 +49,8 @@
                 </a>
             @else
                 <button type="button"
-                        id="js-open-modal"
-                        class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
+                        data-modal="modal-{{ $product->id }}"
+                        class="js-open-modal inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
                     ПОРЪЧАЙ
                 </button>
             @endif
@@ -57,11 +58,12 @@
         {{--  </div> --}}
     </div>
     @push('modal')
-        <div id="order-modal-overlay" class="hidden">
+        <div class="order-modal-overlay hidden"
+             id="modal-{{ $product->id }}">
             <div id="order-modal"
-                class="w-full max-w-[700px] fixed bg-[#F1F2F2] z-[9000] top-1/2 left-1/2 -translate-x-1/2 p-6 py-3 border shadow-xl rounded-md -translate-y-1/2">
+                 class="w-full max-w-[700px] fixed bg-[#F1F2F2] z-[9000] top-1/2 left-1/2 -translate-x-1/2 p-6 py-3 border shadow-xl rounded-md -translate-y-1/2">
                 <div class="header text-center mb-4">
-                    <h1 class="text-lg font-bold uppercase text-main-green-dark font-light">Поръчка на <strong
+                    <h1 class="text-lg uppercase text-main-green-dark font-light">Поръчка на <strong
                             class="font-bold">{{ $product->name }}</strong></h1>
                 </div>
                 <div class="body">
@@ -74,44 +76,47 @@
                                 <div class="mb-4">
                                     <label class="mb-1 text-sm block font-bold" for="name">Име:</label>
                                     <input required type="text" class="w-full px-3 py-2 border rounded" id="name"
-                                        name="name" />
+                                           name="name"/>
                                 </div>
                                 <div class="mb-4">
                                     <label class="mb-1 text-sm block font-bold" for="mobile">Мобилен:</label>
                                     <input required type="text" class="w-full px-3 py-2 border rounded" id="mobile"
-                                        name="mobile" />
+                                           name="mobile"/>
                                 </div>
                                 <div>
                                     <label class="mb-1 text-sm block font-bold" for="email">Имейл:</label>
                                     <input required type="email" class="w-full px-3 py-2 border rounded" id="email"
-                                        name="email" />
+                                           name="email"/>
                                 </div>
                             </div>
                             <div class="pl-0 md:pl-3 w-full">
                                 <div class="mb-4">
                                     <label class="mb-1 text-sm block font-bold" for="quantity">Количество</label>
                                     <input required type="number" min="1" class="w-full px-3 py-2 border rounded"
-                                        id="quantity" name="quantity" />
+                                           id="quantity" name="quantity"/>
                                 </div>
                                 <div>
                                     <label class="mb-1 text-sm block font-bold" for="message">Адрес (офис на Еконт,
                                         допълнителни
                                         данни)</label>
-                                    <textarea name="message" id="message" class="w-full px-3 py-2 border rounded" rows="4"></textarea>
+                                    <textarea name="message" id="message" class="w-full px-3 py-2 border rounded"
+                                              rows="4"></textarea>
                                 </div>
                                 <div>
-                                    <input type="checkbox" id="policy" checked />
-                                    <label for="policy" class="font-bold">Съгласявам се с <a href="{{ route('app_policy') }}"
-                                            class="text-main-green-dark uppercase" target="_blank">общите условия</a></label>
+                                    <input type="checkbox" id="policy" checked/>
+                                    <label for="policy" class="font-bold">Съгласявам се с <a
+                                            href="{{ route('app_policy') }}"
+                                            class="text-main-green-dark uppercase" target="_blank">общите
+                                            условия</a></label>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit"
-                            class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
-                            ИЗПРАТИ
+                        <button type="button"
+                                class="js-open-modal inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
+                            ПОРЪЧАЙ
                         </button>
-                        <button type="button" id="js-close-modal"
-                            class="inline-block uppercase rounded bg-[#bbb] font-bold px-6 py-1 my-4">
+                        <button type="button"
+                                class="js-close-modal inline-block uppercase rounded bg-[#bbb] font-bold px-6 py-1 my-4">
                             ОТКАЗ
                         </button>
                     </form>
@@ -119,22 +124,32 @@
             </div>
         </div>
         <script>
-            var modal = document.getElementById('order-modal-overlay');
-            var openModalButton = document.getElementById('js-open-modal');
-            var closeModalButton = document.getElementById('js-close-modal');
-            var body = document.querySelector('body');
+            document.addEventListener('click', function(e) {
 
-            if (modal != null) {
-                openModalButton.addEventListener('click', function() {
-                    body.classList.add('no-scrolling');
-                    modal.classList.remove('hidden');
-                });
+                // OPEN
+                var openBtn = e.target.closest('.js-open-modal');
+                if (openBtn) {
+                    var modalId = openBtn.dataset.modal;
+                    var modal = document.getElementById(modalId);
 
-                closeModalButton.addEventListener('click', function() {
-                    body.classList.remove('no-scrolling');
-                    modal.classList.add('hidden');
-                });
-            }
+                    if (modal) {
+                        // document.body.classList.add('no-scrolling');
+                        modal.classList.remove('hidden');
+                    }
+                }
+
+                // CLOSE
+                var closeBtn = e.target.closest('.js-close-modal');
+                if (closeBtn) {
+                    var modal = closeBtn.closest('.order-modal-overlay');
+
+                    if (modal) {
+                        // document.body.classList.remove('no-scrolling');
+                        modal.classList.add('hidden');
+                    }
+                }
+
+            });
         </script>
     @endpush
 @endsection

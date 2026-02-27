@@ -73,7 +73,7 @@
                         @if ($product->can_order == 0)
                             <a href="{{ route('app_contacts') }}"
                                class="inline-block uppercase rounded bg-main-green-dark font-bold text-[#fff] px-6 py-1 my-4">
-                                Запитване
+                                ЗАПИТВАНЕ
                             </a>
                         @else
                             <button type="button" data-trigger-modal-id="{{ $product->id }}"
@@ -161,28 +161,39 @@
         var modals = document.querySelectorAll('.order-modal-overlay');
         var openModalButtons = document.querySelectorAll('.js-open-modal');
         var closeModalButtons = document.querySelectorAll('.js-close-modal');
-        var body = document.querySelector('body');
+        var body = document.body;
+
         if (modals.length > 0) {
+
+            // OPEN
             for (var i = 0; i < openModalButtons.length; i++) {
                 openModalButtons[i].addEventListener('click', function (e) {
-                    var buttonDataId = e.target.getAttribute('data-trigger-modal-id');
+
+                    var buttonDataId = this.getAttribute('data-trigger-modal-id');
                     body.classList.add('no-scrolling');
+
                     for (var j = 0; j < modals.length; j++) {
                         var modalDataId = modals[j].getAttribute('data-modal-id');
+
                         if (buttonDataId === modalDataId) {
                             modals[j].classList.remove('hidden');
                         }
                     }
                 });
             }
-            for (var k = 0; k < openModalButtons.length; k++) {
+
+            // CLOSE
+            for (var k = 0; k < closeModalButtons.length; k++) {
                 closeModalButtons[k].addEventListener('click', function () {
+
                     body.classList.remove('no-scrolling');
-                    for (var o = 0; o < closeModalButtons.length; o++) {
+
+                    for (var o = 0; o < modals.length; o++) {
                         modals[o].classList.add('hidden');
                     }
                 });
             }
+
         }
     </script>
 @endsection
