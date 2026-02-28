@@ -2,7 +2,7 @@
     <div class="container mx-auto">
         <div class="_top_bar_navigation absolute right-3 top-1">
             <div class="hidden items-center justify-end w-100 lg:flex">
-                <a href="https://www.facebook.com/solomonsofia.ltd" target="_blank">
+                <a href="https://www.facebook.com/solomonsofiacom" target="_blank">
                     <i class="text-facebook mx-3 text-xl bi bi-facebook"></i>
                 </a>
                 {{--                <i class="text-instagram mx-3 bi bi-instagram"></i>--}}
@@ -46,4 +46,3 @@
         </div>
     </div>
 </header>
-
