@@ -1,5 +1,5 @@
 <section id="main_banner">
-    <div class="w-full h-[350px] relative bg-main-green md:px-16 px-2 mt-10 border-t-[5px] border-y-main-green-dark">
+    <div class="w-full h-[150px] md:h-[350px] relative bg-main-green md:px-16 px-2 mt-10 border-t-[5px] border-y-main-green-dark">
         <div class="container mx-auto h-full relative">
             <div class="absolute top-[50%] md:top-[50%] md:left-[200px] md:text-left text-center left-[50%] md:w-max w-full -translate-x-[50%] md:-translate-x-[50%] -translate-y-[70%] z-20">
                 <h2 class="text-[1.4rem] md:text-[1.8rem] text-[#fff]">Висококачествени</h2>
