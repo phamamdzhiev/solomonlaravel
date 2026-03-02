@@ -25,8 +25,8 @@
     @endphp
 
     <div id="_featured_products" class="max-w-[800px] mx-auto my-8 w-full">
-        <h2 class="text-xl md:text-2xl px-3 font-bold text-main-green-dark">ВИСОКО КАЧЕСТВО НА ДОБРА ЦЕНА</h2>
-        <div class="flex items-center gap-[15px] px-3 mt-10 mb-8">
+        <h2 style="margin-bottom:10px;" class="text-xl md:text-2xl px-3 font-bold text-main-green-dark">ВИСОКО КАЧЕСТВО НА ДОБРА ЦЕНА</h2>
+        <div style="display: none;" class="flex items-center gap-[15px] px-3 mt-10 mb-8">
             {{-- mobile --}}
             <div class="relative max-w-max">
                 <p class="absolute font-[12px] md:font-[13px] -top-[20px] font-semibold">Телефон:</p>
