@@ -9,7 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap" rel="stylesheet">
-    @vite('resources/css/app.css')
+    @if (app()->environment('production'))
+        <link href="{{asset('/css/app.css')}}" rel="stylesheet"/>
+    @else
+        @vite('resources/css/app.css')
+    @endif
+
     @stack('head')
     <!-- Styles -->
     <style>
